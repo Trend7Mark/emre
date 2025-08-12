@@ -1,0 +1,51 @@
+{
+  "patient": {
+    "name": "",
+    "condition": "Genel kas-iskelet sistemi rehabilitasyonu",
+    "goals": [
+      "Ağrıyı azaltmak",
+      "Hareket açıklığını artırmak",
+      "Kuvvet ve dayanıklılığı geliştirmek",
+      "Günlük aktivitelere güvenli dönüş"
+    ]
+  },
+  "schedule": {
+    "start_date": "2025-08-18",
+    "timezone": "Europe/Istanbul",
+    "total_weeks": 8
+  },
+  "clinic_sessions": {
+    "enabled": true,
+    "days_of_week": ["Mon", "Wed", "Fri"],
+    "time": "18:00",
+    "duration_minutes": 60,
+    "title": "Fizyoterapi Seansı",
+    "location": "Klinik"
+  },
+  "home_exercises": {
+    "enabled": true,
+    "days_of_week": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+    "time": "09:00",
+    "duration_minutes": 20,
+    "title": "Ev Egzersizleri",
+    "location": "Ev"
+  },
+  "cardio_walk": {
+    "enabled": true,
+    "days_of_week": ["Tue", "Thu", "Sat"],
+    "start_time": "19:00",
+    "duration_progression_minutes": [15, 20, 25, 30, 30, 35, 35, 40],
+    "title": "Yürüyüş/Kardiyo",
+    "location": "Dış Mekan"
+  },
+  "check_in": {
+    "enabled": true,
+    "day_of_week": "Sun",
+    "time": "20:00",
+    "duration_minutes": 20,
+    "title": "Haftalık Durum Değerlendirmesi",
+    "location": "Ev"
+  },
+  "restrictions_note": "Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın; gerekirse profesyonel destek alın.",
+  "notes": "Bu plan örnektir; klinik önerileriniz önceliklidir."
+}
