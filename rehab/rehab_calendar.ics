@@ -1,0 +1,941 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//RehabPlanner//EN
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:ef618626-f68e-4a66-88d5-edb2ba06d093@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250818T150000Z
+DTEND:20250818T160000Z
+SUMMARY:Fizyoterapi Seansı
+LOCATION:Klinik
+DESCRIPTION:Klinik seansı\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:08754fea-a46b-41c1-89a9-2887d83ea987@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250820T150000Z
+DTEND:20250820T160000Z
+SUMMARY:Fizyoterapi Seansı
+LOCATION:Klinik
+DESCRIPTION:Klinik seansı\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:b1aa1f69-738c-4763-b680-2b89533eb95c@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250822T150000Z
+DTEND:20250822T160000Z
+SUMMARY:Fizyoterapi Seansı
+LOCATION:Klinik
+DESCRIPTION:Klinik seansı\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:f9255226-690f-4e67-b724-d34e710c4c4e@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250825T150000Z
+DTEND:20250825T160000Z
+SUMMARY:Fizyoterapi Seansı
+LOCATION:Klinik
+DESCRIPTION:Klinik seansı\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:9aa7fb27-e6db-49c3-9c56-b1b53ee724a8@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250827T150000Z
+DTEND:20250827T160000Z
+SUMMARY:Fizyoterapi Seansı
+LOCATION:Klinik
+DESCRIPTION:Klinik seansı\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:04d2e515-fac7-4ccb-8ec6-a7d4e7c4ec65@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250829T150000Z
+DTEND:20250829T160000Z
+SUMMARY:Fizyoterapi Seansı
+LOCATION:Klinik
+DESCRIPTION:Klinik seansı\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:374249de-5568-47c2-bfac-facf41822292@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250901T150000Z
+DTEND:20250901T160000Z
+SUMMARY:Fizyoterapi Seansı
+LOCATION:Klinik
+DESCRIPTION:Klinik seansı\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:84af2da1-553f-45c8-b444-54783c19a809@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250903T150000Z
+DTEND:20250903T160000Z
+SUMMARY:Fizyoterapi Seansı
+LOCATION:Klinik
+DESCRIPTION:Klinik seansı\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:13df41a4-d5a9-4077-8b4e-dde0794e9ce2@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250905T150000Z
+DTEND:20250905T160000Z
+SUMMARY:Fizyoterapi Seansı
+LOCATION:Klinik
+DESCRIPTION:Klinik seansı\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:6c581b5a-68d9-40af-8456-3281866b583f@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250908T150000Z
+DTEND:20250908T160000Z
+SUMMARY:Fizyoterapi Seansı
+LOCATION:Klinik
+DESCRIPTION:Klinik seansı\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:0d503735-b732-4baa-8df5-05a0aac1afed@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250910T150000Z
+DTEND:20250910T160000Z
+SUMMARY:Fizyoterapi Seansı
+LOCATION:Klinik
+DESCRIPTION:Klinik seansı\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:6a49e9c7-c81f-4376-8274-a5a322eef075@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250912T150000Z
+DTEND:20250912T160000Z
+SUMMARY:Fizyoterapi Seansı
+LOCATION:Klinik
+DESCRIPTION:Klinik seansı\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:db88e4cd-4a0b-4353-8aa3-a3ab0c1345cc@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250915T150000Z
+DTEND:20250915T160000Z
+SUMMARY:Fizyoterapi Seansı
+LOCATION:Klinik
+DESCRIPTION:Klinik seansı\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:53a7ba69-0bef-4d5d-b474-302e2ac51b26@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250917T150000Z
+DTEND:20250917T160000Z
+SUMMARY:Fizyoterapi Seansı
+LOCATION:Klinik
+DESCRIPTION:Klinik seansı\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:4fcd84be-52db-473a-9404-58f5efec345f@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250919T150000Z
+DTEND:20250919T160000Z
+SUMMARY:Fizyoterapi Seansı
+LOCATION:Klinik
+DESCRIPTION:Klinik seansı\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:82c19c2f-a74a-436a-9454-a063142035ca@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250922T150000Z
+DTEND:20250922T160000Z
+SUMMARY:Fizyoterapi Seansı
+LOCATION:Klinik
+DESCRIPTION:Klinik seansı\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:0a8f57d1-cf03-452d-b5a3-d3cbb5021245@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250924T150000Z
+DTEND:20250924T160000Z
+SUMMARY:Fizyoterapi Seansı
+LOCATION:Klinik
+DESCRIPTION:Klinik seansı\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:b7c35ae4-3d0a-401c-944f-05b6de762a41@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250926T150000Z
+DTEND:20250926T160000Z
+SUMMARY:Fizyoterapi Seansı
+LOCATION:Klinik
+DESCRIPTION:Klinik seansı\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:d80b6e4b-b7fe-43c2-bd85-808d66d4433c@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250929T150000Z
+DTEND:20250929T160000Z
+SUMMARY:Fizyoterapi Seansı
+LOCATION:Klinik
+DESCRIPTION:Klinik seansı\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:d42ce528-a67e-4102-9450-a90c77581cb2@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20251001T150000Z
+DTEND:20251001T160000Z
+SUMMARY:Fizyoterapi Seansı
+LOCATION:Klinik
+DESCRIPTION:Klinik seansı\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:4ff429c4-8cf6-4ebf-adc8-0f93d4e34b6b@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20251003T150000Z
+DTEND:20251003T160000Z
+SUMMARY:Fizyoterapi Seansı
+LOCATION:Klinik
+DESCRIPTION:Klinik seansı\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:ee16b249-6e34-4c1c-93db-07db739badd7@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20251006T150000Z
+DTEND:20251006T160000Z
+SUMMARY:Fizyoterapi Seansı
+LOCATION:Klinik
+DESCRIPTION:Klinik seansı\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:eefb2050-b72e-432f-a2ac-d78e4cfe05e8@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20251008T150000Z
+DTEND:20251008T160000Z
+SUMMARY:Fizyoterapi Seansı
+LOCATION:Klinik
+DESCRIPTION:Klinik seansı\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:bff35c79-cb5d-47bb-ad6a-fe11e0aad505@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20251010T150000Z
+DTEND:20251010T160000Z
+SUMMARY:Fizyoterapi Seansı
+LOCATION:Klinik
+DESCRIPTION:Klinik seansı\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:76beb923-3aec-4ae1-8734-e06da4d21482@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250818T060000Z
+DTEND:20250818T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:6feae23f-ef7a-426b-8630-b5ad010b2a74@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250819T060000Z
+DTEND:20250819T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:2870c211-f8b6-429e-b1b0-b6c1a044ca5c@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250820T060000Z
+DTEND:20250820T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:bb55cf4c-329f-4ecb-ba3a-a7bfe0f06393@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250821T060000Z
+DTEND:20250821T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:e05acbfd-7726-4be8-aad8-1856138df213@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250822T060000Z
+DTEND:20250822T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:e0fa600c-3633-4e24-a2ea-0a35474837b1@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250823T060000Z
+DTEND:20250823T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:8f252960-2723-4a01-ad3d-173d2e56de60@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250825T060000Z
+DTEND:20250825T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:6b60dfa6-d8f5-4f7e-88c0-d1b524d9e668@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250826T060000Z
+DTEND:20250826T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:45a33931-df46-4cd6-9059-95c4d454fc2a@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250827T060000Z
+DTEND:20250827T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:52e95b07-78b9-457b-81a9-710efd421795@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250828T060000Z
+DTEND:20250828T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:2c636d90-df98-4746-89d7-27bd6a63db3a@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250829T060000Z
+DTEND:20250829T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:14ce6f28-f234-4a30-b0c7-2fd4a5c50ecb@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250830T060000Z
+DTEND:20250830T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:238eaab3-c651-4f50-a185-dce322f9d60e@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250901T060000Z
+DTEND:20250901T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:8dae227f-c04a-4f5f-87b0-98f80acb3426@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250902T060000Z
+DTEND:20250902T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:03611ae0-a0c6-4fb0-a567-5df05a35526d@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250903T060000Z
+DTEND:20250903T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:24baecd8-69c0-43e3-a840-39d2d1069365@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250904T060000Z
+DTEND:20250904T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:fc3c90cd-e97a-4c1f-aada-1f9548cfda64@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250905T060000Z
+DTEND:20250905T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:6db572f2-6d24-4d9d-b83b-c2d458701aaf@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250906T060000Z
+DTEND:20250906T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:72aa64cb-ed91-4796-b9d7-b6b2fe687f4e@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250908T060000Z
+DTEND:20250908T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:3a83ee09-29af-4074-91a2-0464eba6aaa5@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250909T060000Z
+DTEND:20250909T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:e0be0502-a0a5-4ddd-99d2-929b75826a68@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250910T060000Z
+DTEND:20250910T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:376c9e50-3330-4379-9b23-977f44c8ee87@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250911T060000Z
+DTEND:20250911T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:a165cb05-fb35-4834-a673-b8acad79d08b@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250912T060000Z
+DTEND:20250912T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:cc897507-c789-432f-84b3-75b25f03d576@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250913T060000Z
+DTEND:20250913T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:0cc16e1a-dc08-40b6-b685-8e1371e1af53@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250915T060000Z
+DTEND:20250915T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:c9cd72d2-1e61-471b-972e-b8e6a67d654f@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250916T060000Z
+DTEND:20250916T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:b37dcbed-70cc-485d-b02a-7e5d2e038efb@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250917T060000Z
+DTEND:20250917T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:5a144cb2-2cd1-40b2-8306-e411f963026c@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250918T060000Z
+DTEND:20250918T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:378a8963-a904-4c2f-8ffd-7a3934fc8ceb@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250919T060000Z
+DTEND:20250919T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:606a508d-bfd0-4b9e-a5d4-dd7eee2dcbe5@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250920T060000Z
+DTEND:20250920T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:7cfbf225-f54b-4641-a09d-5a43313d74ea@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250922T060000Z
+DTEND:20250922T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:5efaaef9-8793-4ace-9554-ab239afdcdcb@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250923T060000Z
+DTEND:20250923T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:9cb8d10b-8eb5-4ef8-866d-ac4d3c4c9801@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250924T060000Z
+DTEND:20250924T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:73368480-7e4a-4ffc-bd35-b721ba29a9cc@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250925T060000Z
+DTEND:20250925T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:a244544b-3f86-4e59-98c3-907144778dc4@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250926T060000Z
+DTEND:20250926T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:df7d45f0-9d1e-4468-8e47-5150151a8df2@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250927T060000Z
+DTEND:20250927T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:76ecbecc-ac1f-4d30-9a1a-76198afae1fd@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250929T060000Z
+DTEND:20250929T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:e457d98e-81d0-4990-a87f-e5ff1b5a7e11@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250930T060000Z
+DTEND:20250930T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:fbbad1e4-eec1-413f-a938-9a776db9f369@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20251001T060000Z
+DTEND:20251001T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:2c3aa7f0-c2db-4fa6-911d-30642bd3c9af@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20251002T060000Z
+DTEND:20251002T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:c54a5663-f23d-41e5-a716-f5a179d06ce0@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20251003T060000Z
+DTEND:20251003T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:fd8046f5-c8c2-4475-90db-13f2011920b0@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20251004T060000Z
+DTEND:20251004T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:c42db6bd-1b3a-4037-b219-6f6ede9840d5@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20251006T060000Z
+DTEND:20251006T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:2b002ff8-22f6-4b53-95d7-9d3b8ae83259@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20251007T060000Z
+DTEND:20251007T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:148eaf56-0e6b-4894-bc22-184d5b20a6e4@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20251008T060000Z
+DTEND:20251008T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:9c532a11-9e51-4adc-ad4d-e0ecf98bbee8@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20251009T060000Z
+DTEND:20251009T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:67df3c19-c364-4d9f-80bd-ed5b7721ba98@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20251010T060000Z
+DTEND:20251010T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:fac5e43d-44fd-4930-a903-5a380d1f124e@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20251011T060000Z
+DTEND:20251011T062000Z
+SUMMARY:Ev Egzersizleri
+LOCATION:Ev
+DESCRIPTION:Ev egzersizleri\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:d80a96d9-4fb9-422b-9484-09421082ccff@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250819T160000Z
+DTEND:20250819T161500Z
+SUMMARY:Yürüyüş/Kardiyo
+LOCATION:Dış Mekan
+DESCRIPTION:Kardiyo / Yürüyüş\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:679a3dc5-e9c7-48ad-aa74-213f61f5f5ac@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250821T160000Z
+DTEND:20250821T161500Z
+SUMMARY:Yürüyüş/Kardiyo
+LOCATION:Dış Mekan
+DESCRIPTION:Kardiyo / Yürüyüş\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:03ede87b-32f1-479a-994b-fc228febc51f@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250823T160000Z
+DTEND:20250823T161500Z
+SUMMARY:Yürüyüş/Kardiyo
+LOCATION:Dış Mekan
+DESCRIPTION:Kardiyo / Yürüyüş\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:f5e9381c-9b54-4bcf-9ea3-0799677419ad@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250826T160000Z
+DTEND:20250826T162000Z
+SUMMARY:Yürüyüş/Kardiyo
+LOCATION:Dış Mekan
+DESCRIPTION:Kardiyo / Yürüyüş\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:43690855-4c28-48a5-b7c1-66af195ae83a@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250828T160000Z
+DTEND:20250828T162000Z
+SUMMARY:Yürüyüş/Kardiyo
+LOCATION:Dış Mekan
+DESCRIPTION:Kardiyo / Yürüyüş\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:1e911811-4a7b-4186-9179-618a3a21a038@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250830T160000Z
+DTEND:20250830T162000Z
+SUMMARY:Yürüyüş/Kardiyo
+LOCATION:Dış Mekan
+DESCRIPTION:Kardiyo / Yürüyüş\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:3a165c7a-770b-4330-b038-d6558e7eeba9@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250902T160000Z
+DTEND:20250902T162500Z
+SUMMARY:Yürüyüş/Kardiyo
+LOCATION:Dış Mekan
+DESCRIPTION:Kardiyo / Yürüyüş\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:9c12d033-0404-4686-8c80-9f6bcd84b061@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250904T160000Z
+DTEND:20250904T162500Z
+SUMMARY:Yürüyüş/Kardiyo
+LOCATION:Dış Mekan
+DESCRIPTION:Kardiyo / Yürüyüş\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:bfb7dc92-29da-426f-9c69-0f5bf448cc56@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250906T160000Z
+DTEND:20250906T162500Z
+SUMMARY:Yürüyüş/Kardiyo
+LOCATION:Dış Mekan
+DESCRIPTION:Kardiyo / Yürüyüş\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:8bef2a3a-0391-4153-bc31-396c1f79f87e@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250909T160000Z
+DTEND:20250909T163000Z
+SUMMARY:Yürüyüş/Kardiyo
+LOCATION:Dış Mekan
+DESCRIPTION:Kardiyo / Yürüyüş\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:2d16d10d-5c8a-4db6-8033-a0f9f9ec671d@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250911T160000Z
+DTEND:20250911T163000Z
+SUMMARY:Yürüyüş/Kardiyo
+LOCATION:Dış Mekan
+DESCRIPTION:Kardiyo / Yürüyüş\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:c5f8dbfb-870c-4c36-8a28-076547a60d55@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250913T160000Z
+DTEND:20250913T163000Z
+SUMMARY:Yürüyüş/Kardiyo
+LOCATION:Dış Mekan
+DESCRIPTION:Kardiyo / Yürüyüş\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:6dcf0e4b-9461-4e2d-ae39-24f2b40258dc@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250916T160000Z
+DTEND:20250916T163000Z
+SUMMARY:Yürüyüş/Kardiyo
+LOCATION:Dış Mekan
+DESCRIPTION:Kardiyo / Yürüyüş\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:3cee6add-236f-464d-99e8-3366afe6686b@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250918T160000Z
+DTEND:20250918T163000Z
+SUMMARY:Yürüyüş/Kardiyo
+LOCATION:Dış Mekan
+DESCRIPTION:Kardiyo / Yürüyüş\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:620d01bf-0a16-4bbd-bbfe-dafccca7c491@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250920T160000Z
+DTEND:20250920T163000Z
+SUMMARY:Yürüyüş/Kardiyo
+LOCATION:Dış Mekan
+DESCRIPTION:Kardiyo / Yürüyüş\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:be049eb9-8942-4398-bd91-8cb8d0de1f9b@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250923T160000Z
+DTEND:20250923T163500Z
+SUMMARY:Yürüyüş/Kardiyo
+LOCATION:Dış Mekan
+DESCRIPTION:Kardiyo / Yürüyüş\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:30525e7d-2f04-47fb-9b32-9673a651e9f9@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250925T160000Z
+DTEND:20250925T163500Z
+SUMMARY:Yürüyüş/Kardiyo
+LOCATION:Dış Mekan
+DESCRIPTION:Kardiyo / Yürüyüş\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:7c1f21d2-7e18-4fdd-a2e2-100fe1d522f3@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250927T160000Z
+DTEND:20250927T163500Z
+SUMMARY:Yürüyüş/Kardiyo
+LOCATION:Dış Mekan
+DESCRIPTION:Kardiyo / Yürüyüş\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:4e216273-4eea-4f54-9fa4-08faf96d7bf2@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250930T160000Z
+DTEND:20250930T163500Z
+SUMMARY:Yürüyüş/Kardiyo
+LOCATION:Dış Mekan
+DESCRIPTION:Kardiyo / Yürüyüş\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:642fde42-27d1-47d1-b1d0-918b021515b7@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20251002T160000Z
+DTEND:20251002T163500Z
+SUMMARY:Yürüyüş/Kardiyo
+LOCATION:Dış Mekan
+DESCRIPTION:Kardiyo / Yürüyüş\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:5e8b6d41-f36a-476a-b95a-934a312f483f@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20251004T160000Z
+DTEND:20251004T163500Z
+SUMMARY:Yürüyüş/Kardiyo
+LOCATION:Dış Mekan
+DESCRIPTION:Kardiyo / Yürüyüş\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:1f7ee1fe-2871-48e0-8f47-e16fb7a05f2e@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20251007T160000Z
+DTEND:20251007T164000Z
+SUMMARY:Yürüyüş/Kardiyo
+LOCATION:Dış Mekan
+DESCRIPTION:Kardiyo / Yürüyüş\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:d7f2d11b-5fde-4a9f-ae13-501ca7f60c2f@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20251009T160000Z
+DTEND:20251009T164000Z
+SUMMARY:Yürüyüş/Kardiyo
+LOCATION:Dış Mekan
+DESCRIPTION:Kardiyo / Yürüyüş\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:aeec802b-a8e8-4b0a-9f73-b97242e1fc8c@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20251011T160000Z
+DTEND:20251011T164000Z
+SUMMARY:Yürüyüş/Kardiyo
+LOCATION:Dış Mekan
+DESCRIPTION:Kardiyo / Yürüyüş\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:c957bb5b-eda2-4c93-8ce1-3519475759cc@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250824T170000Z
+DTEND:20250824T172000Z
+SUMMARY:Haftalık Durum Değerlendirmesi
+LOCATION:Ev
+DESCRIPTION:Haftalık durum değerlendirmesi (ağrı\, EHA\, kuvvet\, fonksiyon)\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:1b414cff-637a-46e0-ad72-1394949f898a@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250831T170000Z
+DTEND:20250831T172000Z
+SUMMARY:Haftalık Durum Değerlendirmesi
+LOCATION:Ev
+DESCRIPTION:Haftalık durum değerlendirmesi (ağrı\, EHA\, kuvvet\, fonksiyon)\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:7e5bb08c-0a4b-456f-aa85-2c4eb484fbdb@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250907T170000Z
+DTEND:20250907T172000Z
+SUMMARY:Haftalık Durum Değerlendirmesi
+LOCATION:Ev
+DESCRIPTION:Haftalık durum değerlendirmesi (ağrı\, EHA\, kuvvet\, fonksiyon)\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:a4c3727a-ecdb-4544-a3e7-8206691b4ee3@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250914T170000Z
+DTEND:20250914T172000Z
+SUMMARY:Haftalık Durum Değerlendirmesi
+LOCATION:Ev
+DESCRIPTION:Haftalık durum değerlendirmesi (ağrı\, EHA\, kuvvet\, fonksiyon)\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:ecd47699-8763-48cd-94b2-c9c14030aa3d@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250921T170000Z
+DTEND:20250921T172000Z
+SUMMARY:Haftalık Durum Değerlendirmesi
+LOCATION:Ev
+DESCRIPTION:Haftalık durum değerlendirmesi (ağrı\, EHA\, kuvvet\, fonksiyon)\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:017836d1-9e84-4c29-af25-ccbbbbf0e714@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20250928T170000Z
+DTEND:20250928T172000Z
+SUMMARY:Haftalık Durum Değerlendirmesi
+LOCATION:Ev
+DESCRIPTION:Haftalık durum değerlendirmesi (ağrı\, EHA\, kuvvet\, fonksiyon)\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:b670cb1b-5fed-4fa7-bd77-2ae47136ba77@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20251005T170000Z
+DTEND:20251005T172000Z
+SUMMARY:Haftalık Durum Değerlendirmesi
+LOCATION:Ev
+DESCRIPTION:Haftalık durum değerlendirmesi (ağrı\, EHA\, kuvvet\, fonksiyon)\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+BEGIN:VEVENT
+UID:02807ef2-a021-4a36-ba34-03acfdf91f50@rehab
+DTSTAMP:20250812T055941Z
+DTSTART:20251012T170000Z
+DTEND:20251012T172000Z
+SUMMARY:Haftalık Durum Değerlendirmesi
+LOCATION:Ev
+DESCRIPTION:Haftalık durum değerlendirmesi (ağrı\, EHA\, kuvvet\, fonksiyon)\nDurum: Genel kas-iskelet sistemi rehabilitasyonu\nHedefler: Ağrıyı azaltmak\, Hareket açıklığını artırmak\, Kuvvet ve dayanıklılığı geliştirmek\, Günlük aktivitelere güvenli dönüş\nNot: Ağrı 0-10 arasında 3'ün üzerine çıkarsa egzersizi azaltın veya durdurun. Şişlik/ısı artışı varsa buz ve elevasyon uygulayın\; gerekirse profesyonel destek alın.\nDetaylı içerik: plan.md
+END:VEVENT
+END:VCALENDAR
