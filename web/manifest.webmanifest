@@ -1,0 +1,17 @@
+{
+  "name": "Bitlis Eğitim İzleme",
+  "short_name": "Bitlis Eğitim",
+  "description": "Bitlis İl Millî Eğitim Müdürlüğü ve Bitlis eğitimine ilişkin olumsuz haber, eleştiri ve yapısal sorunların kaynaklı izleme panosu.",
+  "lang": "tr",
+  "dir": "ltr",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0b1220",
+  "theme_color": "#0f172a",
+  "icons": [
+    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "icons/icon-maskable.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}

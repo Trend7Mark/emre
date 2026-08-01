@@ -1,0 +1,78 @@
+{
+  "surum": "1.0.0",
+  "guncelleme": "2026-08-01",
+  "gostergeler": [
+    {
+      "id": "okuma-yazma",
+      "ad": "Okuma yazma bilmeyen oranı",
+      "deger": 7.5,
+      "birim": "%",
+      "kiyas": { "ad": "Türkiye ortalaması", "deger": 2.4 },
+      "yon": "kotu-yuksek",
+      "yil": "2023",
+      "yorum": "Bitlis, Türkiye ortalamasının üç katından fazla bir orana sahip.",
+      "kaynak": { "ad": "TÜİK / Gazete Oksijen", "url": "https://gazeteoksijen.com/egitim/tuik-egitim-istatistikleri-nufusun-yuzde-24u-okuma-yazma-bilmiyor" }
+    },
+    {
+      "id": "egitim-suresi",
+      "ad": "Ortalama eğitim süresi",
+      "deger": 8.7,
+      "birim": " yıl",
+      "kiyas": { "ad": "En düşük il (Ağrı)", "deger": 7.6 },
+      "yon": "kotu-dusuk",
+      "yil": "2025",
+      "yorum": "Türkiye'de 73 ilde ortalama eğitim süresi 10 yılın, 35 ilde 9 yılın altında. Bitlis 9 yılın altındaki grupta.",
+      "kaynak": { "ad": "TÜİK / BirGün", "url": "https://www.birgun.net/makale/egitim-suresi-35-ilde-9-yilin-73-ilde-10-yilin-altinda-720616" }
+    },
+    {
+      "id": "kiz-ilkokul",
+      "ad": "Kız çocuklarında ilkokul okullaşma oranı",
+      "deger": 94.2,
+      "birim": "%",
+      "yon": "iyi-yuksek",
+      "yil": "—",
+      "yorum": "İlkokul kademesinde okullaşma yüksek; sorun üst kademelerde başlıyor.",
+      "kaynak": { "ad": "MEB verisi / BirGün", "url": "https://www.birgun.net/haber/kizlara-okul-biraktiriliyor-408977" }
+    },
+    {
+      "id": "kiz-lise-son",
+      "ad": "Kız çocuklarında lise son sınıf okullaşma oranı",
+      "deger": 60.6,
+      "birim": "%",
+      "kiyas": { "ad": "Aynı grupta ilkokul oranı", "deger": 94.2 },
+      "yon": "kotu-dusuk",
+      "yil": "—",
+      "yorum": "İlkokuldan lise son sınıfa yaklaşık 34 puanlık düşüş. Bu makas, kız çocuklarının eğitimden kademeli olarak koptuğunu gösteriyor.",
+      "kaynak": { "ad": "MEB verisi / BirGün", "url": "https://www.birgun.net/haber/kizlara-okul-biraktiriliyor-408977" }
+    },
+    {
+      "id": "onyedi-yas",
+      "ad": "17 yaşındaki kız çocuklarında okul dışılık",
+      "deger": 33.3,
+      "birim": "%",
+      "yon": "kotu-yuksek",
+      "yil": "—",
+      "yorum": "Muş, Siirt, Bitlis ve Ağrı'da 17 yaşındaki her üç kız çocuğundan biri okul dışında.",
+      "kaynak": { "ad": "BirGün", "url": "https://www.birgun.net/makale/yukselis-maskeleyemiyor-binlerce-kiz-cocugu-hala-egitim-disinda-671477" }
+    },
+    {
+      "id": "orgun-disi",
+      "ad": "Türkiye genelinde örgün eğitim dışındaki çocuk sayısı",
+      "deger": 855174,
+      "birim": " çocuk",
+      "yon": "kotu-yuksek",
+      "yil": "2024",
+      "baglamsal": true,
+      "yorum": "Ulusal bağlam verisi. Bitlis'in de içinde bulunduğu doğu illeri bu tablonun ağırlıklı kısmını oluşturuyor.",
+      "kaynak": { "ad": "Medyascope", "url": "https://medyascope.tv/2024/11/07/turkiyede-en-az-855-binin-uzerinde-cocuk-orgun-egitim-disinda/" }
+    }
+  ],
+  "notlar": [
+    "Kız çocuklarının okuldan kopmasında öne çıkan nedenler: hane içi bakım yükü (kardeş, yaşlı ve hasta bakımı), yoksulluğun dayattığı ücretsiz emek ve buna bağlı yoğun devamsızlık. Devamsızlık önce artıyor, ardından okul terkine dönüşüyor.",
+    "Mevsimlik tarım göçü bölgede eğitimi kesintiye uğratıyor: geç kayıt, yoğun devamsızlık, okula uyum sorunu ve okul terki. MEB'in izleme ekipleri ve e-Okul modülü gibi mekanizmaları var ancak uygulamada aksaklıklar sürüyor."
+  ],
+  "notKaynaklari": [
+    { "ad": "MEB TEGM — Mevsimlik Tarım İşçisi ve Göçer Çocuklarının Eğitimi Kılavuzu (PDF)", "url": "https://tegm.meb.gov.tr/dosya/mevsimliktarimkilavuz.pdf" },
+    { "ad": "Bilgi Üniversitesi Göç Çalışmaları (PDF)", "url": "https://goc.bilgi.edu.tr/media/uploads/2021/06/24/mevsimlikgezicitarimisciligi-egitim-rehber.pdf" }
+  ]
+}

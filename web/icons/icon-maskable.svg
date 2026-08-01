@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Bitlis Eğitim İzleme">
+  <rect width="512" height="512" fill="#0f172a"/>
+  <g transform="translate(256 256) scale(0.66) translate(-256 -256)">
+    <path d="M256 128 96 196v34l160 68 160-68v-34z" fill="#7aa2ff"/>
+    <path d="M144 250v82c0 34 50 62 112 62s112-28 112-62v-82l-112 48z" fill="#e8edf5"/>
+    <path d="M416 214v104" stroke="#f87171" stroke-width="18" stroke-linecap="round" fill="none"/>
+    <circle cx="416" cy="352" r="16" fill="#f87171"/>
+  </g>
+</svg>

@@ -1,0 +1,605 @@
+{
+  "surum": "1.0.0",
+  "guncelleme": "2026-08-01",
+  "kaynakBelge": "bitlis-egitim-olumsuz-haber-derlemesi.md",
+  "kategoriler": [
+    { "id": "siddet",         "ad": "Şiddet ve Okul Güvenliği", "kisa": "Şiddet",       "renk": "#dc2626", "simge": "⚠" },
+    { "id": "yargi",          "ad": "İhmal ve Yargı",            "kisa": "Yargı",        "renk": "#7c3aed", "simge": "§" },
+    { "id": "isinma",         "ad": "Isınma ve Yakıt",           "kisa": "Isınma",       "renk": "#ea580c", "simge": "◈" },
+    { "id": "ulasim",         "ad": "Ulaşım ve Taşımalı Eğitim", "kisa": "Ulaşım",       "renk": "#0891b2", "simge": "➟" },
+    { "id": "yurt",           "ad": "Yurt ve Pansiyon",          "kisa": "Yurt",         "renk": "#c026d3", "simge": "⌂" },
+    { "id": "yuksekogretim",  "ad": "Yükseköğretim",             "kisa": "Üniversite",   "renk": "#2563eb", "simge": "◎" },
+    { "id": "derslik",        "ad": "Derslik, Altyapı ve Planlama", "kisa": "Altyapı",   "renk": "#65a30d", "simge": "▤" },
+    { "id": "personel",       "ad": "Öğretmen ve Personel",      "kisa": "Personel",     "renk": "#0d9488", "simge": "✎" },
+    { "id": "yonetim",        "ad": "Yönetim",                   "kisa": "Yönetim",      "renk": "#64748b", "simge": "⚑" }
+  ],
+  "durumlar": [
+    { "id": "yargi-karari",   "ad": "Kesinleşmiş yargı kararı", "kisa": "Yargı kararı", "sinif": "durum-yargi",   "aciklama": "Mahkeme kararına dayanır." },
+    { "id": "dogrulandi",     "ad": "Çok kaynaklı doğrulama",   "kisa": "Doğrulandı",   "sinif": "durum-dogru",   "aciklama": "Birbirinden bağımsız en az iki yayın organında yer aldı." },
+    { "id": "tek-kaynak",     "ad": "Tek kaynaklı haber",       "kisa": "Tek kaynak",   "sinif": "durum-tek",     "aciklama": "Tek bir yayın organında yer aldı, teyit edilmedi." },
+    { "id": "iddia",          "ad": "İddia — teyit edilmedi",   "kisa": "İddia",        "sinif": "durum-iddia",   "aciklama": "Bir kişi veya kurumun öne sürdüğü, resmî olarak doğrulanmamış iddia." },
+    { "id": "gorus",          "ad": "Köşe yazısı / görüş",      "kisa": "Görüş",        "sinif": "durum-gorus",   "aciklama": "Haber değil, yazarın değerlendirmesi." },
+    { "id": "istatistik",     "ad": "Resmî istatistik",         "kisa": "İstatistik",   "sinif": "durum-veri",    "aciklama": "TÜİK veya bakanlık verisine dayanır." }
+  ],
+  "ilceler": ["İl geneli", "Merkez", "Tatvan", "Ahlat", "Adilcevaz", "Güroymak", "Hizan", "Mutki"],
+
+  "kayitlar": [
+    {
+      "id": "beu-tip-altyapi",
+      "baslik": "BEÜ Tıp Fakültesi'nin altyapısı tamamlanmadı: 31 öğrenci ilk üç yılı İstanbul'da okuyacak",
+      "ozet": "Bitlis Eren Üniversitesi'nde yeni açılan Tıp Fakültesi'nin fiziki altyapısı ve akademik kadrosu yetişmedi; öğrenciler eğitimlerinin ilk üç yılını İstanbul Üniversitesi Çapa Tıp Fakültesi'nde görecek.",
+      "tarih": "2026-07-31",
+      "tarihKesin": true,
+      "kategori": "yuksekogretim",
+      "ilce": ["Merkez"],
+      "durum": "dogrulandi",
+      "etiketler": ["Bitlis Eren Üniversitesi", "tıp fakültesi", "akademik kadro", "burs"],
+      "detay": [
+        "Programa yerleşen 31 öğrenci, altı yıllık tıp eğitiminin ilk üç yılını Bitlis'te değil, İstanbul Üniversitesi Çapa Tıp Fakültesi'nde tamamlayacak.",
+        "Bitlis kampüsünde tıp eğitimi için görevli akademik kadro yalnızca 2 doçent ve 1 öğretim görevlisinden oluşuyor.",
+        "Üniversite öğrenci çekebilmek için aylık 30.000–50.000 TL arasında burs vaat etti. Aynı kampüste eğitim görecek İstanbul Tıp öğrencileri ise bu imkândan yararlanamıyor; bu durum eşitsizlik tartışması doğurdu.",
+        "Genel tablo da sorunlu: Türkiye'de 151 tıp programı yılda yaklaşık 18.748 öğrenci alıyor. Sağlık Bakanlığı'nın ihtiyaç öngörüsü ise yılda yaklaşık 5.250 öğrenci. 151 programın yalnızca 70'i (%46) akreditasyona sahip."
+      ],
+      "kaynaklar": [
+        { "ad": "Halk TV", "url": "https://halktv.com.tr/turkiye/bitlis-tipta-altyapi-tamamlanmadi-ogrenciler-capada-egitim-gorecek-1045964h", "yerel": false },
+        { "ad": "BirGün", "url": "https://www.birgun.net/haber/fakultesi-bitlis-te-egitimi-capa-da-726593", "yerel": false }
+      ]
+    },
+    {
+      "id": "komur-iddiasi",
+      "baslik": "\"Okullara gönderilen kömürden taş çıktı\" iddiası",
+      "ozet": "İYİ Parti Bitlis İl Başkanı Ziya Yoldaş, Soma'dan MEB'e bağlı okullara gönderilen kömür sevkiyatlarında kömür yerine yüksek oranda taş ve yanma özelliği bulunmayan malzeme olduğunu öne sürdü.",
+      "tarih": "2026-07-27",
+      "tarihKesin": true,
+      "kategori": "isinma",
+      "ilce": ["İl geneli"],
+      "durum": "iddia",
+      "etiketler": ["kömür", "ısınma", "kamu kaynağı", "denetim", "siyasi parti"],
+      "detay": [
+        "Yoldaş, sahadan gelen bilgi ve görüntülere dayandırdığı açıklamasında bazı sevkiyatlarda \"taş ve yanma özelliği bulunmayan malzemeler\" olduğunu belirtti ve durumu \"ciddi\" olarak nitelendirdi.",
+        "Açıklamada iki talep dile getirildi: ilgili kurumların sevkiyatlardan numune alarak bağımsız inceleme başlatması ve kömürlerin kalite ile uygunluk denetimlerinin kamuoyu önünde şeffaf biçimde yapılması.",
+        "Yoldaş, çocukların ısınma hakkının ve kamu kaynaklarının etkin kullanımının söz konusu olduğunu vurguladı.",
+        "Haberin yayımlandığı tarih itibarıyla resmî bir yanıt verilmemiş ve başlatılmış bir soruşturma bildirilmemiştir."
+      ],
+      "alintilar": [
+        { "soz": "Bazı sevkiyatlarda taş ve yanma özelliği bulunmayan malzemeler yer aldı.", "kaynak": "Ziya Yoldaş, İYİ Parti Bitlis İl Başkanı" }
+      ],
+      "kaynaklar": [
+        { "ad": "Bitlis Haber13", "url": "https://www.bitlishaber13.net/iyi-parti-bitlis-il-baskani-yoldastan-okullara-gonderilen-komur-iddialarina-iliskin-dikkat-ceken-aciklama", "yerel": true }
+      ]
+    },
+    {
+      "id": "yonetim-degisikligi",
+      "baslik": "İl Millî Eğitim Müdürü Vedat Kaya bakanlık emrine alındı",
+      "ozet": "Bitlis İl Millî Eğitim Müdürü Vedat Kaya bakanlık emrine alındı; yerine İstanbul Esenyurt İlçe Millî Eğitim Müdürü Tayfun Özyolcu atandı.",
+      "tarih": "2026-07-17",
+      "tarihKesin": true,
+      "kategori": "yonetim",
+      "ilce": ["İl geneli"],
+      "durum": "dogrulandi",
+      "etiketler": ["il millî eğitim müdürü", "rotasyon", "atama"],
+      "detay": [
+        "Değişiklik, MEB'in 2026-2027 eğitim öğretim yılı öncesinde 12 ilde yaptığı il millî eğitim müdürü rotasyonu kapsamında gerçekleşti.",
+        "Haberlerde performansa veya bir soruşturmaya dair özel bir gerekçe belirtilmedi; işlem rutin rotasyon olarak duyuruldu.",
+        "Devir teslim töreninde görevi bırakan Vedat Kaya, halefine başarı diledi."
+      ],
+      "kaynaklar": [
+        { "ad": "Tatvan Sesi", "url": "https://tatvansesi.com.tr/haber/bitlis-il-milli-egitim-mudurlugunde-gorev-degisimi-6547", "yerel": true },
+        { "ad": "Son Dakika Bitlis", "url": "https://www.sondakikabitlis.com/bitlis-il-milli-egitim-mudurlugune-tayfun-ozyolcu-atandi-597.html", "yerel": true },
+        { "ad": "BitlisHaber.Tr", "url": "https://www.bitlishaber.tr/bitlis-il-milli-egitim-muduru-degisti/", "yerel": true },
+        { "ad": "Bitlis Haber13", "url": "https://www.bitlishaber13.net/bitlisin-yeni-il-milli-egitim-muduru-tayfun-ozyolcu-oldu", "yerel": true },
+        { "ad": "Memurlar.Net", "url": "https://www.memurlar.net/haber/1173004/meb-de-12-ilin-milli-egitim-muduru-degisti.html", "yerel": false }
+      ]
+    },
+    {
+      "id": "tatvan-otogar",
+      "baslik": "Tatvan'da okulun bitişiğinin otogar olarak kullanılmasına veli tepkisi",
+      "ozet": "Şehit Öğretmen Bayram Yasemin Tekin İlkokulu'nun hemen yanındaki alan otobüs firmalarınca yolcu indirme-bindirme yeri olarak kullanılıyor; veliler durumu tehlikeli buluyor.",
+      "tarih": "2026-06-23",
+      "tarihKesin": true,
+      "kategori": "siddet",
+      "ilce": ["Tatvan"],
+      "durum": "tek-kaynak",
+      "etiketler": ["okul güvenliği", "trafik", "veli tepkisi", "belediye"],
+      "detay": [
+        "İlçede faaliyet gösteren otobüs firmaları, ilkokulun hemen bitişiğindeki alanda yolcu indirip bindiriyor.",
+        "Veliler ve çevre sakinleri, ilkokul bahçesinin yanında otogar trafiği oluşmasını \"tehlikeli ve uygunsuz\" olarak nitelendirerek belediyeden başka bir yerde kalıcı bir terminal yapılmasını istedi.",
+        "Aynı dönemde Tatvan'da veliler genel okul güvenliği hassasiyetlerini de dile getirdi."
+      ],
+      "kaynaklar": [
+        { "ad": "Bitlis Haber13", "url": "https://www.bitlishaber13.net/tatvanda-okul-ile-otogar-olarak-kullanilan-alanin-yan-yanda-bulunmasina-vatandaslardan-tepki", "yerel": true },
+        { "ad": "Bitlis Postası", "url": "https://www.bitlispostasi.com/tatvanda-velilerden-okul-guvenligi-hassasiyeti", "yerel": true }
+      ]
+    },
+    {
+      "id": "servis-sarampol",
+      "baslik": "Öğrenci ve velileri taşıyan minibüs şarampole yuvarlandı: 7 yaralı",
+      "ozet": "Bitlis'e bağlı Vervan köyü mevkiinde, yoğun yağış nedeniyle kayganlaşan yolda direksiyon hâkimiyeti kaybedilen minibüs devrildi; 7 kişi yaralandı.",
+      "tarih": "2026-05-01",
+      "tarihKesin": false,
+      "tarihNotu": "Kaynaklarda yalnızca \"Mayıs 2026\" olarak geçiyor",
+      "kategori": "ulasim",
+      "ilce": ["Hizan", "Tatvan"],
+      "durum": "dogrulandi",
+      "etiketler": ["servis kazası", "yol güvenliği", "taşımalı eğitim"],
+      "detay": [
+        "Van'dan Bahçesaray yönüne giden ve öğrenciler ile velileri taşıyan minibüs, yoğun yağış sonrası kayganlaşan yolda kontrolden çıkarak şarampole devrildi.",
+        "Araçta yaklaşık 15 yolcu bulunuyordu. Kazada 7 kişi yaralandı.",
+        "Yaralılar olay yerindeki ilk müdahalenin ardından Tatvan ve Hizan Devlet Hastanelerine kaldırıldı; sağlık durumlarının iyi olduğu bildirildi.",
+        "Olaya AFAD, jandarma, polis ve sağlık ekipleri müdahale etti."
+      ],
+      "kaynaklar": [
+        { "ad": "BitlisHaber.Tr", "url": "https://www.bitlishaber.tr/bitliste-ogrenci-servisi-sarampole-yuvarlandi-15-yarali/", "yerel": true },
+        { "ad": "Van Haber Gazetesi", "url": "https://www.vanhabergazetesi.com/vanli-ogrencileri-tasiyan-servis-sarampole-yuvarlandi-7-yarali", "yerel": false },
+        { "ad": "Haber Global", "url": "https://haberglobal.com/yasam/bitliste-kontrolden-cikan-minibus-sarampole-yuvarlandi-cok-sayida-yarali-var-525214", "yerel": false },
+        { "ad": "En Son TV", "url": "https://www.ensontv.com/bitliste-ogrencileri-tasiyan-minibus-sarampole-devrildi-7-yarali-2/", "yerel": false }
+      ]
+    },
+    {
+      "id": "siverek-sonrasi-is-birakma",
+      "baslik": "Okul saldırıları sonrası Bitlis'te 3 günlük iş bırakma eylemi",
+      "ozet": "Siverek'te bir meslek lisesine yapılan ve 16 kişinin yaralandığı silahlı saldırının ardından Bitlis'te eğitimciler 15-17 Nisan 2026'da iş bırakma eylemi yaptı.",
+      "tarih": "2026-04-15",
+      "tarihKesin": true,
+      "kategori": "siddet",
+      "ilce": ["İl geneli"],
+      "durum": "dogrulandi",
+      "etiketler": ["iş bırakma", "sendika", "okul şiddeti", "Eğitim-Bir-Sen"],
+      "detay": [
+        "Şanlıurfa Siverek'te Ahmet Koyuncu Mesleki ve Teknik Anadolu Lisesi'ne yapılan silahlı saldırıda 16 kişi yaralandı. Saldırı, Bitlis dâhil ülke genelinde protesto edildi.",
+        "Eğitim-Bir-Sen üyeleri Bitlis'te 15-17 Nisan 2026 tarihlerinde üç günlük iş bırakma eylemi düzenledi.",
+        "Talepler: okul şiddetine karşı caydırıcı yasal düzenleme yapılması, eğitimci ve öğrenci güvenliğinin sağlanması, okullarda tam güvenliğin tesisi, eğitim-aile-toplum politikalarının yeniden değerlendirilmesi.",
+        "Sendika, saldırıların okulların fiziki ve dijital güvenliğinde ciddi boşluklar olduğunu ortaya koyduğunu; taciz, tehdit ve zorbalık için kullanılan dijital platformların ele alınması gerektiğini belirtti.",
+        "Eylem nedeniyle \"Bitlis'te okullar tatil edilecek mi?\" tartışması yerel gündemi meşgul etti."
+      ],
+      "alintilar": [
+        { "soz": "Okullardaki şiddet olayları artık münferit olaylar olmaktan çıkmış, toplumsal bir soruna dönüşmüştür.", "kaynak": "Eğitim-Bir-Sen açıklaması" }
+      ],
+      "kaynaklar": [
+        { "ad": "Bitlis Haber13 — iş bırakma", "url": "https://www.bitlishaber13.net/bitliste-egitimcilerden-okul-saldirisina-iliskin-is-birakma-eylemi", "yerel": true },
+        { "ad": "Bitlis Haber13 — 3 günlük grev", "url": "https://www.bitlishaber13.net/bitliste-okullar-tatil-edilecek-mi-3-gunluk-grev-karari-gundemde", "yerel": true },
+        { "ad": "Bitlis Haber13 — Bitlis'ten tepki", "url": "https://www.bitlishaber13.net/okul-saldirilarina-bitlisten-tepki", "yerel": true },
+        { "ad": "Bitlis Bülten", "url": "https://www.bitlisbulten.com/tatvan/okula-yapilan-saldiri-bitliste-protesto-edildi/6293", "yerel": true },
+        { "ad": "Bitlis Haber13 — Saadet Partisi", "url": "https://www.bitlishaber13.net/saadet-partisi-bitlis-il-baskani-yildirimdan-okullardaki-saldirilara-tepki", "yerel": true }
+      ]
+    },
+    {
+      "id": "alca-ogretmeni-koruma",
+      "baslik": "Köşe yazısı: \"Öğretmeni korumayan düzen, okulu koruyamaz\"",
+      "ozet": "Nevzat Alca, iddia ile ispat arasındaki çizginin silindiğini, şikâyetlerin hüküm gibi işlem gördüğünü ve soruşturma bitmeden kamuoyu önünde teşhir yapıldığını yazıyor.",
+      "tarih": "2026-03-24",
+      "tarihKesin": true,
+      "kategori": "personel",
+      "ilce": ["İl geneli"],
+      "durum": "gorus",
+      "etiketler": ["köşe yazısı", "öğretmen hakları", "soruşturma", "Nevzat Alca"],
+      "detay": [
+        "Yazar, bir öğretmen söz konusu olduğunda bazı çevrelerin refleksinin gerçeği araştırmak değil, önce öğretmeni şüphe altında bırakmak olduğunu savunuyor.",
+        "Eleştirdiği noktalar: iddia ile ispat arasındaki çizginin bulanıklaşması, şikâyetlerin anında hüküm gibi işlem görmesi, sınıfta korku iklimi oluşması, velilerin eğitimciler üzerinde aşırı baskı kurması ve soruşturma sonuçlanmadan kamuoyu önünde teşhir.",
+        "Uyarısı: gerekli güvenceler sağlanmazsa nitelikli adaylar öğretmenlik mesleğini terk eder.",
+        "Not: Yazı Bitlis merkezli bir yayın organında çıkmakla birlikte, doğrudan Bitlis'e özgü bir vakaya atıf içermiyor."
+      ],
+      "kaynaklar": [
+        { "ad": "Bitlis Haber13", "url": "https://www.bitlishaber13.net/ogretmeni-korumayan-duzen-okulu-koruyamaz", "yerel": true },
+        { "ad": "Bitlis Haber13 — \"Öğretmenin Sorunu, Eğitimin Sorunudur\"", "url": "https://www.bitlishaber13.net/ogretmenin-sorunu-egitimin-sorunudur", "yerel": true }
+      ]
+    },
+    {
+      "id": "ahlat-mudur-saldirisi",
+      "baslik": "Ahlat'ta veliler iki okul müdürünü darp etti",
+      "ozet": "Abdurrahman Gazi İlkokulu'nda öğrenciler arasındaki kavganın okula taşınması üzerine veliler, okul bahçesinde öğrencilerin gözü önünde iki okul müdürüne saldırdı.",
+      "tarih": "2026-02-23",
+      "tarihKesin": true,
+      "tarihNotu": "Güvenlik kamerası görüntülerinin ortaya çıktığı tarih",
+      "kategori": "siddet",
+      "ilce": ["Ahlat"],
+      "durum": "dogrulandi",
+      "etiketler": ["veli şiddeti", "okul müdürü", "güvenlik kamerası", "sendika tepkisi"],
+      "detay": [
+        "Ahlat Abdurrahman Gazi İlkokulu öğrencileri arasında okul dışında çıkan kavganın ardından bazı veliler meseleyi okula taşıdı.",
+        "Güvenlik kamerası görüntülerinde, araya girip ortamı yatıştırmaya çalışan iki okul müdürüne yumruk ve tekmelerle saldırıldığı görülüyor. Olay okul bahçesinde, öğrencilerin ve diğer personelin gözü önünde yaşandı; çevredekiler müdahale ederek ayırmaya çalıştı.",
+        "Eğitim-Bir-Sen Ahlat temsilciliği basın açıklamasıyla saldırıyı kınadı; faillerin tam olarak soruşturulup yargılanmasını ve caydırıcı tedbirler alınmasını istedi.",
+        "Sendika, güvenlik sağlanmadan eğitimcilerin görevlerini güvenli biçimde yerine getiremeyeceğini vurguladı.",
+        "Olay ulusal basına da yansıdı."
+      ],
+      "alintilar": [
+        { "soz": "Bu saldırı yalnızca kişilere yönelik bir saldırı değildir; doğrudan eğitime, kamu hizmetine ve devlet otoritesine yönelik bir tehdittir.", "kaynak": "Abdurrahman Yaşasın, Eğitim-Bir-Sen Ahlat temsilcisi" }
+      ],
+      "kaynaklar": [
+        { "ad": "Bitlis Haber13", "url": "https://www.bitlishaber13.net/bitliste-okul-mudurlerine-saldiri-goruntuleri-ortaya-cikti", "yerel": true },
+        { "ad": "Bitlis Postası", "url": "https://www.bitlispostasi.com/egitim-bir-sen-ahlat-temsilciliginden-okul-saldirisina-sert-tepki", "yerel": true },
+        { "ad": "Habertürk", "url": "https://www.haberturk.com/bitlis-haberleri/40638572-bitliste-okul-mudurlerine-yapilan-saldiri-kinandi", "yerel": false },
+        { "ad": "Ensonhaber", "url": "https://www.ensonhaber.com/3-sayfa/bitliste-veliler-okul-mudurlerine-saldirdi-goruntuler-ortaya-cikti", "yerel": false },
+        { "ad": "Bursa Hakimiyet", "url": "https://www.bursahakimiyet.com.tr/gundem/bitlis-ahlat-ta-okul-mudurlerine-saldiri-goruntuleri-ortaya-cikti-1581677", "yerel": false }
+      ]
+    },
+    {
+      "id": "besminare-yurt",
+      "baslik": "Beşminare Öğrenci Yurdu'ndaki iddialara idari soruşturma",
+      "ozet": "Gençlik ve Spor Bakanlığı'na bağlı Bitlis Beşminare Öğrenci Yurdu'nda basına ve sosyal medyaya yansıyan iddialar üzerine bakanlık idari soruşturma ve disiplin süreci başlattı.",
+      "tarih": "2026-01-13",
+      "tarihKesin": true,
+      "tarihNotu": "Haber 15 Mart 2026'da güncellendi",
+      "kategori": "yurt",
+      "ilce": ["Merkez"],
+      "durum": "iddia",
+      "etiketler": ["öğrenci yurdu", "soruşturma", "Gençlik ve Spor Bakanlığı"],
+      "detay": [
+        "Bakanlık açıklamasında iddiaların içeriğine dair ayrıntı verilmedi; yalnızca medyaya ve sosyal medyaya yansıyan \"gerçekleştiği ileri sürülen olaylar\"a atıf yapıldı.",
+        "Açıklamada \"idari soruşturma ve disiplin süreci başlatılmıştır\" ve sürecin \"gerekli hassasiyetle ve hukuk çerçevesinde\" yürütüldüğü belirtildi.",
+        "İddiaların niteliğine ilişkin somut bilgi kamuoyuyla paylaşılmadı."
+      ],
+      "kaynaklar": [
+        { "ad": "Haberton", "url": "https://haberton.com/bitlis-besminare-ogrenci-yurdundaki-iddialara-inceleme/", "yerel": false }
+      ]
+    },
+    {
+      "id": "ebs-rapor",
+      "baslik": "Eğitim-Bir-Sen Bitlis Şubesi'nden sistem eleştirisi içeren rapor",
+      "ozet": "Şube, okul projelerinin fiilî ders süresini kısalttığını, öğretmen iş yükünün arttığını, ölçme-değerlendirmenin baskı yarattığını ve protokollerin okullara yük bindirdiğini bildirdi.",
+      "tarih": "2025-12-19",
+      "tarihKesin": true,
+      "kategori": "personel",
+      "ilce": ["İl geneli"],
+      "durum": "dogrulandi",
+      "etiketler": ["sendika raporu", "iş yükü", "bürokrasi", "proje enflasyonu"],
+      "detay": [
+        "Rapor, İl Millî Eğitim Müdürlüğü'ne, ilgili bakanlık birimlerince değerlendirilmek üzere sunuldu.",
+        "Tespitler: okullardaki proje ve etkinliklerin sayıca fazlalığı fiilî öğretim süresini kısaltıyor; öğretmenin iş yükü belirgin biçimde arttı; ölçme ve değerlendirme sistemi hem eğitimci hem öğrenci üzerinde baskı yaratıyor; kurum ve STK protokolleri denetlenmeden okullara yükleniyor.",
+        "Öneriler: proje sayısının sınırlandırılması, değerlendirme yöntemlerinin sadeleştirilmesi, dış kurum protokollerinin düzenlenmesi, öğretmen üzerindeki idari yükün azaltılması."
+      ],
+      "alintilar": [
+        { "soz": "Öğretmenin asli görevi olan öğretim ve öğrenciyle meşguliyet her geçen gün daralıyor. Kalite için öğretimin önceliklendirilmesi, öğretmenin korunması ve bürokrasinin azaltılması gerekir.", "kaynak": "Mehmet Tahir Yoldaş, Eğitim-Bir-Sen Bitlis Şube Başkanı" }
+      ],
+      "kaynaklar": [
+        { "ad": "Bitlis Haber13", "url": "https://www.bitlishaber13.net/egitim-bir-sen-bitlis-subesinden-egitim-sistemine-dikkat-ceken-rapor", "yerel": true }
+      ]
+    },
+    {
+      "id": "guroymak-kurt",
+      "baslik": "Güroymak'ta okul çevresinde kurt görülmesi: ailelerden güvenlik uyarısı",
+      "ozet": "Turgut Özal İlkokulu'na çocuk gönderen aileler, bölgede kurt görüldüğü yönündeki ihbarlar nedeniyle ciddi bir güvenlik sorunu yaşadıklarını bildirdi.",
+      "tarih": "2025-12-17",
+      "tarihKesin": true,
+      "tarihNotu": "İhbarların başladığı tarih",
+      "kategori": "siddet",
+      "ilce": ["Güroymak"],
+      "durum": "tek-kaynak",
+      "etiketler": ["okul güvenliği", "kırsal", "yaban hayvanı"],
+      "detay": [
+        "Güroymak ilçesinde Turgut Özal İlkokulu'na çocuk gönderen ailelerin bildirdiğine göre, 17 Aralık 2025'ten itibaren bölgede kurt görüldüğüne dair inandırıcı ihbarlar bulunuyor.",
+        "Aileler, okul yolunda ve çevresinde çocukların güvenliği konusunda endişeli olduklarını belirtti.",
+        "Kaynak notu: Habere Bitlis yerel basını üzerinden ulaşıldı ancak doğrudan makale bağlantısı tespit edilemedi; aşağıdaki bağlantı yayın organının ana sayfasına gider. Kayıt bu nedenle tek kaynaklı olarak işaretlenmiştir."
+      ],
+      "kaynaklar": [
+        { "ad": "Bitlis Haber13 (ana sayfa — doğrudan bağlantı bulunamadı)", "url": "https://www.bitlishaber13.net/", "yerel": true }
+      ]
+    },
+    {
+      "id": "kar-tatilleri",
+      "baslik": "Tekrarlayan kar tatilleri: 2025-2026 yılında eğitime defalarca ara verildi",
+      "ozet": "Bitlis'te aralık-mart arasında kar ve buzlanma nedeniyle okullar birçok kez tatil edildi; taşımalı eğitim güzergâhları en kırılgan halka.",
+      "tarih": "2026-03-23",
+      "tarihKesin": true,
+      "tarihNotu": "Sezondaki son kar tatili tartışmasının tarihi",
+      "kategori": "ulasim",
+      "ilce": ["İl geneli", "Merkez", "Tatvan", "Ahlat", "Adilcevaz", "Güroymak", "Hizan", "Mutki"],
+      "durum": "dogrulandi",
+      "etiketler": ["kar tatili", "taşımalı eğitim", "eğitim kaybı", "kırsal"],
+      "detay": [
+        "17 Aralık 2025 — Merkez ve Güroymak'ta okullar bir gün tatil edildi. Köy yollarında kar kalınlığının artması ve buzlanma riski, taşımalı eğitim servis güzergâhlarını tehlikeli hale getirmişti.",
+        "15 Ocak 2026 — Adilcevaz, Güroymak, Hizan ve Mutki'de tüm okullar; Merkez, Tatvan ve Ahlat'ta köy okulları ile taşımalı eğitim tatil edildi. Aynı ilçelerde 0-6 yaş çocuğu olan anneler, hamileler, engelli çalışanlar ve kronik hastalığı olan kamu personeline idari izin verildi.",
+        "4 Şubat 2026 — Bitlis, doğu illeri arasında kar tatili gündemine giren iller arasında yer aldı.",
+        "23 Mart 2026 — Mart sonunda dahi Bitlis'te kar tatili tartışması sürdü.",
+        "Taşımalı eğitim bu coğrafyada yapısal bir sorun: öğrenciler kimi yerde 50-60 kilometre taşınıyor, buzlu yollarda yolculuk ediyor ve derse yorgun başlıyor. Bu tatiller kümülatif bir eğitim kaybı oluşturuyor."
+      ],
+      "kaynaklar": [
+        { "ad": "Cumhuriyet", "url": "https://www.cumhuriyet.com.tr/turkiye/bitlis-te-egitime-kar-engeli-okullar-tatil-edildi-2462091", "yerel": false },
+        { "ad": "NTV", "url": "https://www.ntv.com.tr/turkiye/bitliste-okullar-tatil-edildi,F4xgf9WdbkyKho3X4zdRqQ", "yerel": false },
+        { "ad": "Van Haber Gazetesi", "url": "https://www.vanhabergazetesi.com/bitliste-egitime-kar-engeli-1", "yerel": false },
+        { "ad": "Bitlis Doğru Haber", "url": "https://bitlisdogruhaber.com/okullar-nerelerde-tatil-detaylar-haberimizde", "yerel": true },
+        { "ad": "Karar", "url": "https://www.karar.com/sehir-haberleri/son-dakika-bitlis-kar-tatili-bitliste-okullar-tatil-edildi-mi-hangi-2014748", "yerel": false },
+        { "ad": "İşçi Haber", "url": "https://www.iscihaber.net/bitlis/bitliste-yarin-okullar-tatil-mi-hangi-ilcelerde-egitime-ara-verildi/199500", "yerel": false },
+        { "ad": "NTV — Taşımalı eğitim alarm veriyor", "url": "https://www.ntv.com.tr/egitim/tasimali-egitim-alarm-veriyor,wylkWADz30yMNe2Sls_DOA", "yerel": false }
+      ]
+    },
+    {
+      "id": "alca-yerel-strateji",
+      "baslik": "Köşe yazısı: \"Bitlis için yerel eğitim stratejisi şart\"",
+      "ozet": "Nevzat Alca, Bitlis'in merkezî politikalar yerine yerelleştirilmiş bir eğitim stratejisine ihtiyacı olduğunu; öğretmen göçü, derslik yetersizliği, ulaşım ve sosyoekonomik dezavantajın temel engeller olduğunu yazıyor.",
+      "tarih": "2025-05-26",
+      "tarihKesin": true,
+      "kategori": "derslik",
+      "ilce": ["İl geneli"],
+      "durum": "gorus",
+      "etiketler": ["köşe yazısı", "öğretmen göçü", "derslik", "planlama", "Nevzat Alca"],
+      "detay": [
+        "Yazar dört temel engel sayıyor: öğretmen göçü, derslik yetersizliği, ulaşım sorunları ve sosyoekonomik dezavantaj.",
+        "Ana eleştirisi uygulama boşluğu: \"Planlarımız masalarda kalmamalı.\" Rapor yazılıyor, proje öneriliyor ama uygulamaya geçmiyor; arşivler kullanılmayan belgelerle doluyor.",
+        "Eşitsizlik vurgusu: aynı sınıflarda oturan öğrenciler eşit olmayan koşullarda yarışıyor.",
+        "Öneri: öğretmen, idareci, veli ve yerel paydaşları içeren, dinamik ve yerele uyarlanmış bir eğitim stratejisi.",
+        "Not: Yazıda sayısal veri, yüzde ya da istatistiksel kanıt sunulmuyor."
+      ],
+      "alintilar": [
+        { "soz": "Bir şehir, önce okulu yükseldiğinde gelişir.", "kaynak": "Nevzat Alca" }
+      ],
+      "kaynaklar": [
+        { "ad": "Bitlis Haber13", "url": "https://www.bitlishaber13.net/planlamadan-uygulamaya-bitlis-icin-yerel-egitim-stratejisi-sart", "yerel": true }
+      ]
+    },
+    {
+      "id": "alca-yasanabilir-okul",
+      "baslik": "Köşe yazısı: \"Yeni okul binalarına değil, yaşanabilir okullara ihtiyaç var\"",
+      "ozet": "Sistemin binaya yatırım yapıp öğrenme ortamını ihmal ettiği; öğretmenlerin karar süreçlerinin dışında bırakıldığı, okul-veli güveninin aşındığı savunuluyor.",
+      "tarih": "2025-05-19",
+      "tarihKesin": true,
+      "kategori": "derslik",
+      "ilce": ["İl geneli"],
+      "durum": "gorus",
+      "etiketler": ["köşe yazısı", "okul iklimi", "yönetim", "Nevzat Alca"],
+      "detay": [
+        "Yazar, \"boyası yeni, merdivenleri geniş\" okul binalarının temel eğitim ihtiyaçlarını karşılamadığını savunuyor.",
+        "Eleştiri başlıkları: öğretmenler karar süreçlerinde söz sahibi değil ve planlamanın dışında bırakılıyor; öğrenciler kendini güvende ve değerli hissetmiyor; okul-veli iletişimi zayıf, güven aşınmış; yönetim insan ilişkisi yerine bürokrasiye odaklı.",
+        "Sonuç önerisi: fiziki altyapı yerine insan ilişkilerine ve duygusal öğrenme iklimine yatırım."
+      ],
+      "kaynaklar": [
+        { "ad": "Bitlis Haber13", "url": "https://www.bitlishaber13.net/yeni-okul-binalarina-degil-yasanabilir-okullara-ihtiyac-var", "yerel": true }
+      ]
+    },
+    {
+      "id": "tatbikat-olum-davasi",
+      "baslik": "Tatbikatta ölen öğrenci: okul müdürü ve üç öğretmene hapis cezası",
+      "ozet": "Bitlis Ağır Ceza Mahkemesi, okulda yapılan tatbikat sırasında bir öğrencinin ölümüyle ilgili olarak okul müdürüne 5 yıl 6 ay 20 gün, üç öğretmene 8'er ay hapis cezası verdi.",
+      "tarih": null,
+      "tarihKesin": false,
+      "tarihNotu": "Karar tarihi kaynakta belirtilmemiş",
+      "kategori": "yargi",
+      "ilce": ["Merkez"],
+      "durum": "yargi-karari",
+      "etiketler": ["taksirle ölüm", "okul tatbikatı", "ihmal", "ağır ceza"],
+      "detay": [
+        "Bitlis Ağır Ceza Mahkemesi'nde bir okul müdürü ve 4 öğretmen hakkında \"taksirle bir kişinin ölümüne ve birden fazla kişinin yaralanmasına neden olma\" suçundan dava açıldı.",
+        "Okulda yapılan bir tatbikat sırasında bir öğrenci hayatını kaybetti, birden fazla kişi yaralandı.",
+        "Karar: okul müdürüne 5 yıl 6 ay 20 gün hapis; diğer üç öğretmene 8'er ay hapis."
+      ],
+      "kaynaklar": [
+        { "ad": "Memurlar.Net", "url": "https://www.memurlar.net/haber/452422/tatbikatta-olen-ogrenci-icin-ogretmenlere-hapis-cezasi.html", "yerel": false }
+      ]
+    },
+    {
+      "id": "ogretmeni-merdivenden-itme",
+      "baslik": "Öğrenci, biyoloji öğretmenini merdiven boşluğuna itti",
+      "ozet": "Telafi sınavına alınmaması nedeniyle tartıştığı öğretmenini ikinci kattan merdiven boşluğuna iten öğrenci sonrası öğretmenin köprücük kemiği kırıldı.",
+      "tarih": null,
+      "tarihKesin": false,
+      "tarihNotu": "Kaynakta tarih belirtilmemiş",
+      "kategori": "siddet",
+      "ilce": ["İl geneli"],
+      "durum": "tek-kaynak",
+      "etiketler": ["öğrenci şiddeti", "öğretmene saldırı", "yaralanma"],
+      "detay": [
+        "Bitlis'te bir lise öğrencisi, telafi sınavına alınmaması nedeniyle tartıştığı biyoloji öğretmenini ikinci kattan merdiven boşluğuna itti.",
+        "Öğretmen vücudunun çeşitli yerlerinden yaralandı; köprücük kemiği kırıldı."
+      ],
+      "kaynaklar": [
+        { "ad": "İnternet Haber", "url": "https://www.internethaber.com/ogretmenini-merdiven-bosluguna-itti-429595h.htm", "yerel": false }
+      ]
+    },
+    {
+      "id": "kyk-zehirlenme",
+      "baslik": "KYK yurdunda çok sayıda öğrenci gıda zehirlenmesi geçirdi",
+      "ozet": "Bitlis Eren Üniversitesi öğrencilerinin kaldığı KYK yurdunda çok sayıda öğrenci yedikleri yemekten zehirlendi.",
+      "tarih": null,
+      "tarihKesin": false,
+      "tarihNotu": "Kaynakta net tarih doğrulanamadı",
+      "kategori": "yurt",
+      "ilce": ["Merkez"],
+      "durum": "tek-kaynak",
+      "etiketler": ["gıda zehirlenmesi", "KYK", "yurt yemeği", "hijyen"],
+      "detay": [
+        "Bitlis Eren Üniversitesi öğrencilerinin kaldığı Kredi ve Yurtlar Kurumu'na bağlı yurtta çok sayıda öğrenci, yedikleri yemek nedeniyle zehirlendi.",
+        "KYK yurtlarında toplu gıda zehirlenmesi Türkiye genelinde tekrarlayan bir sorun olarak kayıtlara geçiyor."
+      ],
+      "kaynaklar": [
+        { "ad": "Evrensel", "url": "https://www.evrensel.net/haber/514070/bitliste-kyk-yurdunda-cok-sayida-ogrenci-zehirlendi", "yerel": false }
+      ]
+    },
+    {
+      "id": "kyk-kiz-yurdu-sikayet",
+      "baslik": "KYK kız yurdunda depozito ve yemek şikâyetleri; ilde özel kız yurdu yok",
+      "ozet": "Yurttan ayrılan öğrenciler, ücretlerin katı biçimde takip edildiğini ancak depozito iadesinde aynı hassasiyetin gösterilmediğini bildirdi. Bitlis'te özel kız öğrenci yurdu bulunmuyor.",
+      "tarih": null,
+      "tarihKesin": false,
+      "kategori": "yurt",
+      "ilce": ["Merkez"],
+      "durum": "iddia",
+      "etiketler": ["KYK", "depozito", "yurt yemeği", "barınma seçeneği"],
+      "detay": [
+        "Bitlis Eren Üniversitesi KYK kız öğrenci yurdundan ayrılan öğrenciler, yurt ücretlerinin katı biçimde takip edildiğini ancak depozito geri ödemesinde aynı hassasiyetin gösterilmediğini, yurt yönetiminin kayıtsız davrandığını bildirdi.",
+        "Yurt yemeklerinin kalitesine ilişkin şikâyetler de mevcut.",
+        "Yapısal not: Bitlis'te özel kız öğrenci yurdu bulunmuyor; yalnızca devlete ait KYK yurdu var. Bu, barınmada alternatifsizlik anlamına geliyor."
+      ],
+      "kaynaklar": [
+        { "ad": "Şikâyetvar — KYK yemek", "url": "https://www.sikayetvar.com/kredi-ve-yurtlar-kurumu/kyk/yemek", "yerel": false }
+      ]
+    },
+    {
+      "id": "hizan-karakoyun-soba",
+      "baslik": "Hizan Karakoyun Mezrası İlkokulu: sobayı öğretmen kendi yakıyor",
+      "ozet": "Dağ yamacındaki tek sınıflı mezra okulunda müdür yetkili öğretmen, iki öğrencisi için her gün odun kırıp kömür taşıyarak sobayı kendisi yakıyor.",
+      "tarih": null,
+      "tarihKesin": false,
+      "tarihNotu": "Kış dönemi; kesin tarih belirtilmemiş",
+      "kategori": "isinma",
+      "ilce": ["Hizan"],
+      "durum": "dogrulandi",
+      "etiketler": ["mezra okulu", "ısınma", "tek öğretmen", "altyapı yoksunluğu"],
+      "detay": [
+        "Hizan'da dağ yamacına kurulu Karakoyun Mezrası İlkokulu'nda görev yapan müdür yetkili öğretmen Kevser Hilal Gökçe, iki öğrencisi için her gün odun kırıp kömür taşıyarak sobayı kendisi yakıyor.",
+        "Öğretmen, öğrenciler gelmeden sınıfı hazırlayıp sobayı yakarak derslikte sıcak bir ortam oluşturuyor.",
+        "Haber ulusal basında \"fedakârlık hikâyesi\" olarak sunuldu. Ancak tek sınıflı bir mezra okulunda ısınma ve temel altyapının tamamen öğretmenin kişisel çabasına bırakılmış olması, yapısal bir eksikliğin göstergesi olarak da okunabilir."
+      ],
+      "kaynaklar": [
+        { "ad": "Van Haber", "url": "https://www.vanhaber.tr/bitlis-hizanda-bir-ogretmen-iki-ogrenci-tek-sinif", "yerel": false },
+        { "ad": "SON TV", "url": "https://www.son.tv/mezra-okulunda-fedakarlik-hikayesi-kevser-ogretmen-2-ogrenci-icin-her-gun-soba-yakiyor/", "yerel": false },
+        { "ad": "TRT Haber", "url": "https://www.trthaber.com/foto-galeri/kevser-ogretmen-dag-yamacindaki-mezrada-iki-ogrencisinin-egitimi-icin-caba-gosteriyor/76775.html", "yerel": false },
+        { "ad": "Diyadinnet", "url": "https://www.diyadinnet.com/bitlis-te-kevser-hilal-gokce-iki-ogrencisi-icin-soba-yakip-ders-anlatiyor-h815/", "yerel": false }
+      ]
+    },
+    {
+      "id": "nemrut-mahsur",
+      "baslik": "Nemrut yolunda mahsur kalan öğrenciler kurtarıldı",
+      "ozet": "Tatvan'da Nemrut yolunda mahsur kalan öğrenciler İl Özel İdaresi ekiplerince kurtarıldı; kış koşullarında ulaşım güvenliğinin kırılganlığını gösteriyor.",
+      "tarih": null,
+      "tarihKesin": false,
+      "kategori": "ulasim",
+      "ilce": ["Tatvan"],
+      "durum": "tek-kaynak",
+      "etiketler": ["kış koşulları", "yol güvenliği", "kurtarma"],
+      "detay": [
+        "Tatvan'da Nemrut yolunda mahsur kalan öğrencilerin yardımına İl Özel İdaresi ekipleri yetişti.",
+        "Olay, kış aylarında öğrenci ulaşımının ne kadar kırılgan olduğunu gösteren örneklerden biri."
+      ],
+      "kaynaklar": [
+        { "ad": "Tatvan Sesi", "url": "https://tatvansesi.com.tr/haber/nemrut-yolunda-mahsur-kalan-ogrencilerin-imdadina-il-ozel-idaresi-ekipleri-yetisti-6357", "yerel": true }
+      ]
+    },
+    {
+      "id": "sozlesmeli-mobbing",
+      "baslik": "Sözleşmeli öğretmene mobbing iddiası",
+      "ozet": "Bitlis'te görev yapan sözleşmeli bir edebiyat öğretmeni, okul müdürünün \"meslek hayatınız bizim iki dudağımız arasında\" diyerek mobbing uyguladığını aktardı.",
+      "tarih": null,
+      "tarihKesin": false,
+      "kategori": "personel",
+      "ilce": ["İl geneli"],
+      "durum": "iddia",
+      "etiketler": ["mobbing", "sözleşmeli öğretmen", "idareci baskısı"],
+      "detay": [
+        "Öğretmen, kadrolu olmayan öğretmenlerin idareciden meslektaşa kadar herkesten farklı muamele gördüğünü, idarecilerin kendi yapması gereken işleri sözleşmeli öğretmenlere yaptırdığını ve yapılmadığında tehditle karşılaşıldığını belirtti.",
+        "Alo 170 istatistiklerine göre kamu sektöründe mobbinge en fazla maruz kalanlar Millî Eğitim Bakanlığı çalışanları.",
+        "Eğitim kurumlarında kadro durumundan üye olunan sendikaya kadar birçok konu bahane edilerek sistematik mobbing uygulandığı bildiriliyor."
+      ],
+      "alintilar": [
+        { "soz": "Siz zaten sözleşmelisiniz, meslek hayatınız bizim iki dudağımız arasında.", "kaynak": "İddiaya konu okul müdürünün sözü, öğretmenin aktarımıyla" }
+      ],
+      "kaynaklar": [
+        { "ad": "Milliyet", "url": "https://www.milliyet.com.tr/gundem/egitimcilerin-kabusu-oldu-6468611", "yerel": false },
+        { "ad": "Memurlar.Net", "url": "https://www.memurlar.net/haber/963097/", "yerel": false },
+        { "ad": "Mobbing ile Mücadele Derneği", "url": "https://mobbing.org.tr/ogretmenlerimiz-ve-mobbing/", "yerel": false }
+      ]
+    },
+    {
+      "id": "ogretmen-barinma-goc",
+      "baslik": "Barınma, ulaşım ve öğretmen göçü",
+      "ozet": "Doğu ve Güneydoğu'da barınma en temel sorunlardan biri; kırsalda ulaşım, beslenme ve sosyal imkân yokluğu öğretmen göçünün altyapısını oluşturuyor.",
+      "tarih": null,
+      "tarihKesin": false,
+      "kategori": "personel",
+      "ilce": ["İl geneli"],
+      "durum": "tek-kaynak",
+      "etiketler": ["öğretmen göçü", "lojman", "ulaşım", "kırsal"],
+      "detay": [
+        "Öğretmen lojmanları ülke genelinde sınırlı; yatılı bölge ortaokullarında kısmen imkân bulunsa da barınma, doğu illerine atanan öğretmenler için birincil sorun.",
+        "Kırsalda ulaşım, beslenme, sosyal aktivite yokluğu ve öğretmen açığı bir arada görülüyor.",
+        "Bazı örneklerde toplu taşımanın olmadığı, 48 kilometre uzaklıktaki okula ticari taksiyle gidilen ve ulaşım masrafının aylık maaşı aştığı durumlar rapor edildi.",
+        "Bu tablo, yerel köşe yazılarında sıkça işaret edilen \"öğretmen göçü\" sorununun somut altyapısını oluşturuyor."
+      ],
+      "kaynaklar": [
+        { "ad": "Eğitim-Bir-Sen — Atama ve Yer Değiştirme Yönetmeliği eleştirisi", "url": "https://www.ebs.org.tr/haber/ogretmen-atama-ve-yer-degistirme-yonetmeligi-sorunlara-kalici-cozum-getirmiyor/36607", "yerel": false },
+        { "ad": "Memur Postası", "url": "https://www.memurpostasi.com/haber/27968656/il-disi-tayinlerde-bazi-okullara-atanan-ogretmenler-lojman-imkanindan-yararlanabilecek", "yerel": false }
+      ]
+    },
+    {
+      "id": "derslik-yatirim-tartismasi",
+      "baslik": "Derslik yatırımı rakamları ve yeterlilik tartışması",
+      "ozet": "2025-2026 için 180 yeni derslik, 2026 yatırım programında 124 derslik projesi açıklandı. Yerel eleştiri, artan öğrenci sayısı karşısında bu rakamların yeterliliğini sorguluyor.",
+      "tarih": null,
+      "tarihKesin": false,
+      "kategori": "derslik",
+      "ilce": ["İl geneli"],
+      "durum": "tek-kaynak",
+      "etiketler": ["derslik", "yatırım programı", "kalabalık sınıf"],
+      "detay": [
+        "Bitlis'te 2025-2026 eğitim öğretim yılı için toplam 180 yeni derslik hedefi açıklandı.",
+        "2026 yatırım programında 124 derslik projesi yer alıyor.",
+        "Yerel eleştiri, artan öğrenci sayısı ve mevcut kalabalık sınıflar karşısında bu rakamların yeterli olup olmadığını sorguluyor. Derslik yetersizliği, yerel köşe yazılarında Bitlis eğitiminin dört temel engelinden biri olarak sayılıyor."
+      ],
+      "kaynaklar": [
+        { "ad": "Bitlis Haber13", "url": "https://www.bitlishaber13.net/bitliste-2025-2026-yili-egitim-yatirimlari-aciklandi", "yerel": true }
+      ]
+    },
+    {
+      "id": "guvenlik-psikososyal-toplanti",
+      "baslik": "Reaktif tedbir: Okullarda güvenlik ve psikososyal önlemler toplantısı",
+      "ozet": "Yaşanan şiddet olayları sonrası Bitlis'te okul güvenliği, psikososyal destek, dijital bağımlılık ve kriz yönetimi başlıklı bir toplantı düzenlendi.",
+      "tarih": null,
+      "tarihKesin": false,
+      "kategori": "siddet",
+      "ilce": ["İl geneli"],
+      "durum": "tek-kaynak",
+      "etiketler": ["okul güvenliği", "psikososyal destek", "kriz yönetimi"],
+      "detay": [
+        "Toplantıda okul güvenliği, psikososyal destek ve rehberlik hizmetleri, dijital bağımlılıkla mücadele, akran saygısı, okul-aile iş birliğinin güçlendirilmesi ve kriz yönetimi planları ele alındı.",
+        "Eleştiri noktası: tedbirlerin olay sonrası devreye girmesi, önleyici bir sistem kurulmaması."
+      ],
+      "kaynaklar": [
+        { "ad": "Bitlis Haber13", "url": "https://www.bitlishaber13.net/bitliste-okullarda-guvenlik-ve-psikososyal-onlemler-toplantisi-gerceklestirildi", "yerel": true }
+      ]
+    }
+  ],
+
+  "haricTutulanlar": [
+    {
+      "baslik": "Vatandaşlardan Çağrı: Artan Öğrenci Sayısı İçin Yeni Okul Şart",
+      "gercekIl": "Batman / Yenişehir",
+      "tarih": "2025-11-02",
+      "not": "İLKHA kaynaklı. 1.200 kapasiteli okulda yaklaşık 2.500 öğrenci; ilkokul ve ortaokul aynı binada ikili öğretim. Bitlis yerel sitesinde yayımlandı ancak Bitlis haberi değil.",
+      "url": "https://www.bitlishaber13.net/vatandaslardan-cagri-artan-ogrenci-sayisi-icin-yeni-okul-sart"
+    },
+    {
+      "baslik": "Kurtalan'da 3 okulun yıkım kararı sonrası peş peşe nakiller velilerin tepkisine neden oldu",
+      "gercekIl": "Siirt / Kurtalan",
+      "tarih": null,
+      "not": "Bitlis yerel sitesinde yayımlandı ancak Siirt haberi.",
+      "url": "https://www.bitlishaber13.net/kurtalanda-3-okulun-yikim-karari-sonrasi-pes-pese-nakiller-velilerin-tepkisine-neden-oldu"
+    },
+    {
+      "baslik": "Lisede taciz iddiası: Öğretmen tutuklandı",
+      "gercekIl": "Şırnak / Cizre",
+      "tarih": "2025-12-21",
+      "not": "19 öğrenci ifade verdi. Bitlis yerel sitesinde yayımlandı ancak Cizre haberi.",
+      "url": "https://www.bitlishaber13.net/lisede-taciz-iddiasi-ogretmen-tutuklandi"
+    },
+    {
+      "baslik": "Eğitimde anlaşmazlık: Iğdır'da 26 aileden dikkat çeken karar",
+      "gercekIl": "Iğdır",
+      "tarih": null,
+      "not": "Bitlis yerel sitesinde yayımlandı ancak Iğdır haberi.",
+      "url": "https://www.bitlispostasi.com/egitimde-anlasmazlik-igdirda-26-aileden-dikkat-ceken-karar"
+    },
+    {
+      "baslik": "Öğrenci servisi ile tren çarpıştı: 13 öğrenci yaralandı",
+      "gercekIl": "Doğrulanamadı",
+      "tarih": null,
+      "not": "Bitlis Haber13'te yayımlandı; olayın Bitlis'te gerçekleşip gerçekleşmediği doğrulanamadı.",
+      "url": "https://www.bitlishaber13.net/feci-kaza-ogrenci-servisi-ile-tren-carpisti-13-ogrenci-yaralandi"
+    },
+    {
+      "baslik": "Okul servisinin çarptığı 10 yaşındaki çocuk hayatını kaybetti",
+      "gercekIl": "Doğrulanamadı",
+      "tarih": null,
+      "not": "Bitlis Haber13'te yayımlandı; olayın Bitlis'te gerçekleşip gerçekleşmediği doğrulanamadı.",
+      "url": "https://www.bitlishaber13.net/okul-servisinin-carptigi-10-yasindaki-cocuk-hayatini-kaybetti"
+    }
+  ],
+
+  "kapsanamayanlar": [
+    "Okul inşaatlarında gecikme / ödenek sorunu",
+    "İl MEM ihalelerinde usulsüzlük iddiası",
+    "Temizlik personeli / taşeron işçi eylemi",
+    "Deprem riskli okul binası ve güçlendirme",
+    "Bitlis milletvekillerinin eğitim konulu soru önergeleri",
+    "Okullarda bağış / kayıt parası şikâyeti",
+    "Bitlis'e özgü akran zorbalığı vakası"
+  ]
+}

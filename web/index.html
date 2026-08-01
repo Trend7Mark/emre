@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Bitlis İl Millî Eğitim Müdürlüğü ve Bitlis eğitimine ilişkin olumsuz haber, eleştiri ve yapısal sorunların kaynaklı izleme panosu.">
+<meta name="theme-color" content="#0f172a">
+<title>Bitlis Eğitim İzleme</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%93%8B%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#icerik">İçeriğe atla</a>
+
+<header class="ust-bar" id="ustBar">
+  <div class="ust-bar-satir">
+    <div class="marka">
+      <h1>Bitlis Eğitim İzleme</h1>
+      <p class="marka-alt" id="markaAlt">Olumsuz haber ve eleştiri derlemesi</p>
+    </div>
+    <button class="ikon-btn" id="temaBtn" type="button" aria-label="Temayı değiştir" title="Temayı değiştir">
+      <span aria-hidden="true" id="temaIkon">◐</span>
+    </button>
+  </div>
+
+  <nav class="sekmeler" role="tablist" aria-label="Bölümler">
+    <button class="sekme aktif" role="tab" id="sekme-akis"        aria-controls="panel-akis"        aria-selected="true"  data-panel="akis">Akış</button>
+    <button class="sekme"       role="tab" id="sekme-gostergeler" aria-controls="panel-gostergeler" aria-selected="false" data-panel="gostergeler">Göstergeler</button>
+    <button class="sekme"       role="tab" id="sekme-bilgi"       aria-controls="panel-bilgi"       aria-selected="false" data-panel="bilgi">Yöntem</button>
+  </nav>
+</header>
+
+<main id="icerik">
+
+  <!-- ============ AKIŞ ============ -->
+  <section class="panel aktif" id="panel-akis" role="tabpanel" aria-labelledby="sekme-akis">
+
+    <div class="arama-sarmal">
+      <span class="arama-ikon" aria-hidden="true">⌕</span>
+      <input type="search" id="aramaKutusu" class="arama" placeholder="Başlık, özet, etiket veya kaynakta ara…"
+             autocomplete="off" aria-label="Kayıtlarda ara">
+      <button type="button" class="arama-temizle gizli" id="aramaTemizle" aria-label="Aramayı temizle">×</button>
+    </div>
+
+    <div class="cip-serit" id="kategoriSerit" role="group" aria-label="Kategori filtresi"></div>
+
+    <div class="filtre-satir">
+      <label class="secim-sarmal">
+        <span class="secim-etiket">İlçe</span>
+        <select id="ilceSecim" aria-label="İlçeye göre filtrele"></select>
+      </label>
+      <label class="secim-sarmal">
+        <span class="secim-etiket">Doğrulama</span>
+        <select id="durumSecim" aria-label="Doğrulama durumuna göre filtrele"></select>
+      </label>
+      <label class="secim-sarmal">
+        <span class="secim-etiket">Sıralama</span>
+        <select id="siraSecim" aria-label="Sıralama">
+          <option value="yeni">Önce yeni</option>
+          <option value="eski">Önce eski</option>
+          <option value="kategori">Kategoriye göre</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="ozet-satir">
+      <p class="sonuc-sayisi" id="sonucSayisi" role="status" aria-live="polite"></p>
+      <button type="button" class="metin-btn gizli" id="filtreSifirla">Filtreleri sıfırla</button>
+    </div>
+
+    <div id="kartListesi" class="kart-listesi"></div>
+
+    <p class="bos-durum gizli" id="bosDurum">
+      Bu filtrelerle eşleşen kayıt yok.<br>
+      <button type="button" class="metin-btn" id="bosSifirla">Filtreleri sıfırla</button>
+    </p>
+  </section>
+
+  <!-- ============ GÖSTERGELER ============ -->
+  <section class="panel" id="panel-gostergeler" role="tabpanel" aria-labelledby="sekme-gostergeler" hidden>
+    <p class="panel-giris">
+      Bitlis eğitiminin yapısal karnesi. Tekil haberlerin arkasındaki uzun vadeli tablo.
+    </p>
+    <div id="gostergeListesi" class="gosterge-listesi"></div>
+    <div id="gostergeNotlar" class="not-blok"></div>
+  </section>
+
+  <!-- ============ YÖNTEM ============ -->
+  <section class="panel" id="panel-bilgi" role="tabpanel" aria-labelledby="sekme-bilgi" hidden>
+
+    <div class="uyari-kutu" role="note">
+      <strong>Okuma uyarısı</strong>
+      <p>Bu derlemedeki kayıtların bir kısmı <em>iddia</em> niteliğindedir ve resmî olarak doğrulanmamıştır.
+      Her kayıtta doğrulama düzeyi rozetle belirtilmiştir. İddia ile kesinleşmiş yargı kararını aynı ağırlıkta değerlendirmeyin.</p>
+    </div>
+
+    <h2>Doğrulama düzeyleri</h2>
+    <div id="durumAciklama" class="aciklama-listesi"></div>
+
+    <h2>Başka ile ait olduğu için çıkarılan haberler</h2>
+    <p class="panel-giris">
+      Bitlis yerel haber siteleri, bölge illerine ait haberleri "Bitlis" etiketiyle yayınlıyor.
+      Tarama sırasında tespit edilen ve derlemeye <strong>alınmayan</strong> kayıtlar:
+    </p>
+    <div id="haricListesi" class="haric-listesi"></div>
+
+    <h2>Kapsanamayan başlıklar</h2>
+    <p class="panel-giris">
+      Şu konularda Bitlis'e özgü haber bulunamadı. CİMER kayıtları, TBMM soru önergesi arşivi ve
+      Sayıştay denetim raporları üzerinden ayrıca araştırılabilir.
+    </p>
+    <ul id="kapsanamayanListesi" class="madde-listesi"></ul>
+
+    <h2>Kaynak dağılımı</h2>
+    <div id="kaynakDagilim" class="kaynak-dagilim"></div>
+
+    <h2>Yöntem</h2>
+    <ul class="madde-listesi">
+      <li>Kaynak önceliği Bitlis yerel basınıdır; ulusal basın ve resmî istatistikler tamamlayıcı olarak kullanıldı.</li>
+      <li>Her kayıt tarih, ilçe, kategori ve doğrulama düzeyiyle etiketlendi. Tarihi doğrulanamayan kayıtlar listenin sonunda toplanır.</li>
+      <li>Köşe yazıları haber olarak değil, <em>görüş</em> olarak işaretlendi.</li>
+      <li>Yerel basında olumsuz haber azlığı yapısaldır: eleştirel içerik ağırlıkla tek bir yayın organında ve çoğunlukla köşe yazısı formatındadır. Bu, sorunların yokluğunu değil haberleştirilmediğini gösterir.</li>
+    </ul>
+
+    <p class="kucuk-not" id="veriDamgasi"></p>
+  </section>
+
+</main>
+
+<!-- Detay sayfası (alt sayfa / bottom sheet) -->
+<div class="perde gizli" id="perde" hidden></div>
+<aside class="detay-sayfa gizli" id="detaySayfa" role="dialog" aria-modal="true" aria-labelledby="detayBaslik" hidden>
+  <div class="detay-tutamac" aria-hidden="true"></div>
+  <button type="button" class="detay-kapat" id="detayKapat" aria-label="Kapat">×</button>
+  <div class="detay-govde" id="detayGovde"></div>
+</aside>
+
+<footer class="alt-bilgi">
+  <p>Kaynak belge: <code>bitlis-egitim-olumsuz-haber-derlemesi.md</code></p>
+  <p class="kucuk-not">Bu pano bir haber yayını değil, kaynaklı bir izleme derlemesidir.</p>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>
