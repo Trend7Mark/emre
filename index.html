@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rehabilitasyon Takvimi</title>
+<style>
+  :root{
+    --bg:#f1f5f9; --panel:#ffffff; --text:#0f172a; --muted:#64748b; --border:#e2e8f0;
+    --brand1:#ef4444; --brand2:#8b5cf6;
+    --green:#16a34a; --green-bg:#dcfce7; --green-br:#86efac;
+    --blue:#2563eb; --blue-bg:#dbeafe; --blue-br:#93c5fd;
+    --red:#dc2626; --red-bg:#fee2e2; --red-br:#fca5a5;
+    --amber:#d97706; --amber-bg:#fef3c7;
+    --today:#fee2e2; --shadow:0 1px 3px rgba(15,23,42,.08),0 1px 2px rgba(15,23,42,.04);
+    --radius:10px;
+  }
+  html[data-theme="dark"]{
+    --bg:#0b1220; --panel:#111c30; --text:#e2e8f0; --muted:#94a3b8; --border:#243350;
+    --green:#4ade80; --green-bg:#0f3d2a; --green-br:#166534;
+    --blue:#7dabff;  --blue-bg:#12294d; --blue-br:#1d4ed8;
+    --red:#f87171;   --red-bg:#3f1d1d; --red-br:#991b1b;
+    --amber:#fbbf24;
+    --amber-bg:#3d2f0b;
+    --today:#3f1d1d; --shadow:0 1px 3px rgba(0,0,0,.5);
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; padding:14px; background:var(--bg); color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size:14px; line-height:1.45;
+  }
+  .wrap{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow)}
+
+  /* ---------- Başlık ---------- */
+  .topbar{
+    background:linear-gradient(90deg,var(--brand1),var(--brand2));
+    border-radius:14px;padding:16px 18px;color:#fff;
+    display:flex;flex-wrap:wrap;align-items:center;gap:14px;box-shadow:var(--shadow);
+  }
+  .topbar h1{margin:0;font-size:24px;font-weight:800;display:flex;align-items:center;gap:10px}
+  .topbar .left{display:flex;flex-direction:column;gap:10px}
+  .nav{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.16);padding:6px;border-radius:10px}
+  .nav button{background:transparent;border:0;color:#fff;font-size:16px;cursor:pointer;padding:4px 10px;border-radius:8px}
+  .nav button:hover{background:rgba(255,255,255,.2)}
+  #monthLabel{min-width:150px;text-align:center;font-weight:700}
+  .pill{background:#fff;color:var(--brand1);border:0;border-radius:8px;padding:5px 12px;font-weight:700;cursor:pointer;font-size:13px}
+  .ghost-pill{background:rgba(255,255,255,.9);color:#334155;border:0;border-radius:8px;padding:6px 12px;font-weight:600;cursor:pointer;font-size:13px}
+  .sync{margin-left:auto;font-size:12px;opacity:.95;text-align:right;cursor:pointer}
+
+  /* ---------- Genel bileşenler ---------- */
+  h2.section{margin:0 0 12px;font-size:16px;display:flex;align-items:center;gap:8px}
+  .card.program{border:1px solid var(--red-br);background:color-mix(in srgb,var(--red-bg) 35%,var(--panel))}
+  .program h2{color:var(--red)}
+  .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:8px 28px}
+  .kv{display:flex;flex-wrap:wrap;gap:6px}
+  .kv b{font-weight:700}
+  label{font-size:12px;color:var(--muted);display:block;margin-bottom:4px}
+  input,select{
+    font:inherit;padding:8px 10px;border:1px solid var(--border);border-radius:8px;
+    background:var(--panel);color:var(--text);width:100%;
+  }
+  input[type=number]{max-width:110px}
+  .btn{border:0;border-radius:8px;padding:9px 16px;font-weight:600;cursor:pointer;font-size:13px;color:#fff}
+  .btn.blue{background:#2563eb} .btn.red{background:#dc2626} .btn.green{background:#16a34a}
+  .btn.gray{background:transparent;color:var(--text);border:1px solid var(--border)}
+  .btn.sm{padding:5px 10px;font-size:12px}
+  .btn:hover{filter:brightness(1.08)}
+  .row{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end}
+
+  /* ---------- Özet ---------- */
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:14px}
+  .stat{border:1px solid var(--border);border-left:5px solid var(--muted);border-radius:10px;padding:12px 14px;background:var(--panel)}
+  .stat.g{border-left-color:var(--green)} .stat.b{border-left-color:var(--blue)} .stat.r{border-left-color:var(--red)}
+  .stat .t{font-weight:700;font-size:14px;margin-bottom:6px}
+  .stat .v{font-size:22px;font-weight:800}
+  .stat .s{font-size:12px;color:var(--muted)}
+
+  /* ---------- Takvim ---------- */
+  .legend{display:flex;flex-wrap:wrap;gap:20px;margin-bottom:12px;font-size:13px;font-weight:600}
+  .legend .g{color:var(--green)} .legend .b{color:var(--blue)} .legend .r{color:var(--red)}
+  .cal{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+  .dow{font-size:12px;color:var(--muted);padding:6px 8px;border:1px solid var(--border);border-radius:8px;background:var(--bg)}
+  .day{
+    min-height:86px;border:1px solid var(--border);border-radius:8px;padding:6px;
+    display:flex;flex-direction:column;gap:4px;cursor:pointer;background:var(--panel);
+  }
+  .day:hover{border-color:var(--blue)}
+  .day .n{font-size:13px;font-weight:600}
+  .day.out{opacity:.4;cursor:default}
+  .day.out:hover{border-color:var(--border)}
+  .day.holiday{background:color-mix(in srgb,var(--red-bg) 45%,var(--panel))}
+  .day.work{background:color-mix(in srgb,var(--blue-bg) 30%,var(--panel))}
+  .day.hasrep{background:color-mix(in srgb,var(--green-bg) 45%,var(--panel))}
+  .day.today{border:2px solid var(--red);background:var(--today)}
+  .chip{font-size:11px;padding:3px 5px;border-radius:6px;border:1px solid;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .chip.rap{background:var(--green-bg);border-color:var(--green-br);color:var(--green)}
+  .chip.ozel{background:var(--blue-bg);border-color:var(--blue-br);color:var(--blue)}
+  .chip.kapali{background:var(--red-bg);border-color:var(--red-br);color:var(--red)}
+  .chip.iptal{text-decoration:line-through;opacity:.65}
+
+  /* ---------- Modal ---------- */
+  .overlay{position:fixed;inset:0;background:rgba(15,23,42,.55);display:none;align-items:center;justify-content:center;padding:16px;z-index:50}
+  .overlay.open{display:flex}
+  .modal{background:var(--panel);border-radius:14px;padding:18px;width:100%;max-width:540px;max-height:88vh;overflow:auto;box-shadow:0 20px 50px rgba(0,0,0,.3)}
+  .modal h3{margin:0 0 4px;font-size:18px}
+  .modal .sub{color:var(--muted);font-size:13px;margin-bottom:14px}
+  .slist{display:flex;flex-direction:column;gap:8px;margin:12px 0}
+  .sitem{display:flex;align-items:center;gap:8px;border:1px solid var(--border);border-radius:8px;padding:8px}
+  .sitem .tag{font-size:11px;font-weight:700;padding:2px 7px;border-radius:6px}
+  .sitem .tag.rap{background:var(--green-bg);color:var(--green)}
+  .sitem .tag.ozel{background:var(--blue-bg);color:var(--blue)}
+  .sitem input[type=time]{width:110px}
+  .sitem.done{background:color-mix(in srgb,var(--green-bg) 40%,var(--panel))}
+  .sitem.iptal{opacity:.6}
+  .modal-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:16px;flex-wrap:wrap}
+  .slot-row{display:grid;grid-template-columns:1fr 1fr auto;gap:8px;align-items:end;margin-bottom:8px}
+  .note{font-size:12px;color:var(--muted)}
+  .dow-picker{display:flex;flex-wrap:wrap;gap:6px}
+  .dow-picker label{display:flex;align-items:center;gap:5px;margin:0;font-size:13px;color:var(--text);
+    border:1px solid var(--border);padding:6px 9px;border-radius:8px;cursor:pointer}
+  .dow-picker input{width:auto}
+
+  /* ---------- Yazdırma / PDF ---------- */
+  #printArea{display:none}
+  @media print{
+    body{background:#fff;padding:0}
+    .wrap,.overlay{display:none !important}
+    #printArea{display:block;color:#000}
+    #printArea h1{font-size:20px;margin:0 0 4px}
+    #printArea table{width:100%;border-collapse:collapse;margin-top:12px;font-size:12px}
+    #printArea th,#printArea td{border:1px solid #999;padding:5px 7px;text-align:left}
+    #printArea th{background:#eee}
+  }
+  @media (max-width:640px){
+    .day{min-height:70px}
+    .chip{font-size:10px}
+    .topbar h1{font-size:19px}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- ======= BAŞLIK ======= -->
+  <div class="topbar">
+    <div class="left">
+      <h1>📅 <span id="titleName">Rehabilitasyon Takvimi</span></h1>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+        <button class="ghost-pill" id="themeBtn">🌙 Koyu Mod</button>
+        <div class="nav">
+          <button id="prevBtn" title="Önceki ay">←</button>
+          <span id="monthLabel"></span>
+          <button id="nextBtn" title="Sonraki ay">→</button>
+          <button class="pill" id="todayBtn">Bugün</button>
+        </div>
+      </div>
+    </div>
+    <div class="sync" id="syncBox" title="Senkronizasyon ayarları">Senkron: <span id="syncLabel">Yerel (bu cihaz)</span></div>
+  </div>
+
+  <!-- ======= PROGRAM ======= -->
+  <div class="card program">
+    <h2 class="section">🩺 <span id="progTitle">Rehabilitasyon Programı</span></h2>
+    <div class="grid2">
+      <div>
+        <div class="kv"><b>Çalışma Günleri:</b> <span id="pWork">—</span></div>
+        <div class="kv"><b>Tatil Günleri:</b> <span id="pOff">—</span></div>
+        <div class="kv"><b>Toplam Haftalık Saat:</b> <span id="pTotal">—</span></div>
+      </div>
+      <div>
+        <div class="kv"><b>Raporlu Seanslar:</b> <span id="pRap">—</span></div>
+        <div class="kv"><b>Özel Ücretli Seanslar:</b> <span id="pOzel">—</span></div>
+        <div class="kv" style="align-items:center;margin-top:6px">
+          <b>Seans Ücreti:</b>
+          <input type="number" id="feeInput" min="0" step="10" style="width:90px"> TL
+          <button class="btn red sm" id="feeBtn">Güncelle</button>
+          <button class="btn gray sm" id="editProgBtn">Programı Düzenle</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======= ÖZET ======= -->
+  <div class="card">
+    <h2 class="section">📊 Tarih Aralığı Özeti</h2>
+    <div class="row">
+      <div style="flex:1;min-width:200px"><label for="startDate">Başlangıç Tarihi</label><input type="date" id="startDate"></div>
+      <div style="flex:1;min-width:200px"><label for="endDate">Bitiş Tarihi</label><input type="date" id="endDate"></div>
+      <button class="btn blue" id="calcBtn">Özeti Hesapla</button>
+    </div>
+    <div style="margin-top:10px"><button class="btn red sm" id="pdfBtn">PDF'e Aktar</button></div>
+
+    <div class="stats">
+      <div class="stat g"><div class="t">🩺 Raporlu Seanslar</div><div class="v" id="sRapCount">0</div><div class="s" id="sRapHours">Toplam 0 saat</div></div>
+      <div class="stat b"><div class="t">💎 Özel Ücretli Seanslar</div><div class="v" id="sOzelCount">0</div><div class="s" id="sOzelHours">Toplam 0 saat</div></div>
+      <div class="stat r"><div class="t">💰 Toplam Ücret</div><div class="v" id="sFee">0 TL</div><div class="s" id="sExtra">—</div></div>
+    </div>
+  </div>
+
+  <!-- ======= TAKVİM ======= -->
+  <div class="card">
+    <div class="legend">
+      <span class="g">🩺 Raporlu Seans</span>
+      <span class="b">💎 Özel Ücretli Seans</span>
+      <span class="r">🎉 Tatil Günü</span>
+    </div>
+    <div class="cal" id="calendar"></div>
+    <div class="note" style="margin-top:10px">Bir güne tıklayarak seans ekleyebilir, saatini değiştirebilir, "yapıldı / iptal" olarak işaretleyebilir veya günü tatil yapabilirsiniz.</div>
+  </div>
+
+</div>
+
+<!-- ======= GÜN MODALI ======= -->
+<div class="overlay" id="dayOverlay">
+  <div class="modal">
+    <h3 id="dayTitle">Gün</h3>
+    <div class="sub" id="daySub"></div>
+    <label class="dow-picker" style="display:inline-flex;align-items:center;gap:6px;color:var(--text)">
+      <input type="checkbox" id="dayHoliday" style="width:auto"> Bu gün tatil / kapalı
+    </label>
+    <div class="slist" id="daySessions"></div>
+    <div class="row">
+      <button class="btn green sm" id="addRapBtn">+ Raporlu seans</button>
+      <button class="btn blue sm" id="addOzelBtn">+ Özel ücretli seans</button>
+      <button class="btn gray sm" id="resetDayBtn">Varsayılana dön</button>
+    </div>
+    <div style="margin-top:12px"><label for="dayNote">Not</label><input type="text" id="dayNote" placeholder="Örn. terapist izinli, ödeme yapıldı..."></div>
+    <div class="modal-actions">
+      <button class="btn gray" id="dayCancel">Vazgeç</button>
+      <button class="btn blue" id="daySave">Kaydet</button>
+    </div>
+  </div>
+</div>
+
+<!-- ======= PROGRAM MODALI ======= -->
+<div class="overlay" id="progOverlay">
+  <div class="modal">
+    <h3>Program Ayarları</h3>
+    <div class="sub">Haftalık seans düzeni buradan tanımlanır; takvim bu düzene göre otomatik doldurulur.</div>
+
+    <div class="row" style="margin-bottom:12px">
+      <div style="flex:1;min-width:180px"><label for="childName">Çocuğun adı</label><input type="text" id="childName" placeholder="Örn. Eymen"></div>
+      <div><label for="feeInput2">Seans ücreti (TL)</label><input type="number" id="feeInput2" min="0" step="10"></div>
+    </div>
+    <div class="row" style="margin-bottom:12px">
+      <div style="flex:1;min-width:180px"><label for="progStart">Program başlangıcı (isteğe bağlı)</label><input type="date" id="progStart"></div>
+      <div style="flex:1;min-width:180px"><label for="progEnd">Program bitişi (isteğe bağlı)</label><input type="date" id="progEnd"></div>
+    </div>
+
+    <label>Tatil günleri</label>
+    <div class="dow-picker" id="offDays" style="margin-bottom:14px"></div>
+
+    <label>Haftalık seanslar</label>
+    <div id="slotList"></div>
+    <div class="row">
+      <button class="btn green sm" id="addSlotRap">+ Raporlu</button>
+      <button class="btn blue sm" id="addSlotOzel">+ Özel ücretli</button>
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn gray" id="progCancel">Vazgeç</button>
+      <button class="btn blue" id="progSave">Kaydet</button>
+    </div>
+  </div>
+</div>
+
+<!-- ======= SENKRON MODALI ======= -->
+<div class="overlay" id="syncOverlay">
+  <div class="modal">
+    <h3>Senkronizasyon</h3>
+    <div class="sub">Veriler varsayılan olarak yalnızca bu cihazda (tarayıcı hafızasında) tutulur. Birden fazla cihazda aynı takvimi görmek için ücretsiz bir Firebase projesi bağlayabilirsiniz.</div>
+    <div style="margin-bottom:10px"><label for="fbConfig">Firebase yapılandırması (firebaseConfig JSON)</label>
+      <input type="text" id="fbConfig" placeholder='{"apiKey":"...","projectId":"...","appId":"..."}'></div>
+    <div style="margin-bottom:10px"><label for="fbCode">Takvim kodu (cihazlarda aynı olmalı)</label>
+      <input type="text" id="fbCode" placeholder="orn-eymen-2026"></div>
+    <div class="note" id="syncState">Durum: yerel</div>
+    <div class="modal-actions">
+      <button class="btn gray" id="syncOff">Bağlantıyı kes</button>
+      <button class="btn gray" id="syncCancel">Vazgeç</button>
+      <button class="btn blue" id="syncSave">Bağlan</button>
+    </div>
+    <div class="note" style="margin-top:10px">Ayrıca <b>Dışa/İçe aktar</b>: <button class="btn gray sm" id="exportBtn">JSON indir</button> <button class="btn gray sm" id="importBtn">JSON yükle</button><input type="file" id="importFile" accept="application/json" style="display:none"></div>
+  </div>
+</div>
+
+<div id="printArea"></div>
+
+<script>
+/* =========================================================
+   Veri modeli
+   ========================================================= */
+const STORE_KEY = 'rehab-takvim-v1';
+const DOW_TR   = ['Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi'];
+const DOW_SHORT= ['Paz','Pzt','Sal','Çar','Per','Cum','Cmt'];
+const MONTHS_TR= ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
+const GRID_DOW = [1,2,3,4,5,6,0]; // hafta pazartesi başlar
+
+const defaultState = () => ({
+  childName: '',
+  fee: 400,
+  offDays: [0,1],                       // Pazar, Pazartesi
+  slots: [
+    {type:'raporlu', day:2, time:'09:00'},
+    {type:'raporlu', day:4, time:'09:00'},
+    {type:'ozel',    day:2, time:'14:00'},
+    {type:'ozel',    day:3, time:'14:00'},
+    {type:'ozel',    day:4, time:'14:00'},
+    {type:'ozel',    day:5, time:'14:00'},
+    {type:'ozel',    day:6, time:'14:00'}
+  ],
+  progStart: '',
+  progEnd: '',
+  overrides: {},                        // "2026-08-11": {holiday?:bool, sessions?:[], note?:string}
+  theme: 'light',
+  firebase: null,                       // {config:{...}, code:'...'}
+  updatedAt: 0
+});
+
+let state = defaultState();
+let viewDate = new Date();
+let editingDate = null;
+let draft = null;      // gün modalı taslağı
+let progDraft = null;  // program modalı taslağı
+
+/* =========================================================
+   Yardımcılar
+   ========================================================= */
+const $ = id => document.getElementById(id);
+const pad = n => String(n).padStart(2,'0');
+const ymd = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+const parseYmd = s => { const [y,m,d] = s.split('-').map(Number); return new Date(y, m-1, d); };
+const trDate = s => { const d = parseYmd(s); return `${d.getDate()} ${MONTHS_TR[d.getMonth()]} ${d.getFullYear()} ${DOW_TR[d.getDay()]}`; };
+const clone = o => JSON.parse(JSON.stringify(o));
+
+function save(push = true){
+  state.updatedAt = Date.now();
+  localStorage.setItem(STORE_KEY, JSON.stringify(state));
+  if (push) cloudPush();
+}
+function load(){
+  try{
+    const raw = localStorage.getItem(STORE_KEY);
+    if (raw) state = Object.assign(defaultState(), JSON.parse(raw));
+  }catch(e){ console.warn('Kayıt okunamadı', e); }
+}
+
+/* =========================================================
+   Seans üretimi
+   ========================================================= */
+function inProgramRange(dateStr){
+  if (state.progStart && dateStr < state.progStart) return false;
+  if (state.progEnd   && dateStr > state.progEnd)   return false;
+  return true;
+}
+function isHoliday(dateStr){
+  const ov = state.overrides[dateStr];
+  if (ov && typeof ov.holiday === 'boolean') return ov.holiday;
+  return state.offDays.includes(parseYmd(dateStr).getDay());
+}
+/** O güne ait seans listesi (özel kayıt varsa o, yoksa haftalık programdan üretilir). */
+function sessionsOf(dateStr){
+  const ov = state.overrides[dateStr];
+  if (ov && Array.isArray(ov.sessions)) return ov.sessions;
+  if (isHoliday(dateStr) || !inProgramRange(dateStr)) return [];
+  const dow = parseYmd(dateStr).getDay();
+  return state.slots
+    .filter(s => s.day === dow)
+    .map(s => ({type:s.type, time:s.time, status:'plan'}))
+    .sort((a,b) => a.time.localeCompare(b.time));
+}
+
+/* =========================================================
+   Program özeti (üst kart)
+   ========================================================= */
+function renderProgram(){
+  const name = state.childName.trim();
+  $('titleName').textContent = name ? `${name}'in Rehabilitasyon Takvimi` : 'Rehabilitasyon Takvimi';
+  $('progTitle').textContent = name ? `${name}'in Rehabilitasyon Programı` : 'Rehabilitasyon Programı';
+  document.title = $('titleName').textContent;
+
+  const workDays = [...new Set(state.slots.map(s => s.day))].sort((a,b)=>GRID_DOW.indexOf(a)-GRID_DOW.indexOf(b));
+  $('pWork').textContent = workDays.length ? workDays.map(d => DOW_TR[d]).join(', ') : 'Tanımlı değil';
+  const off = [...state.offDays].sort((a,b)=>GRID_DOW.indexOf(a)-GRID_DOW.indexOf(b));
+  $('pOff').textContent  = off.length ? off.map(d => DOW_TR[d]).join(', ') : 'Yok';
+  $('pTotal').textContent = `${state.slots.length} saat`;
+
+  const fmt = list => list.length
+    ? `${list.length} saat (${[...new Set(list.map(s=>DOW_TR[s.day]))].join(', ')} ${[...new Set(list.map(s=>s.time))].join(' / ')})`
+    : 'Yok';
+  $('pRap').textContent  = fmt(state.slots.filter(s=>s.type==='raporlu'));
+  $('pOzel').textContent = fmt(state.slots.filter(s=>s.type==='ozel'));
+  $('feeInput').value = state.fee;
+}
+
+/* =========================================================
+   Takvim
+   ========================================================= */
+function renderCalendar(){
+  const y = viewDate.getFullYear(), m = viewDate.getMonth();
+  $('monthLabel').textContent = `${MONTHS_TR[m]} ${y}`;
+
+  const cal = $('calendar');
+  cal.innerHTML = '';
+  GRID_DOW.forEach(d => {
+    const el = document.createElement('div');
+    el.className = 'dow';
+    el.textContent = DOW_SHORT[d];
+    cal.appendChild(el);
+  });
+
+  const first = new Date(y, m, 1);
+  const lead = (first.getDay() + 6) % 7;           // pazartesi başlangıcı
+  const start = new Date(y, m, 1 - lead);
+  const todayStr = ymd(new Date());
+
+  for (let i = 0; i < 42; i++){
+    const d = new Date(start.getFullYear(), start.getMonth(), start.getDate() + i);
+    const ds = ymd(d);
+    const cell = document.createElement('div');
+    cell.className = 'day';
+
+    if (d.getMonth() !== m){
+      cell.classList.add('out');
+      cell.innerHTML = `<div class="n">${d.getDate()}</div>`;
+      cal.appendChild(cell);
+      continue;
+    }
+
+    const sessions = sessionsOf(ds);
+    const holiday = isHoliday(ds) && sessions.length === 0;
+    if (holiday) cell.classList.add('holiday');
+    else if (sessions.some(s => s.type === 'raporlu' && s.status !== 'iptal')) cell.classList.add('hasrep');
+    else if (sessions.length) cell.classList.add('work');
+    if (ds === todayStr) cell.classList.add('today');
+
+    let html = `<div class="n">${d.getDate()}</div>`;
+    if (holiday) html += `<div class="chip kapali">Kapalı</div>`;
+    sessions.forEach(s => {
+      const mark = s.status === 'yapildi' ? '✓ ' : (s.status === 'iptal' ? '✕ ' : '');
+      const label = s.type === 'raporlu' ? '🩺 Rap.' : '💎 Özel';
+      html += `<div class="chip ${s.type==='raporlu'?'rap':'ozel'} ${s.status==='iptal'?'iptal':''}">${mark}${s.time} - ${label}</div>`;
+    });
+    const note = state.overrides[ds]?.note;
+    if (note) html += `<div class="chip" style="background:var(--amber-bg);border-color:var(--amber);color:var(--amber)" title="${note.replace(/"/g,'&quot;')}">📝 ${note}</div>`;
+
+    cell.innerHTML = html;
+    cell.addEventListener('click', () => openDay(ds));
+    cal.appendChild(cell);
+  }
+}
+
+/* =========================================================
+   Özet hesabı
+   ========================================================= */
+function collect(fromStr, toStr){
+  const out = [];
+  if (!fromStr || !toStr || fromStr > toStr) return out;
+  let d = parseYmd(fromStr);
+  const end = parseYmd(toStr);
+  while (d <= end){
+    const ds = ymd(d);
+    sessionsOf(ds).forEach(s => out.push({date:ds, ...s}));
+    d = new Date(d.getFullYear(), d.getMonth(), d.getDate() + 1);
+  }
+  return out;
+}
+function calcSummary(){
+  const list = collect($('startDate').value, $('endDate').value);
+  const active = list.filter(s => s.status !== 'iptal');
+  const rap  = active.filter(s => s.type === 'raporlu');
+  const ozel = active.filter(s => s.type === 'ozel');
+  const cancelled = list.length - active.length;
+  const done = active.filter(s => s.status === 'yapildi').length;
+
+  $('sRapCount').textContent  = rap.length;
+  $('sRapHours').textContent  = `Toplam ${rap.length} saat`;
+  $('sOzelCount').textContent = ozel.length;
+  $('sOzelHours').textContent = `Toplam ${ozel.length} saat`;
+  $('sFee').textContent       = `${(ozel.length * Number(state.fee || 0)).toLocaleString('tr-TR')} TL`;
+  $('sExtra').textContent     = `${done} seans yapıldı · ${cancelled} iptal`;
+  return list;
+}
+
+/* =========================================================
+   PDF / yazdırma
+   ========================================================= */
+function exportPdf(){
+  const from = $('startDate').value, to = $('endDate').value;
+  const list = collect(from, to);
+  const active = list.filter(s => s.status !== 'iptal');
+  const rap  = active.filter(s => s.type === 'raporlu').length;
+  const ozel = active.filter(s => s.type === 'ozel').length;
+  const name = state.childName.trim();
+
+  const rows = list.map(s => `<tr>
+      <td>${trDate(s.date)}</td><td>${s.time}</td>
+      <td>${s.type === 'raporlu' ? 'Raporlu' : 'Özel ücretli'}</td>
+      <td>${s.status === 'yapildi' ? 'Yapıldı' : s.status === 'iptal' ? 'İptal' : 'Planlandı'}</td>
+      <td>${s.type === 'ozel' && s.status !== 'iptal' ? Number(state.fee||0).toLocaleString('tr-TR') + ' TL' : '-'}</td>
+    </tr>`).join('');
+
+  $('printArea').innerHTML = `
+    <h1>${name ? name + "'in " : ''}Rehabilitasyon Seans Raporu</h1>
+    <div>Tarih aralığı: ${from ? trDate(from) : '-'} — ${to ? trDate(to) : '-'}</div>
+    <div>Raporlu seans: <b>${rap}</b> (${rap} saat) &nbsp;|&nbsp; Özel ücretli seans: <b>${ozel}</b> (${ozel} saat)
+         &nbsp;|&nbsp; Toplam ücret: <b>${(ozel * Number(state.fee||0)).toLocaleString('tr-TR')} TL</b></div>
+    <table><thead><tr><th>Tarih</th><th>Saat</th><th>Tür</th><th>Durum</th><th>Ücret</th></tr></thead>
+    <tbody>${rows || '<tr><td colspan="5">Bu aralıkta seans yok.</td></tr>'}</tbody></table>`;
+  window.print();
+}
+
+/* =========================================================
+   Gün modalı
+   ========================================================= */
+function openDay(ds){
+  editingDate = ds;
+  const ov = state.overrides[ds] || {};
+  draft = { holiday: isHoliday(ds), sessions: clone(sessionsOf(ds)), note: ov.note || '' };
+  $('dayTitle').textContent = trDate(ds);
+  $('daySub').textContent = 'Seansları düzenleyin veya durumlarını işaretleyin.';
+  $('dayHoliday').checked = draft.holiday;
+  $('dayNote').value = draft.note;
+  renderDaySessions();
+  $('dayOverlay').classList.add('open');
+}
+function renderDaySessions(){
+  const box = $('daySessions');
+  box.innerHTML = '';
+  if (!draft.sessions.length){
+    box.innerHTML = '<div class="note">Bu gün için seans yok.</div>';
+    return;
+  }
+  draft.sessions.forEach((s, i) => {
+    const row = document.createElement('div');
+    row.className = 'sitem' + (s.status === 'yapildi' ? ' done' : s.status === 'iptal' ? ' iptal' : '');
+    row.innerHTML = `
+      <span class="tag ${s.type === 'raporlu' ? 'rap' : 'ozel'}">${s.type === 'raporlu' ? '🩺 Raporlu' : '💎 Özel'}</span>
+      <input type="time" value="${s.time}" data-i="${i}" class="t">
+      <select data-i="${i}" class="st" style="width:auto">
+        <option value="plan">Planlandı</option>
+        <option value="yapildi">Yapıldı</option>
+        <option value="iptal">İptal</option>
+      </select>
+      <button class="btn gray sm" data-i="${i}" style="margin-left:auto">Sil</button>`;
+    row.querySelector('.st').value = s.status;
+    row.querySelector('.t').addEventListener('change', e => { draft.sessions[i].time = e.target.value; });
+    row.querySelector('.st').addEventListener('change', e => { draft.sessions[i].status = e.target.value; renderDaySessions(); });
+    row.querySelector('button').addEventListener('click', () => { draft.sessions.splice(i,1); renderDaySessions(); });
+    box.appendChild(row);
+  });
+}
+function addSession(type){
+  const last = state.slots.find(s => s.type === type);
+  draft.sessions.push({type, time: last ? last.time : (type === 'raporlu' ? '09:00' : '14:00'), status:'plan'});
+  draft.sessions.sort((a,b) => a.time.localeCompare(b.time));
+  $('dayHoliday').checked = false;
+  draft.holiday = false;
+  renderDaySessions();
+}
+function saveDay(){
+  draft.holiday = $('dayHoliday').checked;
+  draft.note = $('dayNote').value.trim();
+  if (draft.holiday) draft.sessions = [];
+  state.overrides[editingDate] = { holiday: draft.holiday, sessions: draft.sessions, note: draft.note };
+  save(); closeAll(); renderAll();
+}
+function resetDay(){
+  delete state.overrides[editingDate];
+  save(); closeAll(); renderAll();
+}
+
+/* =========================================================
+   Program modalı
+   ========================================================= */
+function openProgram(){
+  progDraft = { childName: state.childName, fee: state.fee, offDays: [...state.offDays],
+                slots: clone(state.slots), progStart: state.progStart, progEnd: state.progEnd };
+  $('childName').value = progDraft.childName;
+  $('feeInput2').value = progDraft.fee;
+  $('progStart').value = progDraft.progStart;
+  $('progEnd').value   = progDraft.progEnd;
+
+  $('offDays').innerHTML = GRID_DOW.map(d =>
+    `<label><input type="checkbox" value="${d}" ${progDraft.offDays.includes(d)?'checked':''}> ${DOW_TR[d]}</label>`).join('');
+  renderSlots();
+  $('progOverlay').classList.add('open');
+}
+function renderSlots(){
+  const box = $('slotList');
+  box.innerHTML = '';
+  progDraft.slots
+    .map((s,i) => ({s,i}))
+    .sort((a,b) => GRID_DOW.indexOf(a.s.day) - GRID_DOW.indexOf(b.s.day) || a.s.time.localeCompare(b.s.time))
+    .forEach(({s,i}) => {
+      const row = document.createElement('div');
+      row.className = 'slot-row';
+      row.innerHTML = `
+        <div><label>${s.type === 'raporlu' ? '🩺 Raporlu' : '💎 Özel ücretli'} — gün</label>
+          <select data-i="${i}" class="d">${GRID_DOW.map(d=>`<option value="${d}">${DOW_TR[d]}</option>`).join('')}</select></div>
+        <div><label>Saat</label><input type="time" value="${s.time}" data-i="${i}" class="t"></div>
+        <button class="btn gray sm" data-i="${i}">Sil</button>`;
+      row.querySelector('.d').value = s.day;
+      row.querySelector('.d').addEventListener('change', e => { progDraft.slots[i].day = Number(e.target.value); renderSlots(); });
+      row.querySelector('.t').addEventListener('change', e => { progDraft.slots[i].time = e.target.value; });
+      row.querySelector('button').addEventListener('click', () => { progDraft.slots.splice(i,1); renderSlots(); });
+      box.appendChild(row);
+    });
+  if (!progDraft.slots.length) box.innerHTML = '<div class="note">Henüz seans tanımlanmadı.</div>';
+}
+function saveProgram(){
+  progDraft.childName = $('childName').value.trim();
+  progDraft.fee = Number($('feeInput2').value) || 0;
+  progDraft.progStart = $('progStart').value;
+  progDraft.progEnd = $('progEnd').value;
+  progDraft.offDays = [...$('offDays').querySelectorAll('input:checked')].map(i => Number(i.value));
+  Object.assign(state, progDraft);
+  save(); closeAll(); renderAll();
+}
+
+/* =========================================================
+   Bulut senkronu (isteğe bağlı Firebase)
+   ========================================================= */
+let fbDoc = null, fbApi = null, pushTimer = null, applyingRemote = false;
+
+async function cloudInit(){
+  const fb = state.firebase;
+  if (!fb || !fb.config || !fb.code){ setSyncLabel('Yerel (bu cihaz)'); return; }
+  try{
+    setSyncLabel('Bağlanıyor…');
+    const appMod = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js');
+    const fsMod  = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js');
+    const app = appMod.initializeApp(fb.config, 'rehab-' + fb.code);
+    const db  = fsMod.getFirestore(app);
+    fbApi = fsMod;
+    fbDoc = fsMod.doc(db, 'takvimler', fb.code);
+    fsMod.onSnapshot(fbDoc, snap => {
+      const data = snap.data();
+      if (!data || !data.payload) return;
+      let remote;
+      try { remote = JSON.parse(data.payload); } catch { return; }
+      if ((remote.updatedAt || 0) <= (state.updatedAt || 0)) return;
+      applyingRemote = true;
+      state = Object.assign(defaultState(), remote, {firebase: state.firebase});
+      localStorage.setItem(STORE_KEY, JSON.stringify(state));
+      applyingRemote = false;
+      renderAll();
+    }, err => { console.warn(err); setSyncLabel('Bulut hatası — yerel'); });
+    setSyncLabel('Bulut (Firebase)');
+    cloudPush();
+  }catch(e){
+    console.warn('Firebase başlatılamadı', e);
+    setSyncLabel('Bulut hatası — yerel');
+  }
+}
+function cloudPush(){
+  if (!fbDoc || applyingRemote) return;
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(async () => {
+    try{
+      const payload = clone(state); delete payload.firebase;
+      await fbApi.setDoc(fbDoc, { payload: JSON.stringify(payload), updatedAt: state.updatedAt });
+    }catch(e){ console.warn('Buluta yazılamadı', e); setSyncLabel('Bulut hatası — yerel'); }
+  }, 600);
+}
+function setSyncLabel(t){ $('syncLabel').textContent = t; $('syncState').textContent = 'Durum: ' + t; }
+
+/* =========================================================
+   Tema, modal kapatma, kur/çıkar
+   ========================================================= */
+function applyTheme(){
+  document.documentElement.setAttribute('data-theme', state.theme);
+  $('themeBtn').textContent = state.theme === 'dark' ? '☀️ Açık Mod' : '🌙 Koyu Mod';
+}
+function closeAll(){ document.querySelectorAll('.overlay').forEach(o => o.classList.remove('open')); }
+
+function downloadJson(){
+  const blob = new Blob([JSON.stringify(state, null, 2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `rehabilitasyon-takvimi-${ymd(new Date())}.json`;
+  a.click(); URL.revokeObjectURL(a.href);
+}
+
+/* =========================================================
+   Render + olaylar
+   ========================================================= */
+function renderAll(){ applyTheme(); renderProgram(); renderCalendar(); calcSummary(); }
+
+function defaultRange(){
+  const y = viewDate.getFullYear(), m = viewDate.getMonth();
+  $('startDate').value = ymd(new Date(y, m, 1));
+  $('endDate').value   = ymd(new Date(y, m + 1, 0));
+}
+
+load();
+defaultRange();
+renderAll();
+cloudInit();
+
+$('prevBtn').onclick  = () => { viewDate = new Date(viewDate.getFullYear(), viewDate.getMonth()-1, 1); defaultRange(); renderAll(); };
+$('nextBtn').onclick  = () => { viewDate = new Date(viewDate.getFullYear(), viewDate.getMonth()+1, 1); defaultRange(); renderAll(); };
+$('todayBtn').onclick = () => { viewDate = new Date(); defaultRange(); renderAll(); };
+$('themeBtn').onclick = () => { state.theme = state.theme === 'dark' ? 'light' : 'dark'; save(); applyTheme(); };
+
+$('feeBtn').onclick   = () => { state.fee = Number($('feeInput').value) || 0; save(); renderAll(); };
+$('editProgBtn').onclick = openProgram;
+$('calcBtn').onclick  = calcSummary;
+$('pdfBtn').onclick   = exportPdf;
+
+$('addRapBtn').onclick   = () => addSession('raporlu');
+$('addOzelBtn').onclick  = () => addSession('ozel');
+$('resetDayBtn').onclick = resetDay;
+$('daySave').onclick     = saveDay;
+$('dayCancel').onclick   = closeAll;
+$('dayHoliday').onchange = e => {
+  draft.holiday = e.target.checked;
+  if (draft.holiday) draft.sessions = [];
+  else if (!draft.sessions.length){
+    // Tatil işareti kaldırıldığında haftalık programdaki seansları geri getir
+    const dow = parseYmd(editingDate).getDay();
+    draft.sessions = state.slots.filter(s => s.day === dow)
+      .map(s => ({type:s.type, time:s.time, status:'plan'}))
+      .sort((a,b) => a.time.localeCompare(b.time));
+  }
+  renderDaySessions();
+};
+
+$('addSlotRap').onclick  = () => { progDraft.slots.push({type:'raporlu', day:2, time:'09:00'}); renderSlots(); };
+$('addSlotOzel').onclick = () => { progDraft.slots.push({type:'ozel',    day:2, time:'14:00'}); renderSlots(); };
+$('progSave').onclick    = saveProgram;
+$('progCancel').onclick  = closeAll;
+
+$('syncBox').onclick = () => {
+  $('fbConfig').value = state.firebase?.config ? JSON.stringify(state.firebase.config) : '';
+  $('fbCode').value   = state.firebase?.code || '';
+  $('syncOverlay').classList.add('open');
+};
+$('syncCancel').onclick = closeAll;
+$('syncSave').onclick = () => {
+  const raw = $('fbConfig').value.trim(), code = $('fbCode').value.trim();
+  if (!raw || !code){ alert('Firebase yapılandırması ve takvim kodu gerekli.'); return; }
+  let cfg;
+  try { cfg = JSON.parse(raw); } catch { alert('Yapılandırma geçerli bir JSON değil.'); return; }
+  state.firebase = { config: cfg, code };
+  save(false); closeAll(); cloudInit();
+};
+$('syncOff').onclick = () => { state.firebase = null; fbDoc = null; save(false); setSyncLabel('Yerel (bu cihaz)'); closeAll(); };
+
+$('exportBtn').onclick = downloadJson;
+$('importBtn').onclick = () => $('importFile').click();
+$('importFile').onchange = e => {
+  const f = e.target.files[0]; if (!f) return;
+  const r = new FileReader();
+  r.onload = () => {
+    try{
+      state = Object.assign(defaultState(), JSON.parse(r.result));
+      save(); closeAll(); renderAll();
+    }catch{ alert('Dosya okunamadı.'); }
+  };
+  r.readAsText(f);
+};
+
+document.querySelectorAll('.overlay').forEach(o => o.addEventListener('click', e => { if (e.target === o) closeAll(); }));
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAll(); });
+</script>
+</body>
+</html>
