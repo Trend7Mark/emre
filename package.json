@@ -1,0 +1,12 @@
+{
+  "name": "resmi-yazisma",
+  "version": "1.0.0",
+  "description": "Resmî Yazışma Yönetmeliği (CB Kararı 2646) ve TDK yazım kurallarına göre resmî yazı hazırlama ve denetleme aracı",
+  "private": true,
+  "license": "Unlicense",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "start": "npx --yes serve -l 8080 ."
+  },
+  "engines": { "node": ">=20" }
+}

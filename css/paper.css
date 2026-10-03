@@ -1,0 +1,104 @@
+/* Kâğıt (A4) stilleri – Resmî Yazışma Yönetmeliği ölçüleri.
+ * m.6: A4 · m.7: TNR 12 / Arial 11 · m.8: üst/sol/sağ 1,5 cm (logoda üst 0,5 cm) · m.16: paragraf girintisi 1,25 cm */
+:root {
+  --kw: 1.3cm; /* "Sayı / Konu / İlgi" etiket sütunu: iki nokta işaretleri aynı hizada */
+  --cw: 0.35cm;
+}
+
+.measure-host { position: absolute; left: -10000px; top: 0; visibility: hidden; pointer-events: none; }
+
+.page {
+  position: relative;
+  flex: none;
+  width: 210mm;
+  height: 297mm;
+  padding: var(--mt, 15mm) 15mm 10mm 15mm;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  color: #000;
+  font-family: var(--font);
+  font-size: var(--fs);
+  line-height: 1.2;
+  overflow: hidden;
+  text-align: left;
+}
+.page, .page * { box-sizing: border-box; }
+.content { flex: 1 1 auto; min-height: 0; overflow: hidden; display: flow-root; }
+.content > :first-child { margin-top: 0 !important; }
+.content [data-alan] { cursor: pointer; }
+
+/* Başlık + logo (m.9, m.10) */
+.hd { position: relative; text-align: center; font-weight: 700; }
+.hd.mod-orta { display: flex; flex-direction: column; align-items: center; }
+.hd.mod-sol, .hd.mod-iki { display: grid; grid-template-columns: 32mm 1fr 32mm; align-items: center; }
+.hd-logo { width: 32mm; height: 22mm; display: flex; align-items: center; justify-content: center; }
+.hd.mod-orta .hd-logo { width: auto; height: 20mm; }
+.hd-logo img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.hd-logo.bos { outline: 1px dashed #b5b5b5; width: 32mm; }
+.hd-logo.gizli { visibility: hidden; }
+.flags { position: absolute; top: 0; right: 0; z-index: 2; color: #e00000; background: #fff; padding-left: 1.5mm; font-weight: 700; text-align: right; line-height: 1.2; }
+
+/* "Başlık ve muhatap adı kalın" kapalıysa */
+.page.duz .hd, .page.duz .mu-ad, .page.duz .olur-ibare { font-weight: 400; }
+
+/* Sayı - Tarih - Konu (m.11-13) */
+.sayi-row { display: flex; justify-content: space-between; align-items: baseline; gap: 1cm; }
+.sayi-row .kv { flex: 1 1 auto; }
+.tarih { white-space: nowrap; }
+.kv { display: grid; grid-template-columns: var(--kw) var(--cw) 1fr; }
+.kv .v { min-width: 0; overflow-wrap: anywhere; }
+.kv.konu { width: 50%; } /* konu, yazı alanının dikey orta hizasını geçmez (m.13/1) */
+.kv.ek1 { grid-template-columns: auto auto 1fr; }
+.kv.ek1 .c { margin-right: 0.3em; }
+
+/* Muhatap (m.14) */
+.muhatap { text-align: center; }
+.mu-ad { font-weight: 700; }
+.mu-adres { }
+
+/* İlgi (m.15-16) */
+.ilgi { display: grid; grid-template-columns: var(--kw) var(--cw) 1fr; }
+.ilgi-item.harfli { display: grid; grid-template-columns: 1.3em 1fr; }
+.ilgi-item .tx { min-width: 0; overflow-wrap: anywhere; }
+
+/* Metin (m.16/4): 1,25 cm girinti, iki yana yaslı, paragraflar arasında boşluk yok */
+.para { margin: 0; text-align: justify; text-indent: 1.25cm; overflow-wrap: break-word; }
+.para.devam { text-indent: 0; }
+.para.devam-sonraki { text-align-last: justify; }
+
+/* İmza (m.17) */
+.imza { display: flex; justify-content: flex-end; gap: 8mm; }
+.imza.n2, .imza.n3 { justify-content: space-between; }
+.sig { text-align: center; }
+
+/* Olur (m.20) */
+.olur { text-align: center; }
+.olur-ibare { font-weight: 700; }
+.olur-katilan { display: flex; }
+.olur-kutu { text-align: center; }
+
+/* Ek, Dağıtım, Paraf (m.18, 19, 21) */
+.ek-item { display: grid; grid-template-columns: 1.5em 1fr; }
+.dag { display: grid; grid-template-columns: 1fr 1fr; column-gap: 6mm; }
+.dag-tek { grid-column: 1 / -1; }
+.dag-liste-ibare { }
+.liste-baslik { text-align: center; font-weight: 700; margin-bottom: 1.2em; }
+.paraf { font-size: 0.9em; }
+.pr-b { font-weight: 700; }
+
+/* Alt bilgi: doğrulama, iletişim, sayfa numarası (m.23, 24, 27) */
+.footer { flex: 0 0 auto; font-size: var(--ifs); line-height: 1.2; padding-top: 4mm; }
+.footer .gizlilik { text-align: center; font-weight: 700; font-size: 1.2em; margin-bottom: 1mm; }
+.footer .dogrulama { margin-bottom: 1mm; }
+.footer .iletisim { border-top: 0.75pt solid #000; padding-top: 1mm; display: flex; gap: 6mm; align-items: flex-start; min-height: 5mm; }
+.ic-sol { flex: 1 1 56%; min-width: 0; overflow-wrap: anywhere; }
+.ic-sag { flex: 0 1 34%; min-width: 0; overflow-wrap: anywhere; }
+.karekod { flex: none; width: 16mm; height: 16mm; border: 1px dashed #8a8a8a; display: flex; align-items: center; justify-content: center; font-size: 7pt; color: #777; }
+.sayfano { text-align: center; margin-top: 1mm; }
+
+@media print {
+  .hd-logo.bos { outline: 0; }
+  .karekod { border-color: transparent; color: transparent; }
+  .content [data-alan] { cursor: auto; }
+}

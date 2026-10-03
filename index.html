@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Resmî Yazışma Hazırlama</title>
+  <meta name="description" content="Resmî Yazışmalarda Uygulanacak Usul ve Esaslar Hakkında Yönetmelik ile TDK yazım kurallarına göre resmî yazı hazırlama ve denetleme aracı.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231f4e8c'/%3E%3Cpath d='M9 7h10l4 4v14H9z' fill='%23fff'/%3E%3Cpath d='M12 15h8M12 19h8M12 23h5' stroke='%231f4e8c' stroke-width='1.6'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/paper.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <svg width="22" height="22" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="currentColor"/><path d="M9 7h10l4 4v14H9z" fill="#fff"/><path d="M12 15h8M12 19h8M12 23h5" stroke="currentColor" stroke-width="1.6"/></svg>
+    <span>Resmî Yazışma Hazırlama</span>
+  </div>
+  <nav class="actions" aria-label="Belge işlemleri">
+    <button type="button" id="btn-yeni">Yeni</button>
+    <button type="button" id="btn-ac">Aç…</button>
+    <button type="button" id="btn-kaydet">Kaydet</button>
+    <button type="button" id="btn-profil" title="Başlık, logo, DETSİS, iletişim ve imza bilgilerini yeni belgeler için kaydeder">Kurum profilini kaydet</button>
+    <button type="button" id="btn-yazdir" class="primary">Yazdır / PDF</button>
+    <input type="file" id="dosya-ac" accept="application/json,.json" hidden>
+  </nav>
+</header>
+
+<div class="viewtabs" role="tablist" aria-label="Görünüm">
+  <button type="button" role="tab" data-view="editor" aria-selected="true">Düzenle</button>
+  <button type="button" role="tab" data-view="preview" aria-selected="false">Önizleme</button>
+  <button type="button" role="tab" data-view="side" aria-selected="false">Denetim <span class="badge" id="vt-badge">0</span></button>
+</div>
+
+<main class="app" data-view="editor">
+  <!-- ============ FORM ============ -->
+  <aside class="editor" id="editor" aria-label="Belge bilgileri">
+
+    <details class="sec" id="sec-meta" open>
+      <summary>Belge ayarları</summary>
+      <div class="grid2">
+        <label>Yazışma ortamı
+          <select data-bind="meta.ortam">
+            <option value="E">E – Elektronik (EBYS, güvenli e-imza)</option>
+            <option value="Z">Z – Zorunlu hâl (fiziksel, el imzası)</option>
+            <option value="O">O – Olağanüstü durum</option>
+          </select>
+        </label>
+        <label>Yazışma yönü <span class="hint-i" title="Metnin son cümlesindeki “arz/rica” ibaresini belirler (m.16/12). Yetki devrinde yetkiyi devreden makamın hiyerarşik durumuna bakılır.">?</span>
+          <select data-bind="meta.yon" id="sel-yon"></select>
+        </label>
+        <label>Süreli yazışma
+          <select data-bind="meta.sureli">
+            <option value="">Normal</option>
+            <option value="ACELE">ACELE</option>
+            <option value="GUNLUDUR">GÜNLÜDÜR</option>
+          </select>
+        </label>
+        <label data-show="meta.sureli=GUNLUDUR">Cevap süresi / tarihi
+          <input type="text" data-bind="meta.sure" placeholder="ör. 15.10.2026 veya 5 iş günü">
+        </label>
+        <label>Gizlilik derecesi
+          <select data-bind="meta.gizlilik">
+            <option value="">Yok</option>
+            <option>Hizmete Özel</option>
+            <option>Özel</option>
+            <option>Gizli</option>
+            <option>Çok Gizli</option>
+          </select>
+        </label>
+        <label class="check"><input type="checkbox" data-bind="meta.kisiyeOzel"> KİŞİYE ÖZEL</label>
+        <label>Yazı tipi
+          <select data-bind="meta.font">
+            <option value="tnr">Times New Roman</option>
+            <option value="arial">Arial</option>
+          </select>
+        </label>
+        <label>Punto <span class="hint-i" title="Esas: Times New Roman 12, Arial 11. Gerekli hâllerde yazı alanında 9 puntoya kadar düşürülebilir (m.7).">?</span>
+          <select data-bind="meta.punto" data-type="number">
+            <option>12</option><option>11</option><option>10</option><option>9</option>
+          </select>
+        </label>
+        <label>İletişim bilgisi puntosu
+          <select data-bind="meta.iletisimPunto" data-type="number">
+            <option>10</option><option>9</option><option>8</option>
+          </select>
+        </label>
+        <label class="check" title="Yönetmelik m.7 yazı tipini “normal yazı stilinde” ister; başlık ve muhatap adının kalın yazılması yaygın uygulamadır. Kurumunuzun örneğine göre seçin."><input type="checkbox" data-bind="meta.kalin"> Başlık ve muhatap adı kalın</label>
+        <label class="check" title="Konu satırında ve, ile, veya gibi bağlaçlar TDK’nın eser/kitap adı kuralı gereği küçük harfle yazılır."><input type="checkbox" data-bind="meta.konuBaglac"> Konuda bağlaçlar (ve, ile…) küçük</label>
+      </div>
+      <div class="row-actions">
+        <label class="grow">Taslak metin şablonu
+          <select id="sel-sablon"><option value="">Seçin…</option></select>
+        </label>
+        <button type="button" id="btn-sablon">Uygula</button>
+      </div>
+      <p class="hint" id="sablon-not"></p>
+    </details>
+
+    <details class="sec" id="sec-baslik" open>
+      <summary>Başlık ve logo <small>m.9–10</small></summary>
+      <p class="hint">“T.C.” satırı otomatik eklenir. İdare adı büyük harfe, birim adları “İlk Harfleri Büyük” biçimine otomatik çevrilir. Bağlı/ilgili idarede 2. satıra bağlı idareyi, 3. satıra idareyi, 4. satıra birimi yazın. DETSİS’teki başlık kaydını esas alın.</p>
+      <label>2. satır – İdare adı
+        <input type="text" data-bind="baslik.s2" placeholder="Ankara Valiliği">
+      </label>
+      <label>3. satır – Birim adı
+        <input type="text" data-bind="baslik.s3" placeholder="İl Millî Eğitim Müdürlüğü">
+      </label>
+      <label>4. satır – Alt birim (varsa)
+        <input type="text" data-bind="baslik.s4" placeholder="Bilgi İşlem Şubesi">
+      </label>
+      <label>Logo
+        <select data-bind="logo.mod">
+          <option value="yok">Logo kullanma</option>
+          <option value="orta">Tek logo – üst orta (T.C. ibaresini ortalar)</option>
+          <option value="sol">Tek logo – üst sol (başlığı ortalar)</option>
+          <option value="iki">İki logo (üst idare solda, alt idare sağda)</option>
+        </select>
+      </label>
+      <div class="logo-up" data-show="logo.mod=orta|sol|iki">
+        <div><span class="lbl">Logo (sol / tek)</span><input type="file" accept="image/*" data-logo="sol"><button type="button" class="link" data-logo-sil="sol">Kaldır</button></div>
+        <div data-show="logo.mod=iki"><span class="lbl">Logo (sağ)</span><input type="file" accept="image/*" data-logo="sag"><button type="button" class="link" data-logo-sil="sag">Kaldır</button></div>
+      </div>
+    </details>
+
+    <details class="sec" id="sec-sayi" open>
+      <summary>Sayı ve tarih <small>m.11–12</small></summary>
+      <div class="grid3">
+        <label>DETSİS no
+          <input type="text" inputmode="numeric" data-bind="sayi.detsis" placeholder="67915368">
+        </label>
+        <label>Standart dosya planı kodu
+          <input type="text" data-bind="sayi.dosya" placeholder="903.07.02">
+        </label>
+        <label>Kayıt no <span class="hint-i" title="EBYS verir. Boş bırakılırsa belgede …… görünür.">?</span>
+          <input type="text" inputmode="numeric" data-bind="sayi.kayit" placeholder="EBYS’den">
+        </label>
+      </div>
+      <p class="sayi-onizleme">Sayı: <output id="out-sayi"></output></p>
+      <div class="grid2">
+        <label>Tarih
+          <input type="date" data-bind="tarih.deger">
+        </label>
+        <label>Yazılış biçimi
+          <select data-bind="tarih.bicim">
+            <option value="rakam">01.09.2019</option>
+            <option value="harf">1 Eylül 2019</option>
+          </select>
+        </label>
+      </div>
+    </details>
+
+    <details class="sec" id="sec-muhatap" open>
+      <summary>Muhatap <small>m.14</small></summary>
+      <label>Muhatap türü
+        <select data-bind="muhatap.tur">
+          <option value="idare">İdare / kurum / kuruluş</option>
+          <option value="kisi">Gerçek kişi</option>
+          <option value="dagitim">Dağıtımlı (DAĞITIM YERLERİNE)</option>
+          <option value="cby">Cumhurbaşkanı Yardımcısı</option>
+        </select>
+      </label>
+      <div data-show="muhatap.tur=idare">
+        <label>İdare adı
+          <input type="text" data-bind="muhatap.ad" placeholder="Ankara Valiliği">
+        </label>
+        <label class="check"><input type="checkbox" data-bind="muhatap.dativeOtomatik"> Yönelme hâli ekini (…VALİLİĞİNE) otomatik ekle</label>
+        <label>Birim (isteğe bağlı, parantez içinde alt satıra yazılır)
+          <input type="text" data-bind="muhatap.birim" placeholder="İl Millî Eğitim Müdürlüğü">
+        </label>
+      </div>
+      <div class="grid2" data-show="muhatap.tur=kisi|cby">
+        <label>Ad <input type="text" data-bind="muhatap.kisiAd" placeholder="Ahmet"></label>
+        <label>Soyad <input type="text" data-bind="muhatap.kisiSoyad" placeholder="Yılmaz"></label>
+      </div>
+      <p class="hint" data-show="muhatap.tur=cby">Birden fazla Cumhurbaşkanı Yardımcısı varsa ad ve soyadı girin; “(Sayın Ad SOYAD)” alt satıra yazılır. Tek ise boş bırakın.</p>
+      <label data-show="muhatap.tur=idare|kisi">Adres (idare dışına gönderilen belgelerde, gerekiyorsa)
+        <textarea rows="2" data-bind="muhatap.adres" placeholder="Atatürk Bulvarı No: 1 Çankaya/ANKARA"></textarea>
+      </label>
+    </details>
+
+    <details class="sec" id="sec-ilgi" open>
+      <summary>İlgi <small>m.15–16</small></summary>
+      <p class="hint">İlgiler tarih sırasına (eskiden yeniye) otomatik dizilir ve a), b)… ile harflendirilir.</p>
+      <div class="list" id="list-ilgi"></div>
+      <button type="button" class="add" data-add="ilgi">+ İlgi ekle</button>
+    </details>
+
+    <details class="sec" id="sec-konu" open>
+      <summary>Konu ve metin <small>m.13, m.16</small></summary>
+      <label>Konu
+        <input type="text" data-bind="konu" placeholder="Personel Atama Talebi">
+      </label>
+      <label>Metin <span class="hint-i" title="Her satır bir paragraftır. Paragraflar arasında boş satır bırakmayın; 1,25 cm girinti ve iki yana yaslama otomatik uygulanır.">?</span>
+        <textarea id="ta-metin" rows="14" data-bind="metin" spellcheck="true" lang="tr" placeholder="Her satır bir paragraf olarak yazılır."></textarea>
+      </label>
+      <div class="metin-bar">
+        <span id="metin-say" class="muted"></span>
+        <button type="button" id="btn-duzelt-hepsi" title="Kesin düzeltmeleri (boşluk, noktalama, büyük harf, kesme işareti, ayrı/bitişik yazım…) tek seferde uygular">Metni otomatik düzelt</button>
+      </div>
+      <div class="kapanis" id="kapanis">
+        <span class="lbl">Kapanış ibaresi ekle:</span>
+        <span id="kapanis-chips"></span>
+      </div>
+    </details>
+
+    <details class="sec" id="sec-imza" open>
+      <summary>İmza ve Olur <small>m.17, m.20</small></summary>
+      <p class="hint">İmzacıları <b>en üst unvandan başlayarak</b> ekleyin: iki imzada üst unvan sağda, ikiden fazlada soldan sağa sıralanır. Ad ilk harf büyük, soyad büyük otomatik yazılır.</p>
+      <div class="list" id="list-imza"></div>
+      <button type="button" class="add" data-add="imza">+ İmzacı ekle</button>
+
+      <fieldset class="olur">
+        <legend><label class="check"><input type="checkbox" data-bind="olur.aktif"> “OLUR” bloğu ekle</label></legend>
+        <div data-show="olur.aktif=true">
+          <p class="hint">Oluru alınan makam. Elektronik ortamda onay tarihi belge tarihi sayılır.</p>
+          <div class="grid3">
+            <label>Ad <input type="text" data-bind="olur.ad"></label>
+            <label>Soyad <input type="text" data-bind="olur.soyad"></label>
+            <label>Unvan <input type="text" data-bind="olur.unvan" placeholder="Vali"></label>
+          </div>
+          <p class="hint">Araya katılan makamlar (“Uygun görüşle arz ederim.”):</p>
+          <div class="list" id="list-olur-katilan"></div>
+          <button type="button" class="add" data-add="olur.katilan">+ Katılan makam ekle</button>
+        </div>
+      </fieldset>
+    </details>
+
+    <details class="sec" id="sec-ek">
+      <summary>Ekler <small>m.18</small></summary>
+      <div class="list" id="list-ek"></div>
+      <button type="button" class="add" data-add="ek.liste">+ Ek ekle</button>
+      <label class="check"><input type="checkbox" data-bind="ek.ayriSayfa"> Ek listesini ayrı sayfada göster (liste uzunsa)</label>
+    </details>
+
+    <details class="sec" id="sec-dagitim">
+      <summary>Dağıtım <small>m.19</small></summary>
+      <p class="hint">Her satıra bir muhatap yazın. Dağıtım doluysa muhatap otomatik “DAĞITIM YERLERİNE” olmalıdır (muhatap türünü seçin).</p>
+      <label>Gereği
+        <textarea rows="4" data-bind="dagitim.geregi" data-lines="true" placeholder="Tüm İl ve İlçe Müdürlükleri"></textarea>
+      </label>
+      <label>Bilgi
+        <textarea rows="3" data-bind="dagitim.bilgi" data-lines="true"></textarea>
+      </label>
+      <label class="check"><input type="checkbox" data-bind="dagitim.ayriSayfa"> Dağıtım listesini ayrı sayfada göster (liste uzunsa)</label>
+    </details>
+
+    <details class="sec" id="sec-paraf">
+      <summary>Paraf ve koordinasyon <small>m.21–22</small></summary>
+      <p class="hint" data-show="meta.ortam=E">Elektronik ortamda paraf ve koordinasyon EBYS’de tutulur; çıktıda gösterilmez. Bu liste yalnız Z/O (fiziksel) belgelerde basılır.</p>
+      <p class="hint" data-show="meta.ortam=Z|O">Paraf, ast-üst sırasına göre, kısaltma kullanmadan yazılır ve yalnız idarede kalan nüshada çıkar.</p>
+      <div class="list" id="list-paraf"></div>
+      <button type="button" class="add" data-add="paraf">+ Paraf ekle</button>
+      <div class="list" id="list-koordinasyon"></div>
+      <button type="button" class="add" data-add="koordinasyon">+ Koordinasyon ekle</button>
+    </details>
+
+    <details class="sec" id="sec-iletisim">
+      <summary>İletişim bilgileri <small>m.23–24</small></summary>
+      <label>Adres <input type="text" data-bind="iletisim.adres" placeholder="Atatürk Bulvarı No: 1 Çankaya/ANKARA"></label>
+      <div class="grid3">
+        <label>Posta kodu <input type="text" inputmode="numeric" data-bind="iletisim.posta" placeholder="06100"></label>
+        <label>Telefon <input type="text" data-bind="iletisim.tel" placeholder="(312) 000 00 00"></label>
+        <label>Faks <input type="text" data-bind="iletisim.faks"></label>
+      </div>
+      <div class="grid2">
+        <label>E-posta <input type="email" data-bind="iletisim.eposta" placeholder="ornek@meb.gov.tr"></label>
+        <label>KEP adresi <input type="text" data-bind="iletisim.kep" placeholder="kurum@hs01.kep.tr"></label>
+      </div>
+      <label>İnternet adresi <input type="text" data-bind="iletisim.web" placeholder="www.ornek.gov.tr"></label>
+      <p class="hint">Bilgi alınacak kişi (sağ tarafta yer alır):</p>
+      <div class="grid3">
+        <label>Ad Soyad <input type="text" data-bind="iletisim.kisiAd"></label>
+        <label>Unvan <input type="text" data-bind="iletisim.kisiUnvan"></label>
+        <label>Telefon <input type="text" data-bind="iletisim.kisiTel"></label>
+      </div>
+      <label data-show="meta.ortam=E">Belge doğrulama kodu (EBYS’den, isteğe bağlı)
+        <input type="text" data-bind="iletisim.dogrulama" placeholder="Karekod ve kodu EBYS üretir">
+      </label>
+    </details>
+  </aside>
+
+  <!-- ============ ÖNİZLEME ============ -->
+  <section class="preview" id="preview" aria-label="Önizleme">
+    <div class="preview-toolbar">
+      <div class="zoom">
+        <button type="button" id="z-out" aria-label="Uzaklaştır">−</button>
+        <button type="button" id="z-fit">Sığdır</button>
+        <button type="button" id="z-in" aria-label="Yakınlaştır">+</button>
+        <span id="z-val" class="muted"></span>
+      </div>
+      <label class="check" id="lbl-paraf"><input type="checkbox" id="chk-paraf" checked> Paraflı nüsha (idarede kalan)</label>
+      <label class="check"><input type="checkbox" id="chk-filigran"> “TASLAK” filigranı</label>
+      <span class="muted" id="sayfa-say"></span>
+    </div>
+    <p class="banner">Bu çıktı bir <b>taslaktır</b>: güvenli elektronik imza, kayıt numarası, belge doğrulama kodu ve karekod EBYS’de oluşturulur. Önizlemedeki bir bölüme tıklayarak ilgili alana gidebilirsiniz.</p>
+    <div class="sheet-wrap"><div id="sheet" class="sheet"></div></div>
+  </section>
+
+  <!-- ============ DENETİM ============ -->
+  <aside class="side" id="side" aria-label="Denetim ve yardım">
+    <div class="tabs" role="tablist">
+      <button type="button" role="tab" data-tab="denetim" aria-selected="true">Denetim</button>
+      <button type="button" role="tab" data-tab="ebys" aria-selected="false">EBYS’ye aktar</button>
+      <button type="button" role="tab" data-tab="kurallar" aria-selected="false">Kurallar</button>
+    </div>
+
+    <div class="tabpane" id="tab-denetim">
+      <div class="summary" id="ozet"></div>
+      <div class="filters">
+        <label class="check"><input type="checkbox" id="f-info" checked> Bilgi</label>
+        <label class="check"><input type="checkbox" id="f-auto"> Otomatik uygulananlar</label>
+        <label class="check"><input type="checkbox" id="f-ok"> Geçenler</label>
+        <button type="button" id="btn-guvenli" class="small" title="Düzeltilebilir TDK/Yönetmelik bulgularını metne uygular">Tümünü düzelt</button>
+      </div>
+      <ul class="results" id="sonuclar"></ul>
+    </div>
+
+    <div class="tabpane" id="tab-ebys" hidden>
+      <p class="hint">EBYS’deki ilgili alanlara yapıştırmak için biçimlenmiş metinler. Sayı, tarih, imza, doğrulama kodu ve karekod EBYS tarafından oluşturulur.</p>
+      <div id="ebys-alanlar"></div>
+    </div>
+
+    <div class="tabpane" id="tab-kurallar" hidden>
+      <input type="search" id="kural-ara" placeholder="Kurallarda ara (ör. paraf, kesme, ilgi)…">
+      <div id="kural-liste"></div>
+      <details class="tdk23">
+        <summary>TDK 2023 yazım değişiklikleri (tablo)</summary>
+        <div id="tdk23"></div>
+      </details>
+      <details class="sinirlar">
+        <summary>Kaynaklar ve sınırlar</summary>
+        <ul>
+          <li>Kaynak 1: <i>Resmî Yazışmalarda Uygulanacak Usul ve Esaslar Hakkında Yönetmelik</i> (Cumhurbaşkanı Kararı 9/6/2020, Sayı: 2646; RG 10/6/2020-31151).</li>
+          <li>Kaynak 2: <i>TDK Yazım Kuralları (2023 değişiklikleri dâhil)</i>, Kemal Deniz derlemesi. TDK’nın kendi yayını değil, öğretmen derlemesidir.</li>
+          <li>Yönetmeliğin Örnek 1–24 görselleri (ekler) PDF’te yer almadığından yerleşim, madde metinlerinden kurulmuştur; ince ayrıntılarda (ör. etiket genişliği) örneklerden sapma olabilir.</li>
+          <li>Yönetmelik “unvan” yazarken TDK 2023 güncel yazımı “ünvan”dır; uygulama TDK’yı esas alıp bu farkı bildirir.</li>
+          <li>TDK denetimi bir sözlük/imla denetçisi değildir; yalnız kuralı net, sık görülen durumları yakalar. Son okuma sorumluluğu belgeyi imzalayandadır.</li>
+          <li>Güvenli elektronik imza, kayıt numarası, üstveri, şifreleme ve gönderme işlemleri EBYS’de yapılır (m.4, 23, 28–30).</li>
+        </ul>
+      </details>
+    </div>
+  </aside>
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="js/tr.js"></script>
+<script src="js/data.js"></script>
+<script src="js/compose.js"></script>
+<script src="js/lint-tdk.js"></script>
+<script src="js/validate.js"></script>
+<script src="js/render.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
