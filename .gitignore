@@ -1,3 +1,4 @@
 node_modules/
 .env
 data/
+electron/gomulu-anahtar.json

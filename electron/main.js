@@ -1,6 +1,7 @@
 // Masaüstü programı. Ağ portu açmaz: arayüz ve API, "app://" adlı özel bir
 // protokol üzerinden doğrudan program içinde sunulur. Bu sayede kurum
 // bilgisayarlarındaki proxy/güvenlik duvarı ayarlarından etkilenmez.
+import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { app, BrowserWindow, Menu, net, protocol, safeStorage, shell } from "electron";
@@ -23,17 +24,21 @@ async function baslat() {
   const { apiOlustur } = await import("../server/api.js");
   const { anahtarDeposu } = await import("../server/anahtarlar.js");
 
-  const sifreli = safeStorage.isEncryptionAvailable();
-  const api = apiOlustur(
-    anahtarDeposu(
-      sifreli
-        ? {
-            sifrele: (s) => safeStorage.encryptString(s).toString("base64"),
-            coz: (s) => safeStorage.decryptString(Buffer.from(s, "base64")),
-          }
-        : {},
-    ),
-  );
+  // Programla birlikte derlenen anahtar (electron/gomulu-anahtar.json); depoda yer almaz.
+  let gomulu = {};
+  try {
+    gomulu = JSON.parse(fs.readFileSync(path.join(kok, "gomulu-anahtar.json"), "utf8"));
+  } catch {
+    // dosya yoksa kullanıcı anahtarını Ayarlar'dan girer
+  }
+
+  const sifreleme = safeStorage.isEncryptionAvailable()
+    ? {
+        sifrele: (s) => safeStorage.encryptString(s).toString("base64"),
+        coz: (s) => safeStorage.decryptString(Buffer.from(s, "base64")),
+      }
+    : {};
+  const api = apiOlustur(anahtarDeposu({ ...sifreleme, gomulu }));
 
   protocol.handle("app", async (istek) => {
     const url = new URL(istek.url);

@@ -48,3 +48,15 @@ test("kısa not reddedilir, bilinmeyen yol 404 döner", async () => {
   assert.equal((await api.isle("GET", "/api/yok")).durum, 404);
   assert.equal((await api.isle("DELETE", "/api/haberler/olmayan")).durum, 404);
 });
+
+test("gömülü anahtar, kullanıcı anahtarı yoksa kullanılır ve kaynağı bildirilir", async () => {
+  const { anahtarDeposu } = await import("../server/anahtarlar.js");
+  const d = anahtarDeposu({ gomulu: { claude: "sk-gomulu" } });
+  d.kaydet("claude", "");
+  assert.equal(d.getir("claude"), "sk-gomulu");
+  assert.equal(d.kaynak("claude"), "gomulu");
+  d.kaydet("claude", "sk-kendi");
+  assert.equal(d.getir("claude"), "sk-kendi");
+  assert.equal(d.kaynak("claude"), "kullanici");
+  d.kaydet("claude", "");
+});

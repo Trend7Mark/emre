@@ -48,6 +48,7 @@ export function apiOlustur(anahtarlar) {
       aktif: aktif.ad,
       eksikAnahtar: aktif.eksik || null,
       anahtarVar: { claude: Boolean(anahtarlar.getir("claude")), gemini: Boolean(anahtarlar.getir("gemini")) },
+      anahtarKaynagi: { claude: anahtarlar.kaynak("claude"), gemini: anahtarlar.kaynak("gemini") },
       modeller: { ...VARSAYILAN_MODELLER, ...yz.modeller },
     };
   }

@@ -355,8 +355,14 @@ $("yzSaglayici").addEventListener("change", yzAlanlari);
 
 function yzFormuDoldur(yz) {
   $("yzSaglayici").value = yz.secili;
-  $("yzClaudeDurum").textContent = yz.anahtarVar.claude ? "(kayıtlı — değiştirmek için yenisini yazın)" : "(girilmedi)";
-  $("yzGeminiDurum").textContent = yz.anahtarVar.gemini ? "(kayıtlı — değiştirmek için yenisini yazın)" : "(girilmedi)";
+  const durumMetni = (ad) =>
+    ({
+      kullanici: "(kayıtlı — değiştirmek için yenisini yazın)",
+      gomulu: "(programla birlikte geliyor — isterseniz kendi anahtarınızı yazın)",
+      ortam: "(ortam değişkeninden okunuyor)",
+    })[yz.anahtarKaynagi?.[ad]] || "(girilmedi)";
+  $("yzClaudeDurum").textContent = durumMetni("claude");
+  $("yzGeminiDurum").textContent = durumMetni("gemini");
   $("yzClaudeAnahtar").value = "";
   $("yzGeminiAnahtar").value = "";
   $("yzClaudeModel").value = yz.modeller.claude;
