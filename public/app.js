@@ -526,6 +526,7 @@ function yzFormuDoldur(yz) {
   $("yzClaudeModel").value = yz.modeller.claude;
   $("yzGeminiModel").value = yz.modeller.gemini;
   $("yzCalismaAlani").value = yz.calismaAlani || "";
+  $("calismaAlaniFormu").hidden = !yz.calismaAlaniGerekli;
   yzRozeti(yz);
 }
 
@@ -540,6 +541,19 @@ $("yzFormu").addEventListener("submit", async (e) => {
   e.preventDefault();
   try {
     await anahtarKaydet($("yzAnahtar").value);
+  } catch (err) {
+    bildir(err.message);
+  }
+});
+
+$("calismaAlaniFormu").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const deger = $("calismaAlaniHizli").value.trim();
+  if (deger.startsWith("sk-ant-")) return bildir("Bu bir API anahtarı. Buraya wrkspc_ ile başlayan çalışma alanı kimliğini yazın.");
+  try {
+    yzFormuDoldur(await api("/yz", { method: "PUT", body: { calismaAlani: deger } }));
+    $("calismaAlaniHizli").value = "";
+    bildir("Çalışma alanı kaydedildi — şimdi \"Bağlantıyı test et\"e basın");
   } catch (err) {
     bildir(err.message);
   }
@@ -583,9 +597,13 @@ function ilkAnahtarSor() {
 $("ilkAnahtarFormu").addEventListener("submit", async (e) => {
   e.preventDefault();
   try {
-    await anahtarKaydet($("ilkAnahtar").value);
+    const yz = await anahtarKaydet($("ilkAnahtar").value);
     $("ilkAnahtar").value = "";
     $("anahtarPenceresi").close();
+    if (yz.calismaAlaniGerekli) {
+      sayfaAc("ayarlar");
+      bildir("Bir adım kaldı: çalışma alanı kimliğini girin");
+    }
   } catch (err) {
     $("ilkAnahtarHata").textContent = err.message;
     $("ilkAnahtarHata").hidden = false;

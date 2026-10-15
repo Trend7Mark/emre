@@ -173,3 +173,8 @@ button.yukleniyor-btn { opacity: .6; cursor: wait; }
 .test-sonuc.tamam { background: #ecfdf5; color: var(--yesil); }
 .test-sonuc.hatali { background: #fef2f2; color: #b91c1c; }
 .hata { background: #fef2f2; border: 1px solid #fecaca; border-radius: 8px; padding: 10px 12px; }
+
+.calisma-alani { margin: 0 0 18px; font-size: 14px; }
+.calisma-alani p, .calisma-alani ol { margin: 6px 0; }
+.calisma-alani ol { padding-left: 20px; }
+.calisma-alani .satir input { margin: 0; flex: 1; }

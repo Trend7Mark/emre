@@ -169,6 +169,18 @@
       <div class="kart dar" id="yzKart">
         <h2>Yapay Zekâ</h2>
         <ul class="anahtarlar" id="yzListe"></ul>
+        <form class="uyari calisma-alani" id="calismaAlaniFormu" hidden>
+          <strong>Bir adım kaldı: çalışma alanı kimliği</strong>
+          <p>Girdiğiniz Claude anahtarı (sk-ant-usr-…) bir çalışma alanı kimliği istiyor. Bu kimlik API anahtarı değildir; <b>wrkspc_</b> ile başlar.</p>
+          <ol>
+            <li><a href="https://console.anthropic.com/settings/workspaces" target="_blank" rel="noopener">console.anthropic.com › Settings › Workspaces</a> sayfasını açın.</li>
+            <li>Çalışma alanının kimliğini kopyalayın. Hiç çalışma alanı yoksa "Create workspace" ile bir tane oluşturun; program kimliği kendisi de bulabilir.</li>
+          </ol>
+          <div class="satir">
+            <input id="calismaAlaniHizli" type="text" placeholder="wrkspc_…" autocomplete="off">
+            <button type="submit" class="birincil">Kaydet</button>
+          </div>
+        </form>
         <form id="yzFormu">
           <label>Yeni API anahtarı
             <input id="yzAnahtar" type="password" autocomplete="off" placeholder="Claude (sk-ant-…) ya da Gemini (AIza…) anahtarını yapıştırın">

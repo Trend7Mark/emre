@@ -29,8 +29,8 @@ function hataCevir(err) {
   if (err instanceof Anthropic.BadRequestError && /anthropic-workspace-id|scoped to a workspace/i.test(err.message)) {
     return new Error(
       "Bu Claude anahtarı bir kullanıcı anahtarı (sk-ant-usr-…) ve bir çalışma alanına bağlı değil. " +
-        "Çözüm: console.anthropic.com > Settings > API keys bölümünden normal bir API anahtarı (sk-ant-api03-…) oluşturup girin " +
-        "ya da Ayarlar > Yapay Zekâ > Gelişmiş bölümüne çalışma alanı kimliğini (wrkspc_…) yazın.",
+        "Çözüm: console.anthropic.com > Settings > Workspaces bölümünde bir çalışma alanı oluşturun (program kimliği kendisi bulur) " +
+        "ya da çalışma alanının kimliğini (wrkspc_… ile başlar; API anahtarı değil) Ayarlar > Yapay Zekâ bölümündeki \"Çalışma alanı kimliği\" kutusuna yazın.",
     );
   }
   if (err instanceof Anthropic.NotFoundError) {
@@ -83,6 +83,19 @@ export async function cagir({ sistem, kullanici, anahtar, model, sema, efor = "m
     model: yanit.model,
     kullanim: { girdi: yanit.usage.input_tokens, cikti: yanit.usage.output_tokens, onbellek: yanit.usage.cache_read_input_tokens ?? 0 },
   };
+}
+
+/**
+ * Kullanıcı anahtarları (sk-ant-usr-…) için kuruluştaki ilk etkin çalışma alanının kimliğini bulur.
+ * Varsayılan çalışma alanı bu listede yer almaz; bulunamazsa boş döner.
+ */
+export async function calismaAlaniBul({ anahtar, fetch }) {
+  try {
+    const yanit = await istemci(anahtar, fetch).get("/v1/organizations/workspaces", { query: { limit: 20 } });
+    return (yanit?.data || []).find((w) => !w.archived_at)?.id || "";
+  } catch {
+    return "";
+  }
 }
 
 /** Anahtar, model ve ağ bağlantısını ücretsiz bir istekle sınar. */

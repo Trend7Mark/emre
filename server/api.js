@@ -76,12 +76,27 @@ export function apiOlustur(anahtarlar, { fetch } = {}) {
       anahtarKaynagi: Object.fromEntries(SAGLAYICI_ADLARI.map((a) => [a, anahtarlar.kaynak(a)])),
       modeller: { ...VARSAYILAN_MODELLER, ...yz.modeller },
       calismaAlani: yz.calismaAlani || "",
+      // sk-ant-usr anahtarı kullanılıyor ama çalışma alanı yok: arayüz kutuyu öne çıkarır.
+      calismaAlaniGerekli: kullaniciAnahtari(aktif) && !yz.calismaAlani,
     };
+  }
+
+  const kullaniciAnahtari = (a) => a.ad === "claude" && /^sk-ant-usr-/.test(a.anahtar || "");
+
+  // Kullanıcı anahtarında çalışma alanı girilmemişse bulmayı dener ve kaydeder.
+  async function hazirAktif() {
+    const aktif = aktifSaglayici();
+    if (!kullaniciAnahtari(aktif) || aktif.calismaAlani) return aktif;
+    const { calismaAlaniBul } = await SAGLAYICILAR.claude();
+    const id = await calismaAlaniBul({ anahtar: aktif.anahtar, fetch });
+    if (!id) return aktif;
+    store.yzAyarlariKaydet({ ...store.yzAyarlariGetir(), calismaAlani: id });
+    return { ...aktif, calismaAlani: id };
   }
 
   // Seçili yapay zekâya şemalı istek gönderir.
   async function yzCagir({ amac, kullanici, sema, efor, girdi }) {
-    const aktif = aktifSaglayici();
+    const aktif = await hazirAktif();
     try {
       const saglayici = await SAGLAYICILAR[aktif.ad]();
       const sonuc = await saglayici.cagir({
@@ -122,7 +137,7 @@ export function apiOlustur(anahtarlar, { fetch } = {}) {
     [
       "POST",
       /^\/api\/yz\/anahtar$/,
-      (_, b) => {
+      async (_, b) => {
         const anahtar = temizMetin(b.anahtar, 500).replace(/\s+/g, "");
         const saglayici = anahtarTuru(anahtar);
         if (!saglayici) {
@@ -130,6 +145,7 @@ export function apiOlustur(anahtarlar, { fetch } = {}) {
         }
         anahtarlar.kaydet(saglayici, anahtar);
         varsayilanYap(saglayici);
+        await hazirAktif();
         return { ...yzDurumu(), eklenen: saglayici };
       },
     ],
@@ -145,7 +161,7 @@ export function apiOlustur(anahtarlar, { fetch } = {}) {
       "POST",
       /^\/api\/yz\/test$/,
       async () => {
-        const aktif = aktifSaglayici();
+        const aktif = await hazirAktif();
         try {
           const saglayici = await SAGLAYICILAR[aktif.ad]();
           return { tamam: true, mesaj: await saglayici.sina({ anahtar: aktif.anahtar, model: aktif.model, calismaAlani: aktif.calismaAlani, fetch }) };
