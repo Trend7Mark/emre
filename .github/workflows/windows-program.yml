@@ -34,17 +34,30 @@ jobs:
           path: dist/*.exe
           if-no-files-found: error
 
-      # Her derleme, indirme sayfasında "son sürüm" olarak yayımlanır.
+      - name: Sürüm numarası
+        id: surum
+        shell: bash
+        run: echo "surum=$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
+
+      # İndirme sayfası. latest.yml ve .blockmap, programın otomatik güncellemesi içindir.
+      # Yeni sürüm yayımlamak için package.json'daki "version" yükseltilir; aynı sürüm
+      # yeniden derlenirse mevcut sürümün dosyaları yenilenir.
       - name: İndirme sayfasını güncelle
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: surum-${{ github.run_number }}
-          name: Basın Masası (derleme ${{ github.run_number }})
+          tag_name: v${{ steps.surum.outputs.surum }}
+          name: Basın Masası ${{ steps.surum.outputs.surum }}
           target_commitish: ${{ github.sha }}
           make_latest: true
+          overwrite_files: true
           body: |
-            **Kurulum:** `BasinMasasi-Kurulum-...exe` dosyasını indirip çalıştırın; masaüstüne kısayol eklenir.
-            **Kurulumsuz:** `BasinMasasi-Tasinabilir-...exe` dosyası kurulum gerektirmeden doğrudan açılır.
+            **İlk kurulum:** `BasinMasasi-Kurulum-${{ steps.surum.outputs.surum }}.exe` dosyasını indirip çalıştırın; masaüstüne kısayol eklenir.
+            Kurulumdan sonra program **kendini otomatik günceller**; yeniden indirmeniz gerekmez.
+
+            **Kurulumsuz:** `BasinMasasi-Tasinabilir-….exe` kurulum gerektirmez ama otomatik güncellenmez.
 
             Windows "bilinmeyen yayımcı" uyarısı verirse: **Ek bilgi → Yine de çalıştır**.
-          files: dist/*.exe
+          files: |
+            dist/*.exe
+            dist/*.blockmap
+            dist/latest.yml

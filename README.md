@@ -22,10 +22,12 @@ Beğenilen bir haber, arşivden **"Üslup örneği yap"** düğmesiyle örnekler
 ## Kurulum (Windows programı)
 
 1. **[İndirme sayfasından](https://github.com/Trend7Mark/emre/releases/latest)** birini indirin:
-   - `BasinMasasi-Kurulum-….exe`: bilgisayara kurar ve masaüstüne kısayol ekler (önerilen)
-   - `BasinMasasi-Tasinabilir-….exe`: kurulum gerektirmez, çift tıklayınca açılır
+   - `BasinMasasi-Kurulum-….exe`: bilgisayara kurar, masaüstüne kısayol ekler ve **kendini otomatik günceller** (önerilen)
+   - `BasinMasasi-Tasinabilir-….exe`: kurulum gerektirmez, çift tıklayınca açılır; otomatik güncellenmez
 2. Windows "bilinmeyen yayımcı" uyarısı verirse **Ek bilgi → Yine de çalıştır**'a tıklayın. Program dijital olarak imzalı olmadığı için bu uyarı çıkar.
 3. İlk açılışta program API anahtarını sorar. Claude ya da Gemini anahtarınızı yapıştırın; hangisi olduğu otomatik anlaşılır. Anahtar bir kez girilir, program bir daha sormaz.
+
+**Güncellemeler:** Kurulum sürümü her açılışta yeni sürüm olup olmadığına bakar; varsa arka planda indirir ve "Yeniden başlat" diye sorar. Pencere başlığında kullanılan sürüm yazar.
 
 Program tarayıcı ya da ağ portu kullanmaz; kendi penceresinde çalışır. Bu yüzden kurum bilgisayarlarındaki proxy ayarlarından etkilenmez. İnternet yalnızca yapay zekâya istek gönderirken kullanılır.
 
@@ -56,7 +58,7 @@ npm test
 npm run web        # aynı uygulamayı tarayıcıdan kullanmak için (http://127.0.0.1:3000)
 ```
 
-Windows kurulum dosyaları, her gönderimde GitHub Actions'ta (`.github/workflows/windows-program.yml`) derlenip indirme sayfasına eklenir. Windows bilgisayarda elle derlemek için: `npm run dist:win`.
+Yeni sürüm yayımlamak için `package.json`'daki `version` yükseltilip gönderilir; kurulu programlar bu sürümü kendiliğinden alır. Windows kurulum dosyaları, her gönderimde GitHub Actions'ta (`.github/workflows/windows-program.yml`) derlenip indirme sayfasına eklenir. Windows bilgisayarda elle derlemek için: `npm run dist:win`.
 
 ## Proje yapısı
 

@@ -4,7 +4,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
-import { app, BrowserWindow, Menu, net, protocol, safeStorage, shell } from "electron";
+import { app, BrowserWindow, dialog, Menu, net, protocol, safeStorage, shell } from "electron";
+import updater from "electron-updater";
 
 const kok = path.dirname(fileURLToPath(import.meta.url));
 const ARAYUZ = path.join(kok, "..", "public");
@@ -67,12 +68,14 @@ async function baslat() {
     height: 900,
     minWidth: 900,
     minHeight: 600,
-    title: "Basın Masası",
+    title: `Basın Masası ${app.getVersion()}`,
     backgroundColor: "#f4f5f7",
     show: false,
     webPreferences: { contextIsolation: true, sandbox: true, nodeIntegration: false },
   });
   pencere.once("ready-to-show", () => pencere.show());
+  // Pencere başlığında sürüm numarası kalsın (sayfa başlığı üzerine yazmasın).
+  pencere.on("page-title-updated", (e) => e.preventDefault());
   // Dış bağlantılar (ör. API anahtarı alma sayfası) varsayılan tarayıcıda açılır.
   pencere.webContents.setWindowOpenHandler(({ url }) => {
     if (url.startsWith("https://")) shell.openExternal(url);
@@ -82,6 +85,29 @@ async function baslat() {
     if (!url.startsWith("app://")) e.preventDefault();
   });
   await pencere.loadURL("app://basin/index.html");
+  guncellemeleriDenetle();
+}
+
+// Otomatik güncelleme: açılışta GitHub'daki indirme sayfasına bakar, yeni sürümü arka planda
+// indirir ve yeniden başlatmayı sorar. Yalnızca kurulum (Kurulum-….exe) sürümünde çalışır.
+function guncellemeleriDenetle() {
+  if (!app.isPackaged || process.env.PORTABLE_EXECUTABLE_DIR) return;
+  const { autoUpdater } = updater;
+  autoUpdater.autoInstallOnAppQuit = true;
+  autoUpdater.on("error", (err) => console.error("[güncelleme]", err?.message || err));
+  autoUpdater.on("update-downloaded", async (bilgi) => {
+    const { response } = await dialog.showMessageBox(pencere, {
+      type: "info",
+      title: "Güncelleme hazır",
+      message: `Basın Masası'nın yeni sürümü (${bilgi.version}) indirildi.`,
+      detail: "Şimdi yeniden başlatılsın mı? Daha sonra derseniz program kapatılınca güncellenir.",
+      buttons: ["Yeniden başlat", "Daha sonra"],
+      defaultId: 0,
+      cancelId: 1,
+    });
+    if (response === 0) autoUpdater.quitAndInstall();
+  });
+  autoUpdater.checkForUpdates().catch((err) => console.error("[güncelleme]", err?.message || err));
 }
 
 app.on("second-instance", () => {
