@@ -19,7 +19,7 @@
     <button class="sekme aktif" data-sayfa="yaz">Haber Yaz</button>
     <button class="sekme" data-sayfa="arsiv">Arşiv</button>
     <button class="sekme" data-sayfa="ornekler">Üslup Örnekleri</button>
-    <button class="sekme" data-sayfa="ayarlar">Kurum Ayarları</button>
+    <button class="sekme" data-sayfa="ayarlar">Ayarlar</button>
   </nav>
 
   <main>
@@ -28,6 +28,10 @@
       <div class="izgara">
         <form class="kart" id="haberFormu">
           <h2>Haber Bilgileri</h2>
+          <div class="uyari" id="demoUyari" hidden>
+            Yapay zekâ bağlı değil; metinler örnek olarak üretilir.
+            <button type="button" class="ikincil kucuk" id="ayarlaraGit">Anahtar gir</button>
+          </div>
 
           <label>Haber türü
             <select id="tur"></select>
@@ -147,6 +151,33 @@
 
     <!-- KURUM AYARLARI -->
     <section class="sayfa" id="sayfa-ayarlar">
+      <form class="kart dar" id="yzFormu">
+        <h2>Yapay Zekâ</h2>
+        <label>Kullanılacak yapay zekâ
+          <select id="yzSaglayici">
+            <option value="claude">Claude (Anthropic)</option>
+            <option value="gemini">Gemini (Google)</option>
+            <option value="demo">Demo — yapay zekâ olmadan dene</option>
+          </select>
+        </label>
+        <div id="yzClaudeAlan">
+          <label>Claude API anahtarı <span class="ops" id="yzClaudeDurum"></span>
+            <input id="yzClaudeAnahtar" type="password" autocomplete="off" placeholder="sk-ant-...">
+          </label>
+          <p class="bilgi">Anahtar almak için: <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener">console.anthropic.com</a></p>
+          <label>Model <input id="yzClaudeModel" type="text"></label>
+        </div>
+        <div id="yzGeminiAlan">
+          <label>Gemini API anahtarı <span class="ops" id="yzGeminiDurum"></span>
+            <input id="yzGeminiAnahtar" type="password" autocomplete="off" placeholder="AIza...">
+          </label>
+          <p class="bilgi">Anahtar almak için: <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">aistudio.google.com/apikey</a></p>
+          <label>Model <input id="yzGeminiModel" type="text"></label>
+        </div>
+        <p class="bilgi">Anahtar yalnızca bu bilgisayarda, Windows kullanıcı hesabınıza özel şifrelenerek saklanır.</p>
+        <button type="submit" class="birincil">Kaydet</button>
+      </form>
+
       <form class="kart dar" id="ayarFormu">
         <h2>Kurum Ayarları</h2>
         <div class="ikili">

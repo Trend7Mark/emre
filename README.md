@@ -10,7 +10,7 @@ Personel olayı birkaç cümleyle not olarak yazar. Yapay zekâ bu notlardan kur
 
 ## Üslup nasıl belirleniyor?
 
-1. **Kurum Ayarları:** müdürün metindeki anılışı ("İl Millî Eğitim Müdürümüz …"), protokol listesi (anılış biçimi ve sırasıyla), kurumun sabit yazım kuralları, sosyal medya etiket ve hesapları.
+1. **Ayarlar → Kurum Ayarları:** müdürün metindeki anılışı ("İl Millî Eğitim Müdürümüz …"), protokol listesi (anılış biçimi ve sırasıyla), kurumun sabit yazım kuralları, sosyal medya etiket ve hesapları.
 2. **Üslup Örnekleri:** kurumun daha önce yayımladığı haberler. Yapay zekâ yeni haberleri bu örneklerin yapısıyla yazar (en yeni 8 örnek kullanılır). İlk örnek olarak Gümüşhane İl MEM'in [mesleki eğitim ziyareti haberi](https://gumushane.meb.gov.tr/www/valimiz-sayin-cevdet-atay-quotmesleki-egitim-ulkemizin-kalkinmasinda-ve-nitelikli-is-gucunun-yetistirilmesinde-lokomotif-gucturquot/icerik/2575/tr) yüklüdür.
 3. **Haber türü şablonları:** ziyaret, toplantı, tören, başarı, proje, hizmet içi eğitim, protokol, duyuru ve genel haber.
 
@@ -18,51 +18,57 @@ Beğenilen bir haber, arşivden **"Üslup örneği yap"** düğmesiyle örnekler
 
 **Doğruluk kuralı:** Yapay zekâ, notlarda veya protokol listesinde olmayan kişi, sayı, tarih, kurum ya da proje adı eklemez. Bağlam ve kurumsal değerlendirme cümleleri ekleyebilir. Yetkili sözlerini notlardaki mesajdan genişletir ve her birini onay için kontrol listesine koyar.
 
-## Kurulum (yerel bilgisayar)
+## Kurulum (Windows programı)
 
-Gereken: [Node.js](https://nodejs.org) 20 veya üzeri (LTS sürümü).
+1. **[İndirme sayfasından](https://github.com/Trend7Mark/emre/releases/latest)** birini indirin:
+   - `BasinMasasi-Kurulum-….exe`: bilgisayara kurar ve masaüstüne kısayol ekler (önerilen)
+   - `BasinMasasi-Tasinabilir-….exe`: kurulum gerektirmez, çift tıklayınca açılır
+2. Windows "bilinmeyen yayımcı" uyarısı verirse **Ek bilgi → Yine de çalıştır**'a tıklayın. Program dijital olarak imzalı olmadığı için bu uyarı çıkar.
+3. Program açılınca **Ayarlar → Yapay Zekâ** bölümünden yapay zekâyı seçip API anahtarını girin.
 
-**Windows:** Klasördeki `baslat.bat` dosyasına çift tıklayın. İlk çalıştırmada paketler kurulur ve `.env` dosyası açılır; API anahtarınızı yazıp kaydedin.
-
-**Elle kurulum:**
-
-```bash
-npm install
-cp .env.example .env    # API anahtarınızı .env dosyasına yazın
-npm start
-```
-
-Windows'ta tarayıcı kendiliğinden açılır; açılmazsa http://127.0.0.1:3000 adresine gidin. Siyah pencere açık kaldığı sürece uygulama çalışır.
+Program tarayıcı ya da ağ portu kullanmaz; kendi penceresinde çalışır. Bu yüzden kurum bilgisayarlarındaki proxy ayarlarından etkilenmez. İnternet yalnızca yapay zekâya istek gönderirken kullanılır.
 
 ### Yapay zekâ sağlayıcısı
 
-`.env` dosyasındaki `AI_PROVIDER` değeri:
-
-| Değer | Açıklama |
+| Seçenek | Açıklama |
 |---|---|
-| `claude` | Anthropic Claude. `ANTHROPIC_API_KEY` gerekir. Varsayılan model: `claude-opus-5-5` |
-| `gemini` | Google Gemini. `GEMINI_API_KEY` gerekir (Google AI Studio'dan alınır) |
-| `demo` | Anahtar gerektirmez; sahte metin üretir. Yalnızca arayüzü denemek içindir |
+| Claude (Anthropic) | Anahtar: [console.anthropic.com](https://console.anthropic.com/settings/keys). Varsayılan model: `claude-opus-5-5` |
+| Gemini (Google) | Anahtar: [aistudio.google.com/apikey](https://aistudio.google.com/apikey). Varsayılan model: `gemini-2.5-pro` |
+| Demo | Anahtar gerektirmez; sahte metin üretir. Yalnızca programı denemek içindir |
 
-Anahtar tarayıcıya hiç gönderilmez; yalnızca yerel sunucuda kullanılır. Sunucu yalnızca `127.0.0.1` üzerinden dinler, yani ağdaki başka bilgisayarlardan erişilemez.
+API anahtarı yalnızca bu bilgisayarda, Windows kullanıcı hesabına özel şifrelenerek saklanır.
 
 ## Veriler
 
-Kurum ayarları, üslup örnekleri ve haber arşivi `data/` klasöründe JSON dosyaları olarak tutulur. Yedek almak için bu klasörü kopyalamak yeterlidir. Klasör git'e eklenmez.
+Kurum ayarları, üslup örnekleri ve haber arşivi `%APPDATA%\Basın Masası\veri` klasöründe JSON dosyaları olarak tutulur. Yedek almak için bu klasörü kopyalamak yeterlidir.
 
 > **KVKK:** Notlar ve üslup örnekleri, seçilen yapay zekâ sağlayıcısına (yurt dışındaki sunuculara) gönderilir. Öğrenci adı gibi kişisel verileri yalnızca gerekli olduğunda ve veli izni varsa yazın.
+
+## Geliştirme
+
+```bash
+npm install
+npm start          # masaüstü programını geliştirme kipinde açar
+npm test
+npm run web        # aynı uygulamayı tarayıcıdan kullanmak için (http://127.0.0.1:3000)
+```
+
+Windows kurulum dosyaları, her gönderimde GitHub Actions'ta (`.github/workflows/windows-program.yml`) derlenip indirme sayfasına eklenir. Windows bilgisayarda elle derlemek için: `npm run dist:win`.
 
 ## Proje yapısı
 
 ```
+electron/main.js    Masaüstü programı (pencere, app:// protokolü, anahtar şifreleme)
 server/
-  index.js          Express sunucusu ve API uçları
+  api.js            Tüm işlevler (masaüstü ve web sürümü ortak kullanır)
+  anahtarlar.js     API anahtarlarının saklanması
+  index.js          Web kipi sunucusu (ileride kurum sunucusu)
   prompt.js         Yapay zekâ talimatı ve çıktı şeması
   templates.js      Haber türü ve ton şablonları
   defaults.js       Varsayılan kurum ayarları ve ilk üslup örneği
   store.js          Dosya tabanlı depolama (ileride veritabanı)
   providers/        claude.js, gemini.js, demo.js
-public/             Arayüz (HTML/CSS/JS, derleme gerektirmez)
+public/             Arayüz (HTML/CSS/JS)
 test/               npm test
 ```
 
@@ -72,4 +78,5 @@ test/               npm test
 - [ ] Belge yükleme (resmî yazı, Word, PDF) ve görselden bilgi çıkarma
 - [ ] Kullanıcı girişi ve roller (yazar / onaylayıcı)
 - [ ] Çok kurumlu yapı: il hesabının ilçe haberlerini görüp onaylaması
-- [ ] Sunucuya taşıma (Docker), veritabanı, kullanım sınırları
+- [x] Windows masaüstü programı
+- [ ] Web sürümü: sunucuya taşıma, veritabanı, kullanım sınırları

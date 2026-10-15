@@ -8,7 +8,7 @@ export async function uret({ girdi }) {
     haber: {
       baslik: `[DEMO] ${ilkCumle.slice(0, 70)}`,
       alternatifBasliklar: ["[DEMO] Alternatif başlık 1", "[DEMO] Alternatif başlık 2", "[DEMO] Alternatif başlık 3"],
-      spot: `[DEMO] Bu metin yapay zekâ bağlanmadan üretilmiştir. Gerçek haber için .env dosyasında AI_PROVIDER ayarını yapın.`,
+      spot: `[DEMO] Bu metin yapay zekâ bağlanmadan üretilmiştir. Gerçek haber için Ayarlar > Yapay Zekâ bölümünden API anahtarınızı girin.`,
       govde: [
         { tur: "paragraf", metin: notlar },
         { tur: "ara_baslik", metin: "\"[DEMO] Yetkili sözünden ara başlık\"" },

@@ -126,3 +126,8 @@ button { font: inherit; cursor: pointer; border-radius: 8px; padding: 9px 16px; 
 .ornekler p { margin: 6px 0 0; font-size: 13px; color: var(--soluk); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 
 .bildirim { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--yazi); color: #fff; padding: 10px 18px; border-radius: 8px; font-size: 14px; box-shadow: 0 4px 14px rgba(0,0,0,.2); }
+
+.uyari { margin: -4px 0 14px; padding: 10px 12px; background: var(--sari); border: 1px solid #fcd34d; border-radius: 8px; font-size: 13px; color: #92400e; }
+.uyari button { margin-left: 6px; }
+#yzFormu { margin-bottom: 20px; }
+a { color: var(--ana); }

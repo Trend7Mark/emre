@@ -6,10 +6,11 @@ import path from "node:path";
 import crypto from "node:crypto";
 import { VARSAYILAN_AYARLAR, VARSAYILAN_ORNEKLER } from "./defaults.js";
 
-const DATA_DIR = path.resolve(process.env.DATA_DIR || "./data");
+// Masaüstü programı DATA_DIR'i başlangıçta kullanıcı klasörüne ayarlar; bu yüzden her seferinde okunur.
+export const veriKlasoru = () => path.resolve(process.env.DATA_DIR || "./data");
 
 function dosya(ad) {
-  return path.join(DATA_DIR, `${ad}.json`);
+  return path.join(veriKlasoru(), `${ad}.json`);
 }
 
 function oku(ad, varsayilan) {
@@ -22,7 +23,7 @@ function oku(ad, varsayilan) {
 }
 
 function yaz(ad, veri) {
-  fs.mkdirSync(DATA_DIR, { recursive: true });
+  fs.mkdirSync(veriKlasoru(), { recursive: true });
   const hedef = dosya(ad);
   const gecici = `${hedef}.${process.pid}.tmp`;
   fs.writeFileSync(gecici, JSON.stringify(veri, null, 2), "utf8");
@@ -31,6 +32,8 @@ function yaz(ad, veri) {
 
 export const yeniId = () => crypto.randomUUID();
 const simdi = () => new Date().toISOString();
+
+export { oku, yaz };
 
 // ---- Kurum ayarları ----
 export function ayarlariGetir() {
@@ -41,6 +44,16 @@ export function ayarlariKaydet(ayarlar) {
   const kayit = { ...ayarlariGetir(), ...ayarlar, guncelleme: simdi() };
   yaz("ayarlar", kayit);
   return kayit;
+}
+
+// ---- Yapay zekâ ayarları (anahtarlar burada değil, anahtarlar.js'de tutulur) ----
+export function yzAyarlariGetir() {
+  return oku("yapay-zeka", { saglayici: "claude", modeller: {} });
+}
+
+export function yzAyarlariKaydet(ayar) {
+  yaz("yapay-zeka", ayar);
+  return ayar;
 }
 
 // ---- Üslup örnekleri ----

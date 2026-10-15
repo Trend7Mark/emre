@@ -58,11 +58,20 @@ async function baslat() {
   $("ton").replaceChildren(...durum.tonlar.map((t) => new Option(t.ad, t.id)));
   turIpucuGoster();
 
-  const rozet = $("saglayici");
-  rozet.textContent = durum.saglayici === "demo" ? "Demo modu (yapay zekâ bağlı değil)" : `Yapay zekâ: ${durum.saglayici}`;
-  rozet.classList.toggle("demo", durum.saglayici === "demo");
+  yzRozeti(durum.yz);
   $("kurumAdi").textContent = ayarlar.kurumAdi;
 }
+
+const YZ_ADI = { claude: "Claude", gemini: "Gemini", demo: "Demo" };
+
+function yzRozeti(yz) {
+  const rozet = $("saglayici");
+  const demo = yz.aktif === "demo";
+  rozet.textContent = demo ? "Demo modu (yapay zekâ bağlı değil)" : `Yapay zekâ: ${YZ_ADI[yz.aktif]}`;
+  rozet.classList.toggle("demo", demo);
+  $("demoUyari").hidden = !demo;
+}
+$("ayarlaraGit").addEventListener("click", () => sayfaAc("ayarlar"));
 
 function turIpucuGoster() {
   const t = turler.find((x) => x.id === $("tur").value);
@@ -336,8 +345,47 @@ $("ornekFormu").addEventListener("submit", async (e) => {
   }
 });
 
+// ---------- Yapay zekâ ayarları ----------
+function yzAlanlari() {
+  const s = $("yzSaglayici").value;
+  $("yzClaudeAlan").hidden = s !== "claude";
+  $("yzGeminiAlan").hidden = s !== "gemini";
+}
+$("yzSaglayici").addEventListener("change", yzAlanlari);
+
+function yzFormuDoldur(yz) {
+  $("yzSaglayici").value = yz.secili;
+  $("yzClaudeDurum").textContent = yz.anahtarVar.claude ? "(kayıtlı — değiştirmek için yenisini yazın)" : "(girilmedi)";
+  $("yzGeminiDurum").textContent = yz.anahtarVar.gemini ? "(kayıtlı — değiştirmek için yenisini yazın)" : "(girilmedi)";
+  $("yzClaudeAnahtar").value = "";
+  $("yzGeminiAnahtar").value = "";
+  $("yzClaudeModel").value = yz.modeller.claude;
+  $("yzGeminiModel").value = yz.modeller.gemini;
+  yzAlanlari();
+  yzRozeti(yz);
+}
+
+$("yzFormu").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  try {
+    const yz = await api("/yz", {
+      method: "PUT",
+      body: {
+        saglayici: $("yzSaglayici").value,
+        anahtarlar: { claude: $("yzClaudeAnahtar").value, gemini: $("yzGeminiAnahtar").value },
+        modeller: { claude: $("yzClaudeModel").value, gemini: $("yzGeminiModel").value },
+      },
+    });
+    yzFormuDoldur(yz);
+    bildir(yz.eksikAnahtar ? "Kaydedildi — ancak seçilen yapay zekâ için anahtar girilmedi" : "Yapay zekâ ayarları kaydedildi");
+  } catch (err) {
+    bildir(err.message);
+  }
+});
+
 // ---------- Kurum ayarları ----------
 async function ayarlariYukle() {
+  yzFormuDoldur(await api("/yz"));
   const a = await api("/ayarlar");
   $("aDuzey").value = a.duzey;
   $("aIl").value = a.il;

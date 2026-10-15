@@ -2,11 +2,12 @@
   "name": "basin-masasi",
   "version": "0.1.0",
   "description": "İl/İlçe Millî Eğitim Müdürlükleri için yapay zekâ destekli haber metni yazım uygulaması",
-  "main": "server/index.js",
+  "main": "electron/main.js",
   "scripts": {
-    "start": "node server/index.js",
-    "dev": "node --watch server/index.js",
-    "test": "node --test"
+    "start": "electron .",
+    "web": "node server/index.js",
+    "test": "node --test",
+    "dist:win": "electron-builder --win --publish never"
   },
   "repository": {
     "type": "git",
@@ -27,5 +28,53 @@
   "type": "module",
   "engines": {
     "node": ">=20"
+  },
+  "devDependencies": {
+    "electron": "44.7.2",
+    "electron-builder": "26.15.3"
+  },
+  "productName": "Basın Masası",
+  "build": {
+    "appId": "tr.gov.meb.basinmasasi",
+    "productName": "Basın Masası",
+    "artifactName": "BasinMasasi-${version}-${arch}-${name}.${ext}",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "electron/**",
+      "server/**",
+      "public/**",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "shortcutName": "Basın Masası",
+      "artifactName": "BasinMasasi-Kurulum-${version}.${ext}"
+    },
+    "portable": {
+      "artifactName": "BasinMasasi-Tasinabilir-${version}.${ext}"
+    }
   }
 }

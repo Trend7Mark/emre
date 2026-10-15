@@ -1,11 +1,11 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { HABER_SEMASI } from "../prompt.js";
 
-let client;
+const istemciler = new Map();
 
-export async function uret({ sistem, kullanici }) {
-  client ??= new Anthropic(); // ANTHROPIC_API_KEY ortam değişkeninden okunur
-  const model = process.env.CLAUDE_MODEL || "claude-opus-5-5";
+export async function uret({ sistem, kullanici, anahtar, model }) {
+  if (!istemciler.has(anahtar)) istemciler.set(anahtar, new Anthropic({ apiKey: anahtar }));
+  const client = istemciler.get(anahtar);
 
   let yanit;
   try {
@@ -25,7 +25,7 @@ export async function uret({ sistem, kullanici }) {
     });
   } catch (err) {
     if (err instanceof Anthropic.AuthenticationError) {
-      throw new Error("Claude API anahtarı geçersiz. .env dosyasındaki ANTHROPIC_API_KEY değerini kontrol edin.");
+      throw new Error("Claude API anahtarı geçersiz. Ayarlar > Yapay Zekâ bölümünden anahtarı kontrol edin.");
     }
     if (err instanceof Anthropic.RateLimitError) {
       throw new Error("Claude API kullanım sınırına ulaşıldı. Biraz bekleyip tekrar deneyin.");
