@@ -32,7 +32,7 @@ cp .env.example .env    # API anahtarınızı .env dosyasına yazın
 npm start
 ```
 
-Ardından tarayıcıda http://localhost:3000 adresini açın.
+Windows'ta tarayıcı kendiliğinden açılır; açılmazsa http://127.0.0.1:3000 adresine gidin. Siyah pencere açık kaldığı sürece uygulama çalışır.
 
 ### Yapay zekâ sağlayıcısı
 

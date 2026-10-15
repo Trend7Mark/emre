@@ -1,6 +1,7 @@
 import "dotenv/config";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { exec } from "node:child_process";
 import express from "express";
 import * as store from "./store.js";
 import { HABER_TURLERI, HABER_TONLARI } from "./templates.js";
@@ -145,7 +146,19 @@ app.post("/api/haberler/:id/ornek-yap", (req, res) => {
 });
 
 const PORT = Number(process.env.PORT) || 3000;
+const ADRES = `http://127.0.0.1:${PORT}`;
 // Yalnızca bu bilgisayardan erişilebilir (yerel kullanım).
-app.listen(PORT, "127.0.0.1", () => {
-  console.log(`Basın Masası çalışıyor: http://localhost:${PORT}  (yapay zekâ: ${saglayiciAdi()})`);
+const sunucu = app.listen(PORT, "127.0.0.1", () => {
+  console.log(`\nBasın Masası çalışıyor: ${ADRES}  (yapay zekâ: ${saglayiciAdi()})`);
+  console.log("Kapatmak için bu pencereyi kapatın.\n");
+  if (process.platform === "win32" && process.env.TARAYICI_AC !== "0") exec(`start "" ${ADRES}`);
+});
+sunucu.on("error", (err) => {
+  if (err.code === "EADDRINUSE") {
+    console.error(`\nHATA: ${PORT} numaralı port kullanımda. Uygulama zaten açık olabilir; ${ADRES} adresini deneyin`);
+    console.error("ya da .env dosyasında PORT=3001 gibi başka bir değer verin.\n");
+  } else {
+    console.error("\nSunucu başlatılamadı:", err.message);
+  }
+  process.exit(1);
 });
