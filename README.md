@@ -4,7 +4,8 @@
 
 Personel olayı birkaç cümleyle not olarak yazar. Yapay zekâ bu notlardan kurumun yerleşik üslubuyla şunları hazırlar:
 
-- **Web haberi:** başlık, 3 alternatif başlık, spot, ara başlıklı gövde, görsel altı yazısı, anahtar kelimeler
+- **Web haberi:** 5 başlık seçeneği (beğenilmezse "Yeni başlıklar üret"), spot, ara başlıklı gövde, görsel altı yazısı, anahtar kelimeler
+- **Editör önerileri:** metne eklenmesi, çıkarılması ya da düzeltilmesi önerilenler; çıkarma ve düzeltmeler tek tıkla uygulanır, düzenlenen metin "Metni yeniden değerlendir" ile tekrar incelenir
 - **Sosyal medya metinleri:** X / NSosyal (280 karakter sayaçlı), Instagram, Facebook
 - **Kontrol listesi:** metindeki isim, unvan, sayı ve tarihler ile yetkililerin ağzından yazılan alıntılar, yayından önce doğrulansın diye işaretlenir
 
@@ -35,6 +36,8 @@ Program tarayıcı ya da ağ portu kullanmaz; kendi penceresinde çalışır. Bu
 | Claude (Anthropic) | Anahtar: [console.anthropic.com](https://console.anthropic.com/settings/keys). Varsayılan model: `claude-opus-5-5` |
 | Gemini (Google) | Anahtar: [aistudio.google.com/apikey](https://aistudio.google.com/apikey). Varsayılan model: `gemini-2.5-pro` |
 | Demo | Anahtar gerektirmez; sahte metin üretir. Yalnızca programı denemek içindir |
+
+**Bağlantıyı test et** düğmesi anahtarı ve ağ bağlantısını sınar; sorun varsa nedenini yazar. Program yapay zekâya Windows'un ağ ayarlarıyla (proxy ve kurum sertifikaları dahil) bağlanır.
 
 İki anahtar da girilebilir. **En son girilen anahtar varsayılan olur**; **Ayarlar → Yapay Zekâ** bölümünden "Bunu kullan" ile diğerine geçilebilir ya da anahtar silinebilir. Anahtarlar yalnızca bu bilgisayarda, Windows kullanıcı hesabına özel şifrelenerek saklanır.
 

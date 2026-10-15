@@ -72,13 +72,20 @@
           <div id="ciktiIcerik" hidden>
             <div class="alt-sekmeler">
               <button class="alt-sekme aktif" data-panel="web">Web Haberi</button>
+              <button class="alt-sekme" data-panel="oneriler">Editör Önerileri <span class="sayac" id="oneriSayac"></span></button>
               <button class="alt-sekme" data-panel="sosyal">Sosyal Medya</button>
               <button class="alt-sekme" data-panel="kontrol">Kontrol Listesi <span class="sayac" id="kontrolSayac"></span></button>
             </div>
 
             <div class="panel aktif" id="panel-web">
-              <label>Başlık <input id="baslik" type="text"></label>
-              <div class="alternatifler" id="alternatifler"></div>
+              <div class="baslik-secim">
+                <div class="baslik-ust">
+                  <span class="alan-adi">Başlık seçenekleri</span>
+                  <button type="button" class="ikincil kucuk" id="baslikYenileBtn">↻ Yeni başlıklar üret</button>
+                </div>
+                <div class="basliklar" id="basliklar" role="radiogroup" aria-label="Başlık seçenekleri"></div>
+              </div>
+              <label>Seçilen başlık <span class="ops">(düzenleyebilirsiniz)</span> <input id="baslik" type="text"></label>
               <label>Spot <textarea id="spot" rows="3"></textarea></label>
               <div id="govde"></div>
               <label>Görsel altı yazısı <input id="gorselAlti" type="text"></label>
@@ -86,6 +93,14 @@
               <div class="satir">
                 <button type="button" class="ikincil" data-kopyala="web">Web metnini kopyala</button>
               </div>
+            </div>
+
+            <div class="panel" id="panel-oneriler">
+              <div class="baslik-ust">
+                <p class="bilgi">Metni güçlendirmek için eklenmesi, çıkarılması ya da düzeltilmesi önerilenler.</p>
+                <button type="button" class="ikincil kucuk" id="degerlendirBtn">↻ Metni yeniden değerlendir</button>
+              </div>
+              <ul class="oneriler" id="oneriListesi"></ul>
             </div>
 
             <div class="panel" id="panel-sosyal">
@@ -159,7 +174,11 @@
             <input id="yzAnahtar" type="password" autocomplete="off" placeholder="Claude (sk-ant-…) ya da Gemini (AIza…) anahtarını yapıştırın">
           </label>
           <p class="bilgi">Anahtarın Claude'a mı Gemini'ye mi ait olduğu otomatik anlaşılır; en son girilen anahtar varsayılan olur. Anahtar yalnızca bu bilgisayarda, Windows kullanıcı hesabınıza özel şifrelenerek saklanır.</p>
-          <button type="submit" class="birincil">Anahtarı Kaydet</button>
+          <div class="satir">
+            <button type="submit" class="birincil">Anahtarı Kaydet</button>
+            <button type="button" class="ikincil" id="yzTestBtn">Bağlantıyı test et</button>
+          </div>
+          <p class="test-sonuc" id="yzTestSonuc" hidden></p>
         </form>
         <details class="gelismis">
           <summary>Gelişmiş: model adları</summary>
@@ -182,7 +201,7 @@
           <label>İl <input id="aIl" type="text"></label>
         </div>
         <label id="aIlceAlan">İlçe <input id="aIlce" type="text"></label>
-        <label>Kurum adı (tam) <input id="aKurumAdi" type="text"></label>
+        <label>Kurum adı (tam) <span class="ops">(il/ilçe değişince otomatik güncellenir)</span> <input id="aKurumAdi" type="text"></label>
         <label>Müdürün metindeki anılışı <input id="aMudur" type="text" placeholder="İl Millî Eğitim Müdürümüz Ad Soyad"></label>
         <label>Protokol listesi <span class="ops">(her satıra bir kişi, metinde anılış biçimiyle, protokol sırasıyla)</span>
           <textarea id="aProtokol" rows="6" placeholder="Valimiz Sayın Ad Soyad&#10;İl Millî Eğitim Müdürümüz Ad Soyad"></textarea>

@@ -2,7 +2,15 @@
 // programından (Electron) aynı şekilde çağrılır. Böylece iki sürüm tek kod tabanını paylaşır.
 import * as store from "./store.js";
 import { HABER_TURLERI, HABER_TONLARI } from "./templates.js";
-import { sistemTalimati, kullaniciMesaji } from "./prompt.js";
+import {
+  sistemTalimati,
+  kullaniciMesaji,
+  baslikMesaji,
+  degerlendirmeMesaji,
+  HABER_SEMASI,
+  BASLIK_SEMASI,
+  DEGERLENDIRME_SEMASI,
+} from "./prompt.js";
 import { haberDuzMetin } from "./format.js";
 
 const SAGLAYICILAR = {
@@ -38,8 +46,11 @@ class ApiHatasi extends Error {
 /**
  * @param {object} anahtarlar  API anahtarlarının saklandığı yer.
  *   getir(saglayici) -> string | ""   kaydet(saglayici, anahtar) -> void
+ * @param {object} [secenekler]
+ * @param {typeof fetch} [secenekler.fetch]  Yapay zekâ istekleri için kullanılacak fetch
+ *   (masaüstünde Windows ağ ayarlarını kullanan Electron net.fetch).
  */
-export function apiOlustur(anahtarlar) {
+export function apiOlustur(anahtarlar, { fetch } = {}) {
   // Kullanılacak sağlayıcı: varsayılan olan; onun anahtarı yoksa anahtarı olan diğeri; hiçbiri yoksa demo.
   function aktifSaglayici() {
     const yz = store.yzAyarlariGetir();
@@ -61,6 +72,35 @@ export function apiOlustur(anahtarlar) {
       modeller: { ...VARSAYILAN_MODELLER, ...yz.modeller },
     };
   }
+
+  // Seçili yapay zekâya şemalı istek gönderir.
+  async function yzCagir({ amac, kullanici, sema, efor, girdi }) {
+    const aktif = aktifSaglayici();
+    try {
+      const saglayici = await SAGLAYICILAR[aktif.ad]();
+      const sonuc = await saglayici.cagir({
+        amac,
+        girdi,
+        sistem: sistemTalimati(store.ayarlariGetir(), store.ornekleriGetir()),
+        kullanici,
+        sema,
+        efor,
+        anahtar: aktif.anahtar,
+        model: aktif.model,
+        fetch,
+      });
+      return { ...sonuc, saglayici: aktif.ad };
+    } catch (err) {
+      console.error(`[${amac}]`, err);
+      throw new ApiHatasi(502, err.message || "Yapay zekâdan yanıt alınamadı.");
+    }
+  }
+
+  const haberGovdesi = (b) => {
+    const h = b?.haber;
+    if (!h || typeof h !== "object" || !h.baslik) throw new ApiHatasi(400, "Haber metni eksik.");
+    return h;
+  };
 
   function varsayilanYap(saglayici) {
     store.yzAyarlariKaydet({ ...store.yzAyarlariGetir(), saglayici });
@@ -92,6 +132,19 @@ export function apiOlustur(anahtarlar) {
       ([saglayici]) => {
         anahtarlar.kaydet(saglayici, "");
         return yzDurumu();
+      },
+    ],
+    [
+      "POST",
+      /^\/api\/yz\/test$/,
+      async () => {
+        const aktif = aktifSaglayici();
+        try {
+          const saglayici = await SAGLAYICILAR[aktif.ad]();
+          return { tamam: true, mesaj: await saglayici.sina({ anahtar: aktif.anahtar, model: aktif.model, fetch }) };
+        } catch (err) {
+          return { tamam: false, mesaj: err.message };
+        }
       },
     ],
     // Kayıtlı anahtarlar arasında varsayılanı değiştirme ve model adları.
@@ -170,29 +223,37 @@ export function apiOlustur(anahtarlar) {
         };
         if (girdi.notlar.length < 20) throw new ApiHatasi(400, "Lütfen haberle ilgili en az birkaç cümlelik not yazın.");
 
-        const aktif = aktifSaglayici();
-        let sonuc;
-        try {
-          const saglayici = await SAGLAYICILAR[aktif.ad]();
-          sonuc = await saglayici.uret({
-            sistem: sistemTalimati(store.ayarlariGetir(), store.ornekleriGetir()),
-            kullanici: kullaniciMesaji(girdi),
-            girdi,
-            anahtar: aktif.anahtar,
-            model: aktif.model,
-          });
-        } catch (err) {
-          console.error("[uret]", err);
-          throw new ApiHatasi(502, err.message || "Haber üretilemedi.");
-        }
+        const sonuc = await yzCagir({ amac: "haber", girdi, kullanici: kullaniciMesaji(girdi), sema: HABER_SEMASI, efor: "medium" });
         return store.haberKaydet({
           girdi,
-          haber: sonuc.haber,
-          saglayici: aktif.ad,
+          haber: sonuc.veri,
+          saglayici: sonuc.saglayici,
           model: sonuc.model,
           kullanim: sonuc.kullanim,
           durum: "taslak",
         });
+      },
+    ],
+
+    // Mevcut (düzenlenmiş olabilecek) haber için 5 yeni başlık.
+    [
+      "POST",
+      /^\/api\/basliklar$/,
+      async (_, b) => {
+        const haber = haberGovdesi(b);
+        const oncekiler = metinListesi(b.oncekiler).slice(0, 30);
+        const sonuc = await yzCagir({ amac: "basliklar", kullanici: baslikMesaji(haber, oncekiler), sema: BASLIK_SEMASI, efor: "low" });
+        return { basliklar: (sonuc.veri.basliklar || []).map((x) => String(x).trim()).filter(Boolean).slice(0, 5) };
+      },
+    ],
+    // Mevcut metni değerlendirip ekle/çıkar/düzelt önerileri verir.
+    [
+      "POST",
+      /^\/api\/degerlendir$/,
+      async (_, b) => {
+        const haber = haberGovdesi(b);
+        const sonuc = await yzCagir({ amac: "degerlendir", kullanici: degerlendirmeMesaji(haber), sema: DEGERLENDIRME_SEMASI, efor: "medium" });
+        return { editorNotlari: sonuc.veri.editorNotlari || [] };
       },
     ],
 

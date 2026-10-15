@@ -1,6 +1,40 @@
 // Modele gönderilen sistem talimatı, kullanıcı mesajı ve beklenen çıktı şeması.
 import { turBul, tonBul } from "./templates.js";
 
+// Editörün metne eklemesi, çıkarması ya da düzeltmesi önerilen kısımlar.
+const EDITOR_NOTLARI = {
+  type: "array",
+  description: "Metni iyileştirmek için editör önerileri",
+  items: {
+    type: "object",
+    additionalProperties: false,
+    required: ["tur", "ifade", "oneri", "gerekce"],
+    properties: {
+      tur: { type: "string", enum: ["ekle", "cikar", "duzelt"] },
+      ifade: {
+        type: "string",
+        description: "cikar/duzelt için metinde AYNEN geçen ifade (harfi harfine kopyala); ekle için boş",
+      },
+      oneri: { type: "string", description: "ekle: eklenecek bilgi/cümle; duzelt: ifadenin yerine yazılacak metin; cikar: boş" },
+      gerekce: { type: "string", description: "Kısa gerekçe" },
+    },
+  },
+};
+
+export const BASLIK_SEMASI = {
+  type: "object",
+  additionalProperties: false,
+  required: ["basliklar"],
+  properties: { basliklar: { type: "array", items: { type: "string" }, description: "Tam 5 başlık" } },
+};
+
+export const DEGERLENDIRME_SEMASI = {
+  type: "object",
+  additionalProperties: false,
+  required: ["editorNotlari"],
+  properties: { editorNotlari: EDITOR_NOTLARI },
+};
+
 // Yapılandırılmış çıktı şeması (Claude ve Gemini ortak kullanır).
 export const HABER_SEMASI = {
   type: "object",
@@ -8,6 +42,7 @@ export const HABER_SEMASI = {
   required: [
     "baslik",
     "alternatifBasliklar",
+    "editorNotlari",
     "spot",
     "govde",
     "gorselAltiYazisi",
@@ -17,7 +52,11 @@ export const HABER_SEMASI = {
   ],
   properties: {
     baslik: { type: "string", description: "Web haberi başlığı" },
-    alternatifBasliklar: { type: "array", items: { type: "string" }, description: "3 alternatif başlık" },
+    alternatifBasliklar: {
+      type: "array",
+      items: { type: "string" },
+      description: "Ana başlıktan farklı yaklaşımlarla yazılmış tam 4 alternatif başlık",
+    },
     spot: { type: "string", description: "Başlığın altındaki özet (spot) paragrafı" },
     govde: {
       type: "array",
@@ -44,6 +83,7 @@ export const HABER_SEMASI = {
         facebook: { type: "string", description: "Facebook gönderi metni" },
       },
     },
+    editorNotlari: EDITOR_NOTLARI,
     kontrolListesi: {
       type: "array",
       description: "Yayın öncesi insan tarafından doğrulanması gereken ifadeler",
@@ -110,6 +150,14 @@ Bu metinler resmî kurum haberidir; yanlış bilgi kurumu zor durumda bırakır.
 - Notlar haber yazmak için yetersiz veya çelişkiliyse yine de en makul metni yaz ve eksikleri kontrolListesi'nde belirt.
 </dogruluk_kurallari>
 
+<editor_notlari_kurallari>
+editorNotlari, metni yayımlanmadan önce iyileştirmek için 3-8 somut öneridir:
+- ekle: Haberi güçlendirecek ama notlarda olmadığı için yazılamayan bilgiler (ör. okul müdürünün adı, katılımcı sayısı, etkinliğin tarihi). Uydurma bilgi önerme; personele "şunu eklerseniz haber güçlenir" de.
+- cikar: Gereksiz tekrarlar, abartılı/klişe ifadeler, haberle ilgisi zayıf cümleler, doğrulanamayan iddialar.
+- duzelt: Yazım/noktalama hataları, kurum üslubuna aykırı ifadeler, uzun ve anlaşılması güç cümleler.
+cikar ve duzelt önerilerinde "ifade" alanına metinde harfi harfine geçen bölümü yaz.
+</editor_notlari_kurallari>
+
 <sosyal_medya_kurallari>
 - x: En fazla 280 karakter (etiketler dahil). Haberin özü + 1-2 etiket. Kurum hesapları gerektiğinde etiketlenir.
 - instagram: 2-4 kısa paragraf, en fazla bir-iki ölçülü emoji; sonda etiket bloğu.
@@ -136,4 +184,26 @@ ${tarih ? `<tarih>${tarih}</tarih>\n` : ""}${yer ? `<yer>${yer}</yer>\n` : ""}
 <notlar>
 ${notlar}
 </notlar>`;
+}
+
+const haberMetni = (h) =>
+  [`BAŞLIK: ${h.baslik}`, `SPOT: ${h.spot}`, ...(h.govde || []).map((b) => (b.tur === "ara_baslik" ? `ARA BAŞLIK: ${b.metin}` : b.metin))]
+    .filter(Boolean)
+    .join("\n\n");
+
+export function baslikMesaji(haber, oncekiler = []) {
+  return `Aşağıdaki haber için kurum üslubuna uygun, birbirinden farklı yaklaşımlarla yazılmış TAM 5 yeni başlık öner.
+En az biri yetkilinin öne çıkan sözüyle («Anılış Biçimi: "Söz"»), en az biri olayı özetleyen etken çatılı başlık olsun. Başlıkta metinde olmayan bilgi kullanma.
+${oncekiler.length ? `\nŞu başlıkları TEKRARLAMA (kullanıcı beğenmedi):\n${oncekiler.map((b) => `- ${b}`).join("\n")}\n` : ""}
+<haber>
+${haberMetni(haber)}
+</haber>`;
+}
+
+export function degerlendirmeMesaji(haber) {
+  return `Aşağıdaki haber metni personel tarafından düzenlenmiş olabilir. Kurum üslubu ve doğruluk kuralları açısından değerlendir; editor_notlari_kurallari'na göre 3-8 öneri ver. Metin iyiyse az öneri ver, öneri uydurma.
+
+<haber>
+${haberMetni(haber)}
+</haber>`;
 }

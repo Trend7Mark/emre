@@ -38,7 +38,12 @@ async function baslat() {
         coz: (s) => safeStorage.decryptString(Buffer.from(s, "base64")),
       }
     : {};
-  const api = apiOlustur(anahtarDeposu({ ...sifreleme, gomulu }));
+  // Yapay zekâ istekleri Chromium ağ katmanından gider: Windows proxy ayarlarını ve
+  // kurumun SSL denetim sertifikalarını (Windows sertifika deposu) kullanır. Node'un kendi
+  // fetch'i bunları görmediği için kurum ağlarında bağlantı kurulamıyordu.
+  const sistemFetch = (girdi, ayar) => net.fetch(girdi instanceof URL ? girdi.toString() : girdi, ayar);
+  globalThis.fetch = sistemFetch; // Gemini kütüphanesi küresel fetch'i kullanır
+  const api = apiOlustur(anahtarDeposu({ ...sifreleme, gomulu }), { fetch: sistemFetch });
 
   protocol.handle("app", async (istek) => {
     const url = new URL(istek.url);

@@ -144,20 +144,9 @@ function haberiGoster(kayit) {
   aktifHaber = kayit;
   const h = kayit.haber;
   $("baslik").value = h.baslik;
-  $("alternatifler").replaceChildren(
-    ...(h.alternatifBasliklar || []).map((a) => {
-      const b = document.createElement("button");
-      b.type = "button";
-      b.textContent = a;
-      b.title = "Bu başlığı kullan";
-      b.onclick = () => {
-        const eski = $("baslik").value;
-        $("baslik").value = a;
-        b.textContent = eski;
-      };
-      return b;
-    }),
-  );
+  basliklar = [h.baslik, ...(h.alternatifBasliklar || [])].filter(Boolean).slice(0, 5);
+  gorulenBasliklar = new Set(basliklar);
+  basliklariGoster();
   $("spot").value = h.spot;
   $("govde").replaceChildren(...(h.govde || []).map(blokOlustur));
   $("gorselAlti").value = h.gorselAltiYazisi || "";
@@ -166,6 +155,9 @@ function haberiGoster(kayit) {
   $("sosyalInstagram").value = h.sosyal?.instagram || "";
   $("sosyalFacebook").value = h.sosyal?.facebook || "";
   xSay();
+
+  editorNotlari = h.editorNotlari || [];
+  onerileriGoster();
 
   const liste = h.kontrolListesi || [];
   $("kontrolSayac").textContent = liste.length || "";
@@ -194,12 +186,157 @@ function haberiGoster(kayit) {
   ciktiDurumu("icerik");
 }
 
+// ---------- Başlık seçenekleri ----------
+let basliklar = [];
+let gorulenBasliklar = new Set();
+
+function basliklariGoster() {
+  const secili = $("baslik").value.trim();
+  $("basliklar").replaceChildren(
+    ...basliklar.map((metin) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.setAttribute("role", "radio");
+      b.setAttribute("aria-checked", String(metin === secili));
+      b.textContent = metin;
+      b.onclick = () => {
+        $("baslik").value = metin;
+        basliklariGoster();
+      };
+      return b;
+    }),
+  );
+}
+$("baslik").addEventListener("input", basliklariGoster);
+
+async function dugmeyleBekle(dugme, metin, is) {
+  const eski = dugme.textContent;
+  dugme.disabled = true;
+  dugme.classList.add("yukleniyor-btn");
+  dugme.textContent = metin;
+  try {
+    await is();
+  } catch (err) {
+    bildir(err.message);
+  } finally {
+    dugme.disabled = false;
+    dugme.classList.remove("yukleniyor-btn");
+    dugme.textContent = eski;
+  }
+}
+
+$("baslikYenileBtn").addEventListener("click", () =>
+  dugmeyleBekle($("baslikYenileBtn"), "Başlıklar üretiliyor…", async () => {
+    const { basliklar: yeni } = await api("/basliklar", {
+      method: "POST",
+      body: { haber: formdanHaber(), oncekiler: [...gorulenBasliklar] },
+    });
+    if (!yeni.length) throw new Error("Yeni başlık üretilemedi, tekrar deneyin.");
+    yeni.forEach((b) => gorulenBasliklar.add(b));
+    basliklar = yeni;
+    $("baslik").value = yeni[0];
+    basliklariGoster();
+  }),
+);
+
+// ---------- Editör önerileri ----------
+let editorNotlari = [];
+const TUR_ADI = { ekle: "Ekle", cikar: "Çıkar", duzelt: "Düzelt" };
+
+// Önerideki ifadeyi başlık, spot ya da gövde alanlarında bulup değiştirir.
+function metindeDegistir(ifade, yeni) {
+  const alanlar = [$("baslik"), $("spot"), ...$("govde").querySelectorAll("textarea")];
+  for (const alan of alanlar) {
+    if (!ifade || !alan.value.includes(ifade)) continue;
+    alan.value = alan.value
+      .replace(ifade, yeni)
+      .replace(/ {2,}/g, " ")
+      .replace(/ +([.,;:!?])/g, "$1")
+      .trim();
+    return true;
+  }
+  return false;
+}
+
+function onerileriGoster() {
+  const bekleyen = editorNotlari.filter((n) => !n.uygulandi).length;
+  $("oneriSayac").textContent = bekleyen || "";
+  if (!editorNotlari.length) {
+    $("oneriListesi").innerHTML = '<li class="bos-satir">Öneri yok. Metni düzenledikten sonra "Metni yeniden değerlendir"e basabilirsiniz.</li>';
+    return;
+  }
+  $("oneriListesi").replaceChildren(
+    ...editorNotlari.map((n) => {
+      const li = document.createElement("li");
+      li.classList.toggle("uygulandi", Boolean(n.uygulandi));
+      const ust = document.createElement("div");
+      ust.className = "oneri-ust";
+      const tur = document.createElement("span");
+      tur.className = `tur ${n.tur}`;
+      tur.textContent = TUR_ADI[n.tur] || n.tur;
+      ust.append(tur);
+
+      const ifade = document.createElement("div");
+      ifade.className = "ifade";
+      if (n.tur === "ekle") {
+        ifade.textContent = n.oneri;
+      } else {
+        const del = document.createElement("del");
+        del.textContent = n.ifade;
+        ifade.append(del);
+        if (n.tur === "duzelt") {
+          const ins = document.createElement("ins");
+          ins.textContent = n.oneri;
+          ifade.append(" → ", ins);
+        }
+      }
+
+      if (n.tur !== "ekle" && !n.uygulandi) {
+        const uygula = document.createElement("button");
+        uygula.type = "button";
+        uygula.className = "ikincil kucuk";
+        uygula.textContent = n.tur === "cikar" ? "Metinden çıkar" : "Uygula";
+        uygula.onclick = () => {
+          if (!metindeDegistir(n.ifade, n.tur === "duzelt" ? n.oneri : "")) {
+            return bildir("Bu ifade metinde bulunamadı; metin değiştirilmiş olabilir.");
+          }
+          n.uygulandi = true;
+          onerileriGoster();
+          bildir("Öneri uygulandı — kaydetmeyi unutmayın");
+        };
+        ust.append(uygula);
+      } else if (n.uygulandi) {
+        const u = document.createElement("span");
+        u.className = "meta";
+        u.textContent = "uygulandı";
+        ust.append(u);
+      }
+
+      const gerekce = document.createElement("div");
+      gerekce.className = "gerekce";
+      gerekce.textContent = n.gerekce;
+      li.append(ust, ifade, gerekce);
+      return li;
+    }),
+  );
+}
+
+$("degerlendirBtn").addEventListener("click", () =>
+  dugmeyleBekle($("degerlendirBtn"), "Değerlendiriliyor…", async () => {
+    const sonuc = await api("/degerlendir", { method: "POST", body: { haber: formdanHaber() } });
+    editorNotlari = sonuc.editorNotlari;
+    onerileriGoster();
+    bildir(editorNotlari.length ? "Öneriler güncellendi" : "Metin için yeni öneri yok");
+  }),
+);
+
 function formdanHaber() {
   const h = aktifHaber.haber;
   return {
     ...h,
     baslik: $("baslik").value.trim(),
-    alternatifBasliklar: [...$("alternatifler").children].map((b) => b.textContent),
+    alternatifBasliklar: basliklar.filter((b) => b !== $("baslik").value.trim()),
+    editorNotlari,
     spot: $("spot").value.trim(),
     govde: [...$("govde").children].map((d) => ({ tur: d.dataset.tur, metin: d.querySelector("textarea").value.trim() })),
     gorselAltiYazisi: $("gorselAlti").value.trim(),
@@ -407,6 +544,16 @@ $("yzFormu").addEventListener("submit", async (e) => {
   }
 });
 
+$("yzTestBtn").addEventListener("click", () =>
+  dugmeyleBekle($("yzTestBtn"), "Sınanıyor…", async () => {
+    const el = $("yzTestSonuc");
+    const r = await api("/yz/test", { method: "POST" });
+    el.textContent = r.mesaj;
+    el.className = `test-sonuc ${r.tamam ? "tamam" : "hatali"}`;
+    el.hidden = false;
+  }),
+);
+
 $("modelFormu").addEventListener("submit", async (e) => {
   e.preventDefault();
   try {
@@ -452,23 +599,55 @@ async function ayarlariYukle() {
   $("aKurallar").value = (a.ekKurallar || []).join("\n");
   $("aEtiketler").value = (a.sosyal?.etiketler || []).join("\n");
   $("aHesaplar").value = (a.sosyal?.hesaplar || []).join("\n");
+  oncekiKurum = { kurumAdi: a.kurumAdi, duzey: a.duzey };
   ilceAlani();
 }
 
 function ilceAlani() {
   $("aIlceAlan").hidden = $("aDuzey").value !== "ilce";
 }
-$("aDuzey").addEventListener("change", ilceAlani);
 
-$("ayarFormu").addEventListener("submit", async (e) => {
-  e.preventDefault();
+const ilkHarfBuyuk = (s) => s.trim().replace(/^\p{L}/u, (h) => h.toLocaleUpperCase("tr-TR"));
+const duzeyOneki = (duzey) => (duzey === "ilce" ? "İlçe Millî Eğitim Müdür" : "İl Millî Eğitim Müdür");
+let oncekiKurum = null; // { kurumAdi, duzey }
+
+function kurumAdiHesapla() {
+  const duzey = $("aDuzey").value;
+  const yer = ilkHarfBuyuk(duzey === "ilce" ? $("aIlce").value : $("aIl").value);
+  return yer ? `${yer} ${duzeyOneki(duzey)}lüğü` : "";
+}
+
+// İl/ilçe/düzey değişince kurum adı, müdür anılışı ve kurallardaki eski ad güncellenir ve kaydedilir.
+function kurumBilgisiDegisti() {
+  ilceAlani();
+  const yeniAd = kurumAdiHesapla();
+  if (!yeniAd) return;
+  const eski = oncekiKurum;
+  const yeniDuzey = $("aDuzey").value;
+  if (eski?.kurumAdi && eski.kurumAdi !== yeniAd) {
+    $("aKurallar").value = $("aKurallar").value.split(eski.kurumAdi).join(yeniAd);
+  }
+  if (eski && eski.duzey !== yeniDuzey) {
+    for (const id of ["aMudur", "aProtokol"]) {
+      $(id).value = $(id).value.split(duzeyOneki(eski.duzey)).join(duzeyOneki(yeniDuzey));
+    }
+  }
+  $("aKurumAdi").value = yeniAd;
+  oncekiKurum = { kurumAdi: yeniAd, duzey: yeniDuzey };
+  $("kurumAdi").textContent = yeniAd;
+  clearTimeout(kurumBilgisiDegisti.zaman);
+  kurumBilgisiDegisti.zaman = setTimeout(() => ayarlariKaydet("Kurum adı güncellendi ve kaydedildi"), 700);
+}
+for (const id of ["aDuzey", "aIl", "aIlce"]) $(id).addEventListener("input", kurumBilgisiDegisti);
+
+async function ayarlariKaydet(mesaj = "Ayarlar kaydedildi") {
   try {
     const a = await api("/ayarlar", {
       method: "PUT",
       body: {
         duzey: $("aDuzey").value,
-        il: $("aIl").value,
-        ilce: $("aIlce").value,
+        il: ilkHarfBuyuk($("aIl").value),
+        ilce: ilkHarfBuyuk($("aIlce").value),
         kurumAdi: $("aKurumAdi").value,
         mudurAnilis: $("aMudur").value,
         protokol: satirlar($("aProtokol").value),
@@ -477,10 +656,15 @@ $("ayarFormu").addEventListener("submit", async (e) => {
       },
     });
     $("kurumAdi").textContent = a.kurumAdi;
-    bildir("Ayarlar kaydedildi");
+    bildir(mesaj);
   } catch (err) {
     bildir(err.message);
   }
+}
+
+$("ayarFormu").addEventListener("submit", (e) => {
+  e.preventDefault();
+  ayarlariKaydet();
 });
 
 baslat().catch((err) => bildir(err.message));

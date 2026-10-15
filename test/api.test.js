@@ -83,3 +83,16 @@ test("gömülü anahtar, kullanıcı anahtarı yoksa kullanılır ve kaynağı b
   assert.equal(d.kaynak("claude"), "kullanici");
   d.kaydet("claude", "");
 });
+
+test("başlık yenileme 5 başlık, değerlendirme öneri döndürür; bağlantı testi demo'da çalışır", async () => {
+  await api.isle("PUT", "/api/yz", { saglayici: "demo" });
+  const haber = { baslik: "B", spot: "S", govde: [{ tur: "paragraf", metin: "P" }] };
+  const b = await api.isle("POST", "/api/basliklar", { haber, oncekiler: ["B"] });
+  assert.equal(b.durum, 201);
+  assert.equal(b.govde.basliklar.length, 5);
+  const d = await api.isle("POST", "/api/degerlendir", { haber });
+  assert.ok(d.govde.editorNotlari.length > 0);
+  assert.ok(["ekle", "cikar", "duzelt"].includes(d.govde.editorNotlari[0].tur));
+  assert.equal((await api.isle("POST", "/api/basliklar", {})).durum, 400);
+  assert.equal((await api.isle("POST", "/api/yz/test")).govde.tamam, true);
+});

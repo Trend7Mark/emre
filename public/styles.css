@@ -143,3 +143,33 @@ a { color: var(--ana); }
 dialog { border: 0; border-radius: var(--yaricap); padding: 24px; width: min(520px, calc(100vw - 32px)); box-shadow: 0 10px 40px rgba(0,0,0,.25); }
 dialog::backdrop { background: rgba(15, 18, 25, .45); }
 dialog p { margin: 0 0 14px; }
+
+.baslik-secim { margin-bottom: 14px; }
+.baslik-ust { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
+.baslik-ust .bilgi { margin: 0; }
+.alan-adi { font-weight: 600; font-size: 13px; }
+.basliklar { display: grid; gap: 6px; }
+.basliklar button { text-align: left; background: #fff; border: 1px solid var(--cizgi); padding: 9px 12px; display: flex; gap: 10px; align-items: flex-start; }
+.basliklar button::before { content: ""; flex: none; width: 14px; height: 14px; margin-top: 3px; border-radius: 50%; border: 2px solid var(--cizgi); }
+.basliklar button:hover { border-color: var(--ana); }
+.basliklar button[aria-checked="true"] { border-color: var(--ana); background: var(--ana-acik); font-weight: 600; }
+.basliklar button[aria-checked="true"]::before { border-color: var(--ana); background: radial-gradient(var(--ana) 45%, transparent 50%); }
+button.yukleniyor-btn { opacity: .6; cursor: wait; }
+
+.oneriler { list-style: none; padding: 0; margin: 0; }
+.oneriler li { padding: 12px 0; border-bottom: 1px solid var(--cizgi); display: grid; gap: 4px; }
+.oneriler li.uygulandi { opacity: .5; }
+.oneriler .oneri-ust { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.oneriler .tur { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; padding: 2px 8px; border-radius: 99px; }
+.oneriler .tur.ekle { background: #d1fae5; color: var(--yesil); }
+.oneriler .tur.cikar { background: #fee2e2; color: #b91c1c; }
+.oneriler .tur.duzelt { background: #dbeafe; color: #1e40af; }
+.oneriler .ifade { font-size: 14px; }
+.oneriler .ifade del { color: #b91c1c; }
+.oneriler .ifade ins { color: var(--yesil); text-decoration: none; font-weight: 600; }
+.oneriler .gerekce { font-size: 13px; color: var(--soluk); }
+.oneriler .oneri-ust button { margin-left: auto; }
+.test-sonuc { margin: 12px 0 0; padding: 10px 12px; border-radius: 8px; font-size: 13.5px; }
+.test-sonuc.tamam { background: #ecfdf5; color: var(--yesil); }
+.test-sonuc.hatali { background: #fef2f2; color: #b91c1c; }
+.hata { background: #fef2f2; border: 1px solid #fecaca; border-radius: 8px; padding: 10px 12px; }
