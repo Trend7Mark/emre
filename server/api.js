@@ -11,6 +11,15 @@ const SAGLAYICILAR = {
   demo: () => import("./providers/demo.js"),
 };
 
+const SAGLAYICI_ADLARI = ["claude", "gemini"];
+
+/** Anahtarın hangi sağlayıcıya ait olduğunu biçiminden anlar. */
+export function anahtarTuru(anahtar) {
+  if (/^sk-ant-[\w-]{20,}$/.test(anahtar)) return "claude";
+  if (/^AIza[\w-]{20,}$/.test(anahtar)) return "gemini";
+  return null;
+}
+
 export const VARSAYILAN_MODELLER = {
   claude: "claude-opus-5-5",
   gemini: "gemini-2.5-pro",
@@ -31,26 +40,30 @@ class ApiHatasi extends Error {
  *   getir(saglayici) -> string | ""   kaydet(saglayici, anahtar) -> void
  */
 export function apiOlustur(anahtarlar) {
-  // Kullanılacak sağlayıcı: ayarlarda seçilen; anahtarı yoksa demo.
+  // Kullanılacak sağlayıcı: varsayılan olan; onun anahtarı yoksa anahtarı olan diğeri; hiçbiri yoksa demo.
   function aktifSaglayici() {
     const yz = store.yzAyarlariGetir();
     if (yz.saglayici === "demo") return { ad: "demo" };
-    const anahtar = anahtarlar.getir(yz.saglayici);
-    if (!anahtar) return { ad: "demo", eksik: yz.saglayici };
-    return { ad: yz.saglayici, anahtar, model: yz.modeller?.[yz.saglayici] || VARSAYILAN_MODELLER[yz.saglayici] };
+    const sira = [yz.saglayici, ...SAGLAYICI_ADLARI.filter((a) => a !== yz.saglayici)];
+    const ad = sira.find((a) => anahtarlar.getir(a));
+    if (!ad) return { ad: "demo", eksik: true };
+    return { ad, anahtar: anahtarlar.getir(ad), model: yz.modeller?.[ad] || VARSAYILAN_MODELLER[ad] };
   }
 
   function yzDurumu() {
     const yz = store.yzAyarlariGetir();
     const aktif = aktifSaglayici();
     return {
-      secili: yz.saglayici,
       aktif: aktif.ad,
-      eksikAnahtar: aktif.eksik || null,
-      anahtarVar: { claude: Boolean(anahtarlar.getir("claude")), gemini: Boolean(anahtarlar.getir("gemini")) },
-      anahtarKaynagi: { claude: anahtarlar.kaynak("claude"), gemini: anahtarlar.kaynak("gemini") },
+      anahtarYok: Boolean(aktif.eksik),
+      anahtarVar: Object.fromEntries(SAGLAYICI_ADLARI.map((a) => [a, Boolean(anahtarlar.getir(a))])),
+      anahtarKaynagi: Object.fromEntries(SAGLAYICI_ADLARI.map((a) => [a, anahtarlar.kaynak(a)])),
       modeller: { ...VARSAYILAN_MODELLER, ...yz.modeller },
     };
+  }
+
+  function varsayilanYap(saglayici) {
+    store.yzAyarlariKaydet({ ...store.yzAyarlariGetir(), saglayici });
   }
 
   const rotalar = [
@@ -58,22 +71,48 @@ export function apiOlustur(anahtarlar) {
 
     // ---- Yapay zekâ ayarları ----
     ["GET", /^\/api\/yz$/, () => yzDurumu()],
+    // Yeni anahtar: türü anahtarın kendisinden anlaşılır ve o sağlayıcı varsayılan olur.
+    [
+      "POST",
+      /^\/api\/yz\/anahtar$/,
+      (_, b) => {
+        const anahtar = temizMetin(b.anahtar, 500).replace(/\s+/g, "");
+        const saglayici = anahtarTuru(anahtar);
+        if (!saglayici) {
+          throw new ApiHatasi(400, "Anahtar tanınamadı. Claude anahtarı \"sk-ant-\", Gemini anahtarı \"AIza\" ile başlar.");
+        }
+        anahtarlar.kaydet(saglayici, anahtar);
+        varsayilanYap(saglayici);
+        return { ...yzDurumu(), eklenen: saglayici };
+      },
+    ],
+    [
+      "DELETE",
+      /^\/api\/yz\/anahtar\/(claude|gemini)$/,
+      ([saglayici]) => {
+        anahtarlar.kaydet(saglayici, "");
+        return yzDurumu();
+      },
+    ],
+    // Kayıtlı anahtarlar arasında varsayılanı değiştirme ve model adları.
     [
       "PUT",
       /^\/api\/yz$/,
       (_, b) => {
-        const saglayici = ["claude", "gemini", "demo"].includes(b.saglayici) ? b.saglayici : "claude";
-        for (const ad of ["claude", "gemini"]) {
-          const yeni = temizMetin(b.anahtarlar?.[ad], 500);
-          if (yeni) anahtarlar.kaydet(ad, yeni);
-          if (b.anahtarSil?.[ad]) anahtarlar.kaydet(ad, "");
+        const yz = store.yzAyarlariGetir();
+        if (b.saglayici !== undefined) {
+          if (b.saglayici !== "demo" && !SAGLAYICI_ADLARI.includes(b.saglayici)) throw new ApiHatasi(400, "Geçersiz seçim.");
+          if (b.saglayici !== "demo" && !anahtarlar.getir(b.saglayici)) throw new ApiHatasi(400, "Bu yapay zekâ için önce anahtar girin.");
+          yz.saglayici = b.saglayici;
         }
-        const modeller = {};
-        for (const ad of ["claude", "gemini"]) {
-          const m = temizMetin(b.modeller?.[ad], 100);
-          if (m && m !== VARSAYILAN_MODELLER[ad]) modeller[ad] = m;
+        if (b.modeller) {
+          yz.modeller = {};
+          for (const ad of SAGLAYICI_ADLARI) {
+            const m = temizMetin(b.modeller[ad], 100);
+            if (m && m !== VARSAYILAN_MODELLER[ad]) yz.modeller[ad] = m;
+          }
         }
-        store.yzAyarlariKaydet({ saglayici, modeller });
+        store.yzAyarlariKaydet(yz);
         return yzDurumu();
       },
     ],

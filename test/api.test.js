@@ -17,21 +17,44 @@ before(async () => {
   api = apiOlustur(depo);
 });
 
-test("anahtar yoksa demo kipine düşer ve eksik anahtarı bildirir", async () => {
+test("anahtar yoksa demo kipine düşer ve anahtar istenir", async () => {
   const { durum, govde } = await api.isle("GET", "/api/yz");
   assert.equal(durum, 200);
-  assert.equal(govde.secili, "claude");
   assert.equal(govde.aktif, "demo");
-  assert.equal(govde.eksikAnahtar, "claude");
+  assert.equal(govde.anahtarYok, true);
 });
 
-test("anahtar şifrelenerek kaydedilir ve geri okunur", async () => {
-  const { govde } = await api.isle("PUT", "/api/yz", { saglayici: "gemini", anahtarlar: { gemini: "AIza-x" } });
-  assert.equal(govde.aktif, "gemini");
-  assert.equal(govde.anahtarVar.gemini, true);
+test("anahtarın türü otomatik anlaşılır; en son girilen varsayılan olur", async () => {
+  const claude = "sk-ant-api03-" + "a".repeat(30);
+  const gemini = "AIzaSy" + "b".repeat(30);
+
+  let r = await api.isle("POST", "/api/yz/anahtar", { anahtar: ` ${claude} ` });
+  assert.equal(r.govde.eklenen, "claude");
+  assert.equal(r.govde.aktif, "claude");
+  assert.equal(r.govde.anahtarYok, false);
+
+  r = await api.isle("POST", "/api/yz/anahtar", { anahtar: gemini });
+  assert.equal(r.govde.aktif, "gemini");
+  assert.deepEqual(r.govde.anahtarVar, { claude: true, gemini: true });
+
+  // Kayıtlı anahtarlar arasında geçiş
+  r = await api.isle("PUT", "/api/yz", { saglayici: "claude" });
+  assert.equal(r.govde.aktif, "claude");
+
+  // Varsayılanın anahtarı silinirse diğerine geçilir
+  r = await api.isle("DELETE", "/api/yz/anahtar/claude");
+  assert.equal(r.govde.aktif, "gemini");
+
+  // Şifrelenerek saklanır
   const dosya = JSON.parse(fs.readFileSync(path.join(process.env.DATA_DIR, "anahtarlar.json"), "utf8"));
-  assert.equal(dosya.gemini, "enc:AIza-x");
-  assert.equal(depo.getir("gemini"), "AIza-x");
+  assert.equal(dosya.gemini, `enc:${gemini}`);
+  assert.equal(depo.getir("gemini"), gemini);
+  await api.isle("DELETE", "/api/yz/anahtar/gemini");
+});
+
+test("tanınmayan anahtar ve anahtarsız sağlayıcı reddedilir", async () => {
+  assert.equal((await api.isle("POST", "/api/yz/anahtar", { anahtar: "rastgele-metin" })).durum, 400);
+  assert.equal((await api.isle("PUT", "/api/yz", { saglayici: "gemini" })).durum, 400);
 });
 
 test("demo kipinde haber üretilir ve arşive kaydedilir", async () => {

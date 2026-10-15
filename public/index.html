@@ -151,32 +151,27 @@
 
     <!-- KURUM AYARLARI -->
     <section class="sayfa" id="sayfa-ayarlar">
-      <form class="kart dar" id="yzFormu">
+      <div class="kart dar" id="yzKart">
         <h2>Yapay Zekâ</h2>
-        <label>Kullanılacak yapay zekâ
-          <select id="yzSaglayici">
-            <option value="claude">Claude (Anthropic)</option>
-            <option value="gemini">Gemini (Google)</option>
-            <option value="demo">Demo — yapay zekâ olmadan dene</option>
-          </select>
-        </label>
-        <div id="yzClaudeAlan">
-          <label>Claude API anahtarı <span class="ops" id="yzClaudeDurum"></span>
-            <input id="yzClaudeAnahtar" type="password" autocomplete="off" placeholder="sk-ant-...">
+        <ul class="anahtarlar" id="yzListe"></ul>
+        <form id="yzFormu">
+          <label>Yeni API anahtarı
+            <input id="yzAnahtar" type="password" autocomplete="off" placeholder="Claude (sk-ant-…) ya da Gemini (AIza…) anahtarını yapıştırın">
           </label>
-          <p class="bilgi">Anahtar almak için: <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener">console.anthropic.com</a></p>
-          <label>Model <input id="yzClaudeModel" type="text"></label>
-        </div>
-        <div id="yzGeminiAlan">
-          <label>Gemini API anahtarı <span class="ops" id="yzGeminiDurum"></span>
-            <input id="yzGeminiAnahtar" type="password" autocomplete="off" placeholder="AIza...">
-          </label>
-          <p class="bilgi">Anahtar almak için: <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">aistudio.google.com/apikey</a></p>
-          <label>Model <input id="yzGeminiModel" type="text"></label>
-        </div>
-        <p class="bilgi">Anahtar yalnızca bu bilgisayarda, Windows kullanıcı hesabınıza özel şifrelenerek saklanır.</p>
-        <button type="submit" class="birincil">Kaydet</button>
-      </form>
+          <p class="bilgi">Anahtarın Claude'a mı Gemini'ye mi ait olduğu otomatik anlaşılır; en son girilen anahtar varsayılan olur. Anahtar yalnızca bu bilgisayarda, Windows kullanıcı hesabınıza özel şifrelenerek saklanır.</p>
+          <button type="submit" class="birincil">Anahtarı Kaydet</button>
+        </form>
+        <details class="gelismis">
+          <summary>Gelişmiş: model adları</summary>
+          <form id="modelFormu">
+            <div class="ikili">
+              <label>Claude modeli <input id="yzClaudeModel" type="text"></label>
+              <label>Gemini modeli <input id="yzGeminiModel" type="text"></label>
+            </div>
+            <button type="submit" class="ikincil">Modelleri Kaydet</button>
+          </form>
+        </details>
+      </div>
 
       <form class="kart dar" id="ayarFormu">
         <h2>Kurum Ayarları</h2>
@@ -204,6 +199,22 @@
       </form>
     </section>
   </main>
+
+  <dialog id="anahtarPenceresi">
+    <form method="dialog" id="ilkAnahtarFormu">
+      <h2>Hoş geldiniz</h2>
+      <p>Haberlerin yazılabilmesi için bir yapay zekâ API anahtarı gerekiyor. Anahtarı bir kez girmeniz yeterli; program bir daha sormaz.</p>
+      <label>API anahtarı
+        <input id="ilkAnahtar" type="password" autocomplete="off" placeholder="sk-ant-…  ya da  AIza…">
+      </label>
+      <p class="bilgi">Anahtar almak için: <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener">Claude</a> · <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">Gemini</a></p>
+      <p class="hata" id="ilkAnahtarHata" hidden></p>
+      <div class="satir">
+        <button type="submit" class="birincil" id="ilkAnahtarKaydet">Kaydet ve Başla</button>
+        <button type="button" class="ikincil" id="demoIleDene">Şimdilik demo ile dene</button>
+      </div>
+    </form>
+  </dialog>
 
   <div class="bildirim" id="bildirim" hidden></div>
   <script src="app.js" type="module"></script>

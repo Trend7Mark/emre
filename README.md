@@ -24,7 +24,7 @@ Beğenilen bir haber, arşivden **"Üslup örneği yap"** düğmesiyle örnekler
    - `BasinMasasi-Kurulum-….exe`: bilgisayara kurar ve masaüstüne kısayol ekler (önerilen)
    - `BasinMasasi-Tasinabilir-….exe`: kurulum gerektirmez, çift tıklayınca açılır
 2. Windows "bilinmeyen yayımcı" uyarısı verirse **Ek bilgi → Yine de çalıştır**'a tıklayın. Program dijital olarak imzalı olmadığı için bu uyarı çıkar.
-3. Program açılınca **Ayarlar → Yapay Zekâ** bölümünden yapay zekâyı seçip API anahtarını girin.
+3. İlk açılışta program API anahtarını sorar. Claude ya da Gemini anahtarınızı yapıştırın; hangisi olduğu otomatik anlaşılır. Anahtar bir kez girilir, program bir daha sormaz.
 
 Program tarayıcı ya da ağ portu kullanmaz; kendi penceresinde çalışır. Bu yüzden kurum bilgisayarlarındaki proxy ayarlarından etkilenmez. İnternet yalnızca yapay zekâya istek gönderirken kullanılır.
 
@@ -36,7 +36,7 @@ Program tarayıcı ya da ağ portu kullanmaz; kendi penceresinde çalışır. Bu
 | Gemini (Google) | Anahtar: [aistudio.google.com/apikey](https://aistudio.google.com/apikey). Varsayılan model: `gemini-2.5-pro` |
 | Demo | Anahtar gerektirmez; sahte metin üretir. Yalnızca programı denemek içindir |
 
-API anahtarı yalnızca bu bilgisayarda, Windows kullanıcı hesabına özel şifrelenerek saklanır.
+İki anahtar da girilebilir. **En son girilen anahtar varsayılan olur**; **Ayarlar → Yapay Zekâ** bölümünden "Bunu kullan" ile diğerine geçilebilir ya da anahtar silinebilir. Anahtarlar yalnızca bu bilgisayarda, Windows kullanıcı hesabına özel şifrelenerek saklanır.
 
 ## Veriler
 

@@ -1,6 +1,6 @@
 {
   "name": "basin-masasi",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "İl/İlçe Millî Eğitim Müdürlükleri için yapay zekâ destekli haber metni yazım uygulaması",
   "main": "electron/main.js",
   "scripts": {

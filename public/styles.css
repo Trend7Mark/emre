@@ -131,3 +131,15 @@ button { font: inherit; cursor: pointer; border-radius: 8px; padding: 9px 16px; 
 .uyari button { margin-left: 6px; }
 #yzFormu { margin-bottom: 20px; }
 a { color: var(--ana); }
+
+.anahtarlar { list-style: none; padding: 0; margin: 0 0 18px; border: 1px solid var(--cizgi); border-radius: 8px; }
+.anahtarlar li { display: flex; align-items: center; gap: 10px; padding: 12px 14px; flex-wrap: wrap; }
+.anahtarlar li + li { border-top: 1px solid var(--cizgi); }
+.anahtarlar .ad { font-weight: 600; min-width: 70px; }
+.anahtarlar .durum { flex: 1; font-size: 13px; color: var(--soluk); }
+.anahtarlar .durum.aktif { color: var(--yesil); font-weight: 600; }
+.gelismis { margin-top: 18px; font-size: 14px; }
+.gelismis summary { cursor: pointer; color: var(--soluk); margin-bottom: 12px; }
+dialog { border: 0; border-radius: var(--yaricap); padding: 24px; width: min(520px, calc(100vw - 32px)); box-shadow: 0 10px 40px rgba(0,0,0,.25); }
+dialog::backdrop { background: rgba(15, 18, 25, .45); }
+dialog p { margin: 0 0 14px; }
