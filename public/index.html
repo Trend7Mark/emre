@@ -181,13 +181,16 @@
           <p class="test-sonuc" id="yzTestSonuc" hidden></p>
         </form>
         <details class="gelismis">
-          <summary>Gelişmiş: model adları</summary>
+          <summary>Gelişmiş: model adları ve çalışma alanı</summary>
           <form id="modelFormu">
             <div class="ikili">
               <label>Claude modeli <input id="yzClaudeModel" type="text"></label>
               <label>Gemini modeli <input id="yzGeminiModel" type="text"></label>
             </div>
-            <button type="submit" class="ikincil">Modelleri Kaydet</button>
+            <label>Claude çalışma alanı kimliği <span class="ops">(yalnızca sk-ant-usr-… anahtarları için)</span>
+              <input id="yzCalismaAlani" type="text" placeholder="wrkspc_…" autocomplete="off">
+            </label>
+            <button type="submit" class="ikincil">Gelişmiş Ayarları Kaydet</button>
           </form>
         </details>
       </div>

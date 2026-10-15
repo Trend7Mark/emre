@@ -525,6 +525,7 @@ function yzFormuDoldur(yz) {
   $("yzAnahtar").value = "";
   $("yzClaudeModel").value = yz.modeller.claude;
   $("yzGeminiModel").value = yz.modeller.gemini;
+  $("yzCalismaAlani").value = yz.calismaAlani || "";
   yzRozeti(yz);
 }
 
@@ -558,9 +559,15 @@ $("modelFormu").addEventListener("submit", async (e) => {
   e.preventDefault();
   try {
     yzFormuDoldur(
-      await api("/yz", { method: "PUT", body: { modeller: { claude: $("yzClaudeModel").value, gemini: $("yzGeminiModel").value } } }),
+      await api("/yz", {
+        method: "PUT",
+        body: {
+          modeller: { claude: $("yzClaudeModel").value, gemini: $("yzGeminiModel").value },
+          calismaAlani: $("yzCalismaAlani").value,
+        },
+      }),
     );
-    bildir("Model adları kaydedildi");
+    bildir("Gelişmiş ayarlar kaydedildi");
   } catch (err) {
     bildir(err.message);
   }

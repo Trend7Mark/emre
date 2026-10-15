@@ -96,3 +96,9 @@ test("başlık yenileme 5 başlık, değerlendirme öneri döndürür; bağlant�
   assert.equal((await api.isle("POST", "/api/basliklar", {})).durum, 400);
   assert.equal((await api.isle("POST", "/api/yz/test")).govde.tamam, true);
 });
+
+test("çalışma alanı kimliği doğrulanır ve kaydedilir", async () => {
+  assert.equal((await api.isle("PUT", "/api/yz", { calismaAlani: "yanlis" })).durum, 400);
+  assert.equal((await api.isle("PUT", "/api/yz", { calismaAlani: " wrkspc_01ABC " })).govde.calismaAlani, "wrkspc_01ABC");
+  assert.equal((await api.isle("PUT", "/api/yz", { calismaAlani: "" })).govde.calismaAlani, "");
+});

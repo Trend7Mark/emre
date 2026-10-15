@@ -4,16 +4,34 @@ const istemciler = new Map();
 
 // `fetch`: masaüstü programında Windows ağ ayarlarını (proxy, kurum sertifikaları) kullanan
 // Electron net.fetch verilir; verilmezse Node'un kendi fetch'i kullanılır.
-function istemci(anahtar, fetch) {
-  if (!istemciler.has(anahtar)) {
-    istemciler.set(anahtar, new Anthropic({ apiKey: anahtar, maxRetries: 2, ...(fetch ? { fetch } : {}) }));
+// `calismaAlani`: kullanıcı anahtarları (sk-ant-usr-…) bir çalışma alanına bağlı olmadığı için
+// her istekte anthropic-workspace-id başlığıyla hangi çalışma alanının kullanılacağı belirtilir.
+function istemci(anahtar, fetch, calismaAlani = "") {
+  const kimlik = `${anahtar}|${calismaAlani}`;
+  if (!istemciler.has(kimlik)) {
+    istemciler.set(
+      kimlik,
+      new Anthropic({
+        apiKey: anahtar,
+        maxRetries: 2,
+        ...(fetch ? { fetch } : {}),
+        ...(calismaAlani ? { defaultHeaders: { "anthropic-workspace-id": calismaAlani } } : {}),
+      }),
+    );
   }
-  return istemciler.get(anahtar);
+  return istemciler.get(kimlik);
 }
 
 function hataCevir(err) {
   if (err instanceof Anthropic.AuthenticationError || err instanceof Anthropic.PermissionDeniedError) {
     return new Error("Claude API anahtarı geçersiz ya da yetkisiz. Ayarlar > Yapay Zekâ bölümünden anahtarı kontrol edin.");
+  }
+  if (err instanceof Anthropic.BadRequestError && /anthropic-workspace-id|scoped to a workspace/i.test(err.message)) {
+    return new Error(
+      "Bu Claude anahtarı bir kullanıcı anahtarı (sk-ant-usr-…) ve bir çalışma alanına bağlı değil. " +
+        "Çözüm: console.anthropic.com > Settings > API keys bölümünden normal bir API anahtarı (sk-ant-api03-…) oluşturup girin " +
+        "ya da Ayarlar > Yapay Zekâ > Gelişmiş bölümüne çalışma alanı kimliğini (wrkspc_…) yazın.",
+    );
   }
   if (err instanceof Anthropic.NotFoundError) {
     return new Error("Claude modeli bulunamadı. Ayarlar > Yapay Zekâ > Gelişmiş bölümündeki model adını kontrol edin.");
@@ -32,10 +50,10 @@ function hataCevir(err) {
 }
 
 /** Yapılandırılmış (JSON şemalı) yanıt üretir. */
-export async function cagir({ sistem, kullanici, anahtar, model, sema, efor = "medium", fetch }) {
+export async function cagir({ sistem, kullanici, anahtar, model, sema, efor = "medium", fetch, calismaAlani }) {
   let yanit;
   try {
-    yanit = await istemci(anahtar, fetch).beta.messages.create({
+    yanit = await istemci(anahtar, fetch, calismaAlani).beta.messages.create({
       model,
       max_tokens: 16000,
       // Güvenlik sınıflandırıcısı isteği reddederse sunucu tarafında uygun modele düşer.
@@ -68,9 +86,13 @@ export async function cagir({ sistem, kullanici, anahtar, model, sema, efor = "m
 }
 
 /** Anahtar, model ve ağ bağlantısını ücretsiz bir istekle sınar. */
-export async function sina({ anahtar, model, fetch }) {
+export async function sina({ anahtar, model, fetch, calismaAlani }) {
   try {
-    const m = await istemci(anahtar, fetch).models.retrieve(model);
+    const c = istemci(anahtar, fetch, calismaAlani);
+    const m = await c.models.retrieve(model);
+    // Model listesi çalışma alanı istemez; gerçek bir isteği (1 token) de deneyerek
+    // anahtarın haber üretmek için gerçekten kullanılabildiğini sınar.
+    await c.messages.create({ model, max_tokens: 16, messages: [{ role: "user", content: "Yalnızca TAMAM yaz." }] });
     return `Claude bağlantısı çalışıyor (${m.display_name || model}).`;
   } catch (err) {
     throw hataCevir(err);

@@ -58,7 +58,12 @@ export function apiOlustur(anahtarlar, { fetch } = {}) {
     const sira = [yz.saglayici, ...SAGLAYICI_ADLARI.filter((a) => a !== yz.saglayici)];
     const ad = sira.find((a) => anahtarlar.getir(a));
     if (!ad) return { ad: "demo", eksik: true };
-    return { ad, anahtar: anahtarlar.getir(ad), model: yz.modeller?.[ad] || VARSAYILAN_MODELLER[ad] };
+    return {
+      ad,
+      anahtar: anahtarlar.getir(ad),
+      model: yz.modeller?.[ad] || VARSAYILAN_MODELLER[ad],
+      calismaAlani: ad === "claude" ? yz.calismaAlani || "" : "",
+    };
   }
 
   function yzDurumu() {
@@ -70,6 +75,7 @@ export function apiOlustur(anahtarlar, { fetch } = {}) {
       anahtarVar: Object.fromEntries(SAGLAYICI_ADLARI.map((a) => [a, Boolean(anahtarlar.getir(a))])),
       anahtarKaynagi: Object.fromEntries(SAGLAYICI_ADLARI.map((a) => [a, anahtarlar.kaynak(a)])),
       modeller: { ...VARSAYILAN_MODELLER, ...yz.modeller },
+      calismaAlani: yz.calismaAlani || "",
     };
   }
 
@@ -86,6 +92,7 @@ export function apiOlustur(anahtarlar, { fetch } = {}) {
         sema,
         efor,
         anahtar: aktif.anahtar,
+        calismaAlani: aktif.calismaAlani,
         model: aktif.model,
         fetch,
       });
@@ -141,7 +148,7 @@ export function apiOlustur(anahtarlar, { fetch } = {}) {
         const aktif = aktifSaglayici();
         try {
           const saglayici = await SAGLAYICILAR[aktif.ad]();
-          return { tamam: true, mesaj: await saglayici.sina({ anahtar: aktif.anahtar, model: aktif.model, fetch }) };
+          return { tamam: true, mesaj: await saglayici.sina({ anahtar: aktif.anahtar, model: aktif.model, calismaAlani: aktif.calismaAlani, fetch }) };
         } catch (err) {
           return { tamam: false, mesaj: err.message };
         }
@@ -157,6 +164,11 @@ export function apiOlustur(anahtarlar, { fetch } = {}) {
           if (b.saglayici !== "demo" && !SAGLAYICI_ADLARI.includes(b.saglayici)) throw new ApiHatasi(400, "Geçersiz seçim.");
           if (b.saglayici !== "demo" && !anahtarlar.getir(b.saglayici)) throw new ApiHatasi(400, "Bu yapay zekâ için önce anahtar girin.");
           yz.saglayici = b.saglayici;
+        }
+        if (b.calismaAlani !== undefined) {
+          const id = temizMetin(b.calismaAlani, 100).replace(/\s+/g, "");
+          if (id && !/^wrkspc_\w+$/.test(id)) throw new ApiHatasi(400, "Çalışma alanı kimliği \"wrkspc_\" ile başlamalıdır.");
+          yz.calismaAlani = id;
         }
         if (b.modeller) {
           yz.modeller = {};
