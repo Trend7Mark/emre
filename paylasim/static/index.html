@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BHİ Paylaşım</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">📣</span>
+      <div>
+        <h1>BHİ Paylaşım</h1>
+        <p id="account-line" class="muted">Bağlantı kontrol ediliyor…</p>
+      </div>
+    </div>
+    <nav class="tabs" role="tablist">
+      <button class="tab active" data-tab="compose">Yeni Paylaşım</button>
+      <button class="tab" data-tab="history">Geçmiş</button>
+      <button class="tab" data-tab="settings">Ayarlar</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ================= YENİ PAYLAŞIM ================= -->
+    <section id="tab-compose" class="panel">
+      <div id="connect-warning" class="alert warn hidden">
+        Facebook/Instagram bağlantısı henüz kurulmadı. <a href="#" data-goto="settings">Ayarlar</a> sekmesinden bağlantıyı kurun.
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h2>1. Fotoğraflar <span class="muted small">(en fazla 10, sıra değiştirilebilir)</span></h2>
+          <label id="dropzone" class="dropzone">
+            <input id="file-input" type="file" accept="image/*" multiple hidden>
+            <strong>Fotoğrafları buraya sürükleyin</strong>
+            <span class="muted">veya tıklayıp seçin</span>
+          </label>
+          <ul id="thumbs" class="thumbs"></ul>
+        </div>
+
+        <div class="card">
+          <h2>2. Metin</h2>
+          <textarea id="text" rows="9" placeholder="Paylaşım metnini yazın…"></textarea>
+          <div class="counters">
+            <span id="count-ig">Instagram: 0 / 2200</span>
+            <span id="count-tags">Hashtag: 0 / 30</span>
+            <span id="count-x">X: 0 / 280</span>
+          </div>
+          <label class="check">
+            <input id="x-custom" type="checkbox"> X için farklı (kısa) metin yaz
+          </label>
+          <textarea id="x-text" class="hidden" rows="4" placeholder="X metni (280 karakter)"></textarea>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>3. Platformlar</h2>
+        <div class="platforms">
+          <label class="platform fb"><input type="checkbox" name="platform" value="facebook" checked> Facebook</label>
+          <label class="platform ig"><input type="checkbox" name="platform" value="instagram" checked> Instagram</label>
+          <label class="platform x"><input type="checkbox" name="platform" value="x" checked> X <span class="muted small">(yarı otomatik)</span></label>
+        </div>
+        <div class="actions">
+          <button id="publish-btn" class="primary big">Paylaş</button>
+        </div>
+      </div>
+
+      <div id="results" class="card hidden">
+        <h2>Sonuç</h2>
+        <ul id="result-list" class="results"></ul>
+        <div id="x-help" class="x-help hidden">
+          <p><strong>X için son adım:</strong> X paylaşım penceresi metin yazılı olarak açıldı ve fotoğraf klasörü gösterildi.
+            Fotoğrafları klasörden X penceresine sürükleyin <em>ya da</em> aşağıdan panoya kopyalayıp X'te <kbd>Ctrl</kbd>+<kbd>V</kbd> yapın, ardından <strong>Gönder</strong>'e basın.</p>
+          <div id="clip-buttons" class="clip-buttons"></div>
+          <p class="small">
+            <a id="x-reopen" href="#" target="_blank" rel="noopener">X penceresini tekrar aç</a> ·
+            <a id="folder-reopen" href="#">Fotoğraf klasörünü aç</a>
+          </p>
+        </div>
+        <button id="new-post" class="secondary">Yeni paylaşım</button>
+      </div>
+    </section>
+
+    <!-- ================= GEÇMİŞ ================= -->
+    <section id="tab-history" class="panel hidden">
+      <div class="card">
+        <h2>Son paylaşımlar</h2>
+        <ul id="history-list" class="history"></ul>
+      </div>
+    </section>
+
+    <!-- ================= AYARLAR ================= -->
+    <section id="tab-settings" class="panel hidden">
+      <div id="settings-connected" class="card hidden">
+        <h2>Bağlı hesap</h2>
+        <p>Facebook Sayfası: <strong id="set-page"></strong></p>
+        <p>Instagram: <strong id="set-ig"></strong></p>
+        <button id="disconnect" class="danger">Bağlantıyı kaldır</button>
+      </div>
+
+      <div id="settings-form" class="card">
+        <h2>Facebook / Instagram bağlantısı</h2>
+        <p class="muted">Bu işlem bir kez yapılır. Adımlar için <code>docs/META_KURULUM.md</code> rehberine bakın.</p>
+        <label>Uygulama Kimliği (App ID)
+          <input id="app-id" type="text" autocomplete="off">
+        </label>
+        <label>Uygulama Gizli Anahtarı (App Secret)
+          <input id="app-secret" type="password" autocomplete="off">
+        </label>
+        <label>Graph API Explorer'dan alınan erişim anahtarı (Access Token)
+          <textarea id="user-token" rows="3" autocomplete="off"></textarea>
+        </label>
+        <button id="connect-btn" class="primary">Bağlan</button>
+        <div id="page-choice" class="hidden">
+          <h3>Sayfayı seçin</h3>
+          <ul id="page-list" class="page-list"></ul>
+          <button id="select-page-btn" class="primary">Bu sayfayı kullan</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="busy" class="busy hidden">
+    <div class="busy-box"><div class="spinner"></div><p id="busy-text">Paylaşılıyor…</p></div>
+  </div>
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
