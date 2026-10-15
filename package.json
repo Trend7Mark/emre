@@ -1,0 +1,31 @@
+{
+  "name": "basin-masasi",
+  "version": "0.1.0",
+  "description": "İl/İlçe Millî Eğitim Müdürlükleri için yapay zekâ destekli haber metni yazım uygulaması",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "test": "node --test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Trend7Mark/emre.git"
+  },
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/Trend7Mark/emre/issues"
+  },
+  "homepage": "https://github.com/Trend7Mark/emre#readme",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.134.0",
+    "@google/genai": "^2.30.0",
+    "dotenv": "^18.0.8",
+    "express": "^4.22.3"
+  },
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  }
+}
